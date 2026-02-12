@@ -1,0 +1,65 @@
+{
+    "site.title": "Jair Revilla - Moodle Engineer",
+    "site.description": "Personal site of Jair Revilla, Moodle Engineer specializing in plugins, architecture, and performance.",
+    "nav.home": "Home",
+    "nav.about": "About",
+    "nav.cases": "Case Studies",
+    "nav.contact": "Contact",
+    "hero.greeting": "Hi, I'm Jair Revilla",
+    "hero.role": "Moodle Engineer & Solution Architect",
+    "hero.cta": "View my work",
+    "trust.years": "12+",
+    "trust.years_label": "Years Experience",
+    "trust.plugins": "50+",
+    "trust.plugins_label": "Plugins Developed",
+    "trust.clients": "20+",
+    "trust.clients_label": "Key Projects",
+    "badges": [
+        "Moodle 4.x",
+        "PHP 8",
+        "AWS",
+        "Performance"
+    ],
+    "xray.title": "Technical Expertise",
+    "xray.items": [
+        {
+            "title": "Moodle Core",
+            "description": "Deep architecture, internal APIs, and database optimization.",
+            "icon": "🧠"
+        },
+        {
+            "title": "Plugin Development",
+            "description": "Custom modules, blocks, and question types development.",
+            "icon": "🧩"
+        },
+        {
+            "title": "Integrations",
+            "description": "Connecting with ERPs (SAP, PeopleSoft), CRMs, and external systems.",
+            "icon": "🔌"
+        },
+        {
+            "title": "High Performance",
+            "description": "Optimization for high concurrency and massive deployments.",
+            "icon": "🚀"
+        }
+    ],
+    "plugins_map.title": "Plugin Map",
+    "plugins_map.description": "Explore my organized collection of Moodle solutions.",
+    "plugins_map.categories": [
+        "Activity Modules",
+        "Blocks",
+        "Authentication Agencies",
+        "Enrolment Plugins",
+        "Reports",
+        "Themes",
+        "Local Plugins"
+    ],
+    "plugins_map.cta": "Explore Directory",
+    "about.title": "About Me",
+    "about.intro": "Software Engineer passionate about eLearning and the Moodle ecosystem. I have dedicated over a decade to creating robust and scalable educational solutions.",
+    "about.history": "My journey began in 2012...",
+    "contact.title": "Contact",
+    "contact.desc": "Do you have a challenging project in mind? Let's talk.",
+    "contact.email": "Email",
+    "contact.social": "Social Media"
+}

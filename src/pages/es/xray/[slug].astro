@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../components/layout/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const allXray = await getCollection('xray');
+  const esXray = allXray.filter(post => post.data.lang === 'es');
+  
+  return esXray.map(item => ({
+    params: { slug: item.slug.replace(/-es$/, '') },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const { Content } = await item.render();
+---
+
+<BaseLayout title={`${item.data.title} | Moodle X-Ray`} description={item.data.description} lang="es">
+  <main class="container">
+    <article class="xray-detail">
+      <header class="xray-header">
+        <div class="xray-icon-large">{item.data.icon}</div>
+        <h1 class="xray-title">{item.data.title}</h1>
+        <p class="xray-lead">{item.data.description}</p>
+      </header>
+      
+      <div class="xray-content">
+          <Content />
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  .xray-detail {
+    padding: var(--space-12) 0;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .xray-header {
+    text-align: center;
+    margin-bottom: var(--space-8);
+    border-bottom: 1px solid #eee;
+    padding-bottom: var(--space-8);
+  }
+  
+  .xray-icon-large {
+      font-size: 4rem;
+      margin-bottom: var(--space-4);
+  }
+  
+  .xray-title {
+      font-size: 3rem;
+      margin-bottom: var(--space-4);
+      color: #1a1a1a;
+  }
+  
+  .xray-lead {
+      font-size: 1.5rem;
+      color: #666;
+      line-height: 1.4;
+  }
+  
+  /* Markdown Content Styles */
+  .xray-content {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #333;
+  }
+  
+  .xray-content :global(h2) {
+      font-size: 2rem;
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-4);
+      color: #1a1a1a;
+  }
+  
+  .xray-content :global(h3) {
+      font-size: 1.5rem;
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+      color: #333;
+  }
+  
+  .xray-content :global(ul) {
+      padding-left: 20px;
+      margin-bottom: var(--space-4);
+  }
+  
+  .xray-content :global(li) {
+      margin-bottom: var(--space-2);
+  }
+  
+  .xray-content :global(strong) {
+      color: #000;
+  }
+</style>

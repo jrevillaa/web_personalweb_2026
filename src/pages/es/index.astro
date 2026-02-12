@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import HeroIntro from '../../components/sections/HeroIntro.astro';
+import TrustSignals from '../../components/sections/TrustSignals.astro';
+import MoodleXRayPreview from '../../components/sections/MoodleXRayPreview.astro';
+import PluginMapPreview from '../../components/sections/PluginMapPreview.astro';
+import es from '../../i18n/es.json';
+
+const title = es['site.title'];
+const description = es['site.description'];
+---
+
+<BaseLayout title={title} description={description} lang="es">
+  <main>
+    <HeroIntro 
+      title={es['hero.greeting']}
+      subtitle={es['hero.role']}
+      ctaText={es['hero.cta']}
+      ctaLink="#contact"
+    />
+    
+    <TrustSignals
+      years={es['trust.years']}
+      yearsLabel={es['trust.years_label']}
+      plugins={es['trust.plugins']}
+      pluginsLabel={es['trust.plugins_label']}
+      clients={es['trust.clients']}
+      clientsLabel={es['trust.clients_label']}
+      badges={es['badges']}
+    />
+    
+    <MoodleXRayPreview
+      title={es['xray.title']}
+      items={es['xray.items']}
+    />
+    
+    <PluginMapPreview
+      title={es['plugins_map.title']}
+      description={es['plugins_map.description']}
+      categories={es['plugins_map.categories']}
+      ctaText={es['plugins_map.cta']}
+      ctaLink="/es/plugins"
+    />
+  </main>
+</BaseLayout>

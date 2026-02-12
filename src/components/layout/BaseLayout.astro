@@ -1,0 +1,22 @@
+---
+import '../../styles/tokens.css';
+import '../../styles/base.css';
+import SEOHead from './SEOHead.astro';
+
+const { title, description, lang = 'es', image, type } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+	<head>
+        <SEOHead 
+          title={title} 
+          description={description || "Personal Site"} 
+          image={image}
+          type={type}
+        />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../../components/layout/BaseLayout.astro';
+import PluginCard from '../../../components/ui/PluginCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPlugins = await getCollection('plugins');
+const enPlugins = allPlugins.filter(post => post.data.lang === 'en');
+
+const title = "Plugin Directory | Jair Revilla";
+const description = "Collection of Moodle plugins, blocks, and modules developed to solve complex problems.";
+---
+
+<BaseLayout title={title} description={description} lang="en">
+  <main class="container">
+    <header class="plugins-header">
+      <h1 class="page-title">Plugin Directory</h1>
+      <p class="page-desc">Robust solutions to extend Moodle functionality.</p>
+    </header>
+
+    <div class="plugins-grid">
+      {enPlugins.map((plugin) => (
+        <PluginCard
+          name={plugin.data.name}
+          type={plugin.data.type}
+          version={plugin.data.version}
+          description={plugin.data.description}
+          features={plugin.data.features}
+          url={`/en/plugins/${plugin.slug.replace('-en', '')}`}
+        />
+      ))}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .plugins-header {
+    padding: var(--space-8) 0;
+    text-align: center;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .page-desc {
+    color: #666;
+    font-size: 1.2rem;
+  }
+
+  .plugins-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-6);
+    padding-bottom: var(--space-12);
+  }
+</style>

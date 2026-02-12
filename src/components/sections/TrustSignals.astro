@@ -1,0 +1,79 @@
+---
+const { years, yearsLabel, clients, clientsLabel, plugins, pluginsLabel, badges } = Astro.props;
+---
+
+<section class="trust-signals">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <span class="trust-number">{years}</span>
+        <span class="trust-label">{yearsLabel}</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-number">{plugins}</span>
+        <span class="trust-label">{pluginsLabel}</span>
+      </div>
+       <div class="trust-item">
+        <span class="trust-number">{clients}</span>
+        <span class="trust-label">{clientsLabel}</span>
+      </div>
+    </div>
+    
+    {badges && badges.length > 0 && (
+      <div class="badges-row">
+        {badges.map(badge => (
+          <span class="badge">{badge}</span>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .trust-signals {
+    padding: var(--space-8) 0;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-8);
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .trust-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1a1a1a;
+  }
+
+  .trust-label {
+    font-size: 1rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.875rem;
+  }
+  
+  .badges-row {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-top: var(--space-6);
+  }
+  
+  .badge {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-1);
+    font-size: 0.875rem;
+    color: #444;
+  }
+</style>

@@ -1,0 +1,88 @@
+---
+const { title, items = [] } = Astro.props;
+---
+
+<section class="xray-preview">
+  <div class="container">
+    <h2 class="section-title">{title}</h2>
+    
+    <div class="xray-grid">
+      {items.map((item) => (
+        <div class="xray-card">
+          <div class="xray-icon" set:html={item.icon} />
+          <h3 class="xray-card-title">{item.title}</h3>
+          <p class="xray-card-desc">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .xray-preview {
+    padding: var(--space-12) 0;
+    background-color: #fff;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: var(--space-8);
+    color: #1a1a1a;
+  }
+
+  .xray-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  /* Tablet */
+  @media (min-width: 768px) {
+    .xray-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 1024px) {
+    .xray-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .xray-card {
+    background: #fff;
+    padding: var(--space-6);
+    border-radius: var(--radius-2);
+    box-shadow: var(--shadow-1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #eee;
+    text-align: center;
+  }
+
+  .xray-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-2);
+    border-color: #e0e0e0;
+  }
+
+  .xray-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    display: inline-block;
+  }
+
+  .xray-card-title {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-2);
+    color: #1a1a1a;
+  }
+
+  .xray-card-desc {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+    margin: 0;
+  }
+</style>

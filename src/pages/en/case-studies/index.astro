@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../../components/layout/BaseLayout.astro';
+import CaseStudyCard from '../../../components/ui/CaseStudyCard.astro';
+import { getCollection } from 'astro:content';
+
+const allCases = await getCollection('case-studies');
+const enCases = allCases.filter(post => post.data.lang === 'en');
+
+const title = "Case Studies | Jair Revilla";
+const description = "Featured projects in Moodle implementation, plugin development, and solution architecture.";
+---
+
+<BaseLayout title={title} description={description} lang="en">
+  <main class="container">
+    <section class="cases-header">
+      <h1 class="page-title">Case Studies</h1>
+      <p class="page-desc">Real-world projects where I've applied advanced Moodle engineering to solve complex problems.</p>
+    </section>
+
+    <div class="cases-grid">
+      {enCases.map((post) => (
+        <CaseStudyCard
+          title={post.data.title}
+          description={post.data.description}
+          tags={post.data.tags}
+          url={`/en/case-studies/${post.slug.replace('-en', '')}`}
+        />
+      ))}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .cases-header {
+    padding: var(--space-8) 0;
+    text-align: center;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    color: #1a1a1a;
+  }
+
+  .page-desc {
+    font-size: 1.25rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-6);
+    padding-bottom: var(--space-12);
+  }
+</style>

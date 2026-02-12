@@ -1,0 +1,55 @@
+---
+const { title, subtitle, ctaText, ctaLink } = Astro.props;
+---
+
+<section class="hero-intro">
+  <div class="container">
+    <h1 class="hero-title">{title}</h1>
+    <p class="hero-subtitle">{subtitle}</p>
+    {ctaText && ctaLink && (
+      <a href={ctaLink} class="btn btn-primary">{ctaText}</a>
+    )}
+  </div>
+</section>
+
+<style>
+  .hero-intro {
+    padding: var(--space-12) 0;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: var(--space-4);
+    line-height: 1.2;
+    background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto var(--space-8);
+  }
+
+  .btn {
+    display: inline-block;
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-2);
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-primary {
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-2);
+  }
+</style>

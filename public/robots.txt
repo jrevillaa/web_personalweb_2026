@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jairrevilla.com/sitemap-index.xml

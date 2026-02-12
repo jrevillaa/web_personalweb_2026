@@ -1,0 +1,65 @@
+{
+  "site.title": "Jair Revilla - Moodle Engineer",
+  "site.description": "Sitio personal de Jair Revilla, Ingeniero Moodle especializado en plugins, arquitectura y performance.",
+  "nav.home": "Inicio",
+  "nav.about": "Sobre mí",
+  "nav.cases": "Casos de éxito",
+  "nav.contact": "Contacto",
+  "hero.greeting": "Hola, soy Jair Revilla",
+  "hero.role": "Moodle Engineer & Arquitecto de Soluciones",
+  "hero.cta": "Ver mi trabajo",
+  "trust.years": "12+",
+  "trust.years_label": "Años de experiencia",
+  "trust.plugins": "50+",
+  "trust.plugins_label": "Plugins desarrollados",
+  "trust.clients": "20+",
+  "trust.clients_label": "Proyectos Clave",
+  "badges": [
+    "Moodle 4.x",
+    "PHP 8",
+    "AWS",
+    "Performance"
+  ],
+  "xray.title": "Especialización Técnica",
+  "xray.items": [
+    {
+      "title": "Moodle Core",
+      "description": "Arquitectura profunda, APIs internas y optimización de base de datos.",
+      "icon": "🧠"
+    },
+    {
+      "title": "Desarrollo de Plugins",
+      "description": "Creación de módulos, bloques y tipos de preguntas a medida.",
+      "icon": "🧩"
+    },
+    {
+      "title": "Integraciones",
+      "description": "Conexión con ERPs (SAP, PeopleSoft), CRMs y sistemas externos.",
+      "icon": "🔌"
+    },
+    {
+      "title": "High Performance",
+      "description": "Optimización para alta concurrencia y despliegues masivos.",
+      "icon": "🚀"
+    }
+  ],
+  "plugins_map.title": "Mapa de Plugins",
+  "plugins_map.description": "Explora mi colección organizada de soluciones para Moodle.",
+  "plugins_map.categories": [
+    "Activity Modules",
+    "Blocks",
+    "Authentication Agencies",
+    "Enrolment Plugins",
+    "Reports",
+    "Themes",
+    "Local Plugins"
+  ],
+  "plugins_map.cta": "Explorar Directorio",
+  "about.title": "Sobre Mí",
+  "about.intro": "Ingeniero de Software apasionado por el eLearning y el ecosistema Moodle. He dedicado más de una década a crear soluciones educativas robustas y escalables.",
+  "about.history": "Mi trayectoria comenzó en 2012...",
+  "contact.title": "Contacto",
+  "contact.desc": "¿Tienes un proyecto desafiante en mente? Hablemos.",
+  "contact.email": "Correo electrónico",
+  "contact.social": "Redes Sociales"
+}

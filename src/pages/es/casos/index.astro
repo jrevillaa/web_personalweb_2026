@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../../components/layout/BaseLayout.astro';
+import CaseStudyCard from '../../../components/ui/CaseStudyCard.astro';
+import { getCollection } from 'astro:content';
+
+const allCases = await getCollection('case-studies');
+const esCases = allCases.filter(post => post.data.lang === 'es');
+
+const title = "Casos de Éxito | Jair Revilla";
+const description = "Proyectos destacados de implementación Moodle, desarrollo de plugins y arquitectura de soluciones.";
+---
+
+<BaseLayout title={title} description={description} lang="es">
+  <main class="container">
+    <section class="cases-header">
+      <h1 class="page-title">Casos de Éxito</h1>
+      <p class="page-desc">Proyectos reales donde he aplicado ingeniería Moodle avanzada para resolver problemas complejos.</p>
+    </section>
+
+    <div class="cases-grid">
+      {esCases.map((post) => (
+        <CaseStudyCard
+          title={post.data.title}
+          description={post.data.description}
+          tags={post.data.tags}
+          url={`/es/casos/${post.slug.replace('-es', '')}`}
+        />
+      ))}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .cases-header {
+    padding: var(--space-8) 0;
+    text-align: center;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+    color: #1a1a1a;
+  }
+
+  .page-desc {
+    font-size: 1.25rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-6);
+    padding-bottom: var(--space-12);
+  }
+</style>
