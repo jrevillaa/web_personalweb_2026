@@ -1,0 +1,470 @@
+{
+  "basics": {
+    "name": "Jair Edson Revilla Arroyo",
+    "label": "Desarrollador de Software (Especialista Moodle)",
+    "location": {
+      "address": "Av. Mello Franco 630, Jesús María",
+      "city": "Lima",
+      "region": "Lima",
+      "country": "Perú"
+    },
+    "email": "jrevilla492@gmail.com",
+    "phone": "987:contentReference[oaicite:6]{index=6}te": "1992-12-04"
+  },
+  "profile": {
+    "summary": "Luego de muchos años de experiencia en el E-learning conjunto al LMS Moodle, he tomado la decisión de enfocar mi carrera profesional con el ánimo de continuar aprendiendo y, también, aportar toda mi experiencia adquirida hasta ahora. Considero que el cambio es un signo de capacidad de superación y, por ello, creo que siempre sería capaz de aportar valor en los proyectos donde me encuentre. Mi objetivo principal es desarrollarme profesionalmente y evolucionar en el sector del E-learning, buscando oportunidades que me permitan hacerlo, al tiempo que trataré de alinearme completamente con los objetivos del proyecto."
+  },
+  "education": [
+    {
+      "institution": "Instituto San Ignacio de Loyola",
+      "area": "Desarrollo de Software",
+      "studyType": "Técnico en Desarrollo de Software",
+      "startDate": "2010",
+      "endDate": "2019",
+      "location": "Lima, Lima"
+    },
+    {
+      "institution": "San Alfonso",
+      "area": "Secundaria Completa",
+      "studyType": "Secundaria",
+      "startDate": "2004",
+      "endDate": "2008",
+      "location": "Lima, Lima (Santa Clara - Ate Vitarte)"
+    }
+  ],
+  "work": [
+    {
+      "company": "Freelancer",
+      "position": "Freelancer",
+      "startDate": "2017-01",
+      "endDate": "present",
+      "location": "Lima, Perú",
+      "highlights": [
+        "Implementación de Aulas Virtuales Moodle.",
+        "Desarrollo de Plugins Moodle.",
+        "Integraciones con Moodle.",
+        "Desarrollo de sistemas en Laravel Framework y Lumen Framework."
+      ]
+    },
+    {
+      "company": "Lidera Digital SAC",
+      "position": "Desarrollador de Software - División Educación",
+      "startDate": "2022-02",
+      "endDate": "present",
+      "location": "Lima, Lima",
+      "highlights": [
+        "Implementación de aulas virtuales Moodle.",
+        "Integración con diversos SGA (Sistema de Gestión Académica).",
+        "Soluciones LTI integrados a Moodle.",
+        "Integraciones de Moodle con sistemas académicos."
+      ]
+    },
+    {
+      "company": "ATIVA SAC",
+      "position": "Desarrollador Cloud Senior (Perú - Colombia)",
+      "startDate": "2021-06",
+      "endDate": "2022-02",
+      "location": "Lima",
+      "highlights": [
+        "Proyectos Moodle en Huawei.",
+        "Desarrollo de soluciones en Blackboard.",
+        "Desarrollo de soluciones en Moodle."
+      ]
+    },
+    {
+      "company": "NUXTU",
+      "position": "CTO",
+      "startDate": "2020-07",
+      "endDate": "2021-06",
+      "location": "Lima, Lima",
+      "highlights": [
+        "Emprendimiento personal.",
+        "Diseñar e implementar la estrategia tecnológica en la empresa.",
+        "Adaptar tecnologías a lineamientos de la empresa.",
+        "Evolucionar tecnología combinando eficacia con eficiencia."
+      ]
+    },
+    {
+      "company": "Grupo EDUCA_D",
+      "position": "Arquitecto de Aplicaciones y Seguridad",
+      "startDate": "2019-11",
+      "endDate": "2020-07",
+      "location": "Lima, Lima",
+      "highlights": [
+        "Gestión de requisitos no funcionales y definición de Arquitectura de Software.",
+        "Selección de tecnología.",
+        "Mejora continua de la arquitectura.",
+        "Facilitador.",
+        "Aseguramiento de la calidad."
+      ]
+    },
+    {
+      "company": "Universidad Corporativa Intercorp (UCIC)",
+      "position": "Desarrollador Back-end",
+      "startDate": "2017-07",
+      "endDate": "2019-10",
+      "location": "Lima, Perú",
+      "highlights": [
+        "Creación de plugins Moodle tipo: Mod, Local, Format Course, Report.",
+        "Integración Moodle con aplicativo celular UCIC.",
+        "Integración Moodle con Laravel para el proyecto \"Portal UCIC\".",
+        "Desarrollo back-end en mini juegos enfocados en el aprendizaje.",
+        "Desarrollo de sistema de Evaluación 360° (anual) para gerentes y directores del Grupo Intercorp.",
+        "Migración de aplicaciones de AWS a Google Cloud Platform."
+      ]
+    },
+    {
+      "company": "ATYPAX S.A.C.",
+      "position": "Desarrollador Back-end",
+      "startDate": "2014-10",
+      "endDate": "2017-01",
+      "location": "Lima, Perú",
+      "highlights": [
+        "Team Leader en el equipo de desarrollo Back-End.",
+        "Desarrollo de plugins para Moodle.",
+        "Experto en integración del lado de Moodle con otros sistemas informáticos.",
+        "Desarrollo de aplicaciones web y e-learning usando AS3 para LMS."
+      ]
+    },
+    {
+      "company": "Oficina Nacional de Procesos Electorales (ONPE)",
+      "position": "Desarrollador de Cursos Virtuales (JR / Semi Senior 2)",
+      "startDate": "2015-01",
+      "endDate": "2015-08",
+      "location": "Lima, Perú",
+      "highlights": [
+        "Desarrollo de aplicaciones e-learning para LMS.",
+        "Curso virtual para capacitación al CNM (roles Elector, Miembro de Mesa, Personero).",
+        "Creación de aplicativo para cursos virtuales para dispositivos móviles (iOS y Android)."
+      ]
+    },
+    {
+      "company": "ENTEL PERU S.A.",
+      "position": "Analista Programador JAVA JR",
+      "startDate": "2014-10",
+      "endDate": "2014-12",
+      "location": "Lima, Perú",
+      "highlights": [
+        "Versionamiento de aplicaciones Web Java desplegadas en WebLogic."
+      ]
+    },
+    {
+      "company": "Pontificia Universidad Católica del Perú (PUCP)",
+      "position": "Desarrollador Multimedia",
+      "startDate": "2014-01",
+      "endDate": "2014-10",
+      "location": "Lima, Perú",
+      "highlights": [
+        "Empaquetado y programación de cursos virtuales para plataformas LMS (sincronización, interacción con el usuario, navegación)."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Implementación Moodle 4.4 - CANVIA (con Lidera Digital)",
+      "startDate": "2025-04",
+      "endDate": "2025-05",
+      "highlights": [
+        "Implementación de Moodle 4.4.",
+        "Personalización de flujos de trabajo.",
+        "Migración de cursos desde una plataforma antigua."
+      ]
+    },
+    {
+      "name": "Implementación APP Moodle - CEO Academy",
+      "startDate": "2024-07",
+      "endDate": "2024-08",
+      "highlights": [
+        "Implementación de App Moodle 4.3 con branding customizado listo para publicar en Play Store y App Store."
+      ]
+    },
+    {
+      "name": "Actualización Moodle 3.9 a 4.1 - ISIL (con Lidera Digital)",
+      "startDate": "2024-07",
+      "endDate": "2024-07",
+      "highlights": [
+        "Actualización de aula virtual completa.",
+        "Actualización de plugins contribuidos.",
+        "Actualización de plugins custom."
+      ]
+    },
+    {
+      "name": "Instalación Moodle - ESAN Exámenes (con Lidera Digital)",
+      "startDate": "2023-07",
+      "endDate": "2023-08",
+      "highlights": [
+        "Implementación de Moodle 4.1 preparado para High Availability en Huawei Cloud."
+      ]
+    },
+    {
+      "name": "Implementación Moodle 4.0 - UPAO (con Lidera Digital)",
+      "startDate": "2022-05",
+      "endDate": "2022-05",
+      "highlights": [
+        "Implementación completa de Moodle 4.0.",
+        "Migración de cursos a nueva plataforma."
+      ]
+    },
+    {
+      "name": "Actualización Moodle 3.8 a 3.11 - ADEX",
+      "startDate": "2022-01",
+      "endDate": "2022-01",
+      "highlights": [
+        "Generar backups.",
+        "Actualizar plugins.",
+        "Adaptar plugins antiguos a la nueva versión."
+      ]
+    },
+    {
+      "name": "Implementación Moodle 3.11 - Universidad Católica Sede Sapiens",
+      "startDate": "2022-02",
+      "endDate": "2022-03",
+      "highlights": [
+        "Implementación completa de Moodle 3.11.",
+        "Plugins contribuidos y personalizados."
+      ]
+    },
+    {
+      "name": "Migración Moodle 3.8 - ADEX (Cloud a Onpremise)",
+      "startDate": "2021-12",
+      "endDate": "2021-12",
+      "highlights": [
+        "Implementación de ambiente para Moodle en CentOS 7 on-premise.",
+        "Migración Moodle de servidor Cloud a on-premise.",
+        "Configuración de dominios y SSL.",
+        "Buenas prácticas en configuración y optimización Moodle."
+      ]
+    },
+    {
+      "name": "Implementación Moodle App - ISIL (branding custom)",
+      "startDate": "2021-09",
+      "endDate": "2021-09",
+      "highlights": [
+        "Implementación/configuración/customización sobre el código open source de Moodle App 3.9.5."
+      ]
+    },
+    {
+      "name": "Implementación Moodle 3.11 HA - ISIL (Huawei Cloud)",
+      "startDate": "2021-08",
+      "endDate": "2021-09",
+      "highlights": [
+        "Arquitectura de alta disponibilidad en Huawei Cloud."
+      ]
+    },
+    {
+      "name": "Implementación y capacitación Moodle 3.10 - Universidad Católica Sedes Sapientiens (Huawei Cloud)",
+      "startDate": "2021-07",
+      "endDate": "2021-07",
+      "highlights": [
+        "Implementación de Moodle 3.10.",
+        "Capacitación al personal de TI y área académica."
+      ]
+    },
+    {
+      "name": "Migración e implementación Moodle 3.10 - Universidad Continental",
+      "startDate": "2021-05",
+      "endDate": "2021-06",
+      "highlights": [
+        "Migración de Moodle pre-grado y actualización.",
+        "Implementación de un Moodle nuevo para inicio de ciclo."
+      ]
+    },
+    {
+      "name": "Moodle Landing Page - Reach Group",
+      "startDate": "2021-03",
+      "endDate": "2021-03",
+      "highlights": [
+        "Landing pública opcional para que alumnos se matriculen."
+      ]
+    },
+    {
+      "name": "Moodle multi-site - Reach Group",
+      "startDate": "2021-02",
+      "endDate": "2021-02",
+      "highlights": [
+        "Branding distinto por dominio o subdominio."
+      ]
+    },
+    {
+      "name": "MoodleApp Offline - Aprendo en Casa (Ministerio de Educación, Perú)",
+      "startDate": "2020-04",
+      "endDate": "2020-07",
+      "highlights": [
+        "Aplicación móvil 100% offline basada en Moodle App.",
+        "Modificaciones a nivel de código para cumplir requisitos funcionales."
+      ]
+    },
+    {
+      "name": "Mejora Plugin Moodle Zoom - Universidad César Vallejo",
+      "startDate": "2020-05",
+      "endDate": "2020-06",
+      "highlights": [
+        "Recuperar/ver/descargar grabaciones.",
+        "Generación masiva de reuniones."
+      ]
+    },
+    {
+      "name": "Consultoría e implementación Moodle - Universidad César Vallejo (\"Clementina\")",
+      "startDate": "2017-04",
+      "endDate": "2017-05",
+      "highlights": [
+        "Consultoría e implementación de aula virtual."
+      ]
+    },
+    {
+      "name": "Implementación Moodle en AWS - SPLASH",
+      "startDate": "2017-01",
+      "endDate": "2017-01",
+      "highlights": [
+        "Implementación Moodle desde cero en AWS."
+      ]
+    },
+    {
+      "name": "Integración Moodle vía Web Services - Sócrates (Cibertec)",
+      "startDate": "2016-02",
+      "endDate": "2016-03",
+      "highlights": [
+        "Integración Moodle con SGA interno (Sócrates) vía Webservice API Moodle."
+      ]
+    },
+    {
+      "name": "Migración e implementación Moodle 2.8 - Universidad Corporativa Intercorp (con ATYPAX)",
+      "startDate": "2015-02",
+      "endDate": "2015-03",
+      "highlights": [
+        "Migración e implementación con nuevo tema gráfico."
+      ]
+    },
+    {
+      "name": "Implementación Moodle integrado con SGA - AMAG (con ATYPAX)",
+      "startDate": "2014-08",
+      "endDate": "2014-09",
+      "highlights": [
+        "Implementación e integración con SGA."
+      ]
+    },
+    {
+      "name": "Migración/actualizaciones de seguridad Moodle - SUNAT (con ATYPAX)",
+      "startDate": "2014-04",
+      "endDate": "2014-05",
+      "highlights": [
+        "Migración a AWS y actualizaciones de seguridad."
+      ]
+    },
+    {
+      "name": "Integración Moodle - PeopleSoft (CENTURIA PUCP, con ATYPAX)",
+      "startDate": "2014-03",
+      "endDate": "2014-03",
+      "highlights": [
+        "Automatización: crear/actualizar/borrar alumno, matricular alumno, crear/actualizar/borrar curso."
+      ]
+    }
+  ],
+  "skills": [
+    "PHP",
+    "Moodle",
+    "MySQL",
+    "Linux",
+    "Docker",
+    "Laravel",
+    "Lumen",
+    "Java",
+    "Java EE",
+    "AWS (EC2, RDS, S3)",
+    "Google Cloud (AppEngine, Storage, Cloud SQL)",
+    "Huawei Cloud",
+    "Scrum"
+  ],
+  "languages": [
+    {
+      "language": "Inglés",
+      "fluency": "Hablar"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Certificación Desarrollador Moodle",
+      "url": "https://learn.moodle.org/admin/tool/certificate/index.php?code=5651215485JR"
+    },
+    {
+      "name": "Scrum Fundamentals Certified - Scrum Study",
+      "url": "http://bit.ly/jrevilla-scrum-fundamentals"
+    },
+    {
+      "name": "Scrum Master Certified (July 2019) - Scrum Study",
+      "url": "http://bit.ly/jrevilla-scrum-master"
+    }
+  ],
+  "awards": [
+    {
+      "date": "2019-07-19",
+      "title": "Ganador Super Hackathon BBVA 2019",
+      "awarder": "BBVA",
+      "summary": "Primer puesto presentando una propuesta a Pago de Servicios Online."
+    }
+  ],
+  "courses": [
+    {
+      "dateRange": "2020-06",
+      "name": "Desarrollo Ágil de Software",
+      "provider": "KLEER",
+      "location": "Lima, Lima",
+      "highlights": [
+        "Identificación de requerimientos",
+        "Estimación y planificación",
+        "Entregas incrementales",
+        "Integración continua",
+        "TDD",
+        "ATDD",
+        "Mejores prácticas"
+      ]
+    },
+    {
+      "dateRange": "2019-05 a 2020-05",
+      "name": "Scrum Master",
+      "provider": "Universidad Corporativa Intercorp",
+      "location": "Lima, Perú"
+    },
+    {
+      "dateRange": "2019-09 a 2019-12",
+      "name": "Developer",
+      "provider": "CJAVA",
+      "location": "Lima, Perú",
+      "highlights": [
+        "Hibernate",
+        "JPA",
+        "Spring",
+        "SpringBoot",
+        "Microservicios"
+      ]
+    },
+    {
+      "dateRange": "2019-08",
+      "name": "Gestión del Tiempo",
+      "provider": "Universidad Corporativa Intercorp",
+      "location": "Lima, Perú"
+    },
+    {
+      "dateRange": "2019-06",
+      "name": "Curso de Certificación Scrum Master",
+      "provider": "Bee25",
+      "location": "Lima, Perú"
+    }
+  ],
+  "interests": ["Fútbol", "Teatro", "Participación en ONG", "Ver series"],
+  "volunteering": [
+    {
+      "organization": "SPLASH",
+      "position": "Soporte TI",
+      "startDate": "2017-02",
+      "endDate": "present",
+      "location": "Lima, Perú",
+      "highlights": [
+        "Desarrollo de software a medida.",
+        "Personalización de procesos en Moodle.",
+        "Soporte en todo lo referente a TI."
+      ]
+    }
+  ]
+}
+
