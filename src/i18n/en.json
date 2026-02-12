@@ -61,5 +61,33 @@
     "contact.title": "Contact",
     "contact.desc": "Do you have a challenging project in mind? Let's talk.",
     "contact.email": "Email",
-    "contact.social": "Social Media"
+    "contact.social": "Social Media",
+    "testimonials.title": "What my clients say",
+    "testimonials.items": [
+        {
+            "quote": "Jair optimized our Moodle platform to support 50,000 concurrent users without downtime. His database knowledge is impressive.",
+            "author": "Maria Gonzalez",
+            "role": "CTO, National University",
+            "company": "EduTech"
+        },
+        {
+            "quote": "The geolocation attendance plugin he developed transformed our academic management. Clean, secure, and well-documented code.",
+            "author": "Carlos Ruiz",
+            "role": "Director of Innovation",
+            "company": "CorpTraining"
+        },
+        {
+            "quote": "Integrating SAP with Moodle seemed impossible until Jair designed the architecture. Synchronization is seamless and real-time.",
+            "author": "Ana Perez",
+            "role": "IT Manager",
+            "company": "Global Learning"
+        }
+    ],
+    "form.name": "Your Name",
+    "form.email": "Your Email",
+    "form.subject": "Subject",
+    "form.message": "Message",
+    "form.submit": "Send Message",
+    "form.success": "Message sent successfully!",
+    "form.error": "There was an error sending the message."
 }
