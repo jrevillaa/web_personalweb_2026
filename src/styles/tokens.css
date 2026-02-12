@@ -1,5 +1,14 @@
 /* Tokens de diseño para el sitio personal de Jair Revilla */
 :root {
+  /* Colores */
+  --color-primary: #0056b3;
+  --color-primary-dark: #004494;
+  --color-text: #1a1a1a;
+  --color-text-light: #666666;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f9f9f9;
+  --color-border: #eeeeee;
+
   /* Espaciado */
   --space-1: 4px;
   --space-2: 8px;
@@ -15,7 +24,7 @@
 
   /* Tipografía */
   --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  
+
   /* Anchos */
   --container: 1120px;
 

@@ -1,0 +1,96 @@
+---
+const { lang = "es" } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <div class="footer-col">
+            <span class="footer-logo">Jair Revilla</span>
+            <p class="footer-desc">
+                {
+                    lang === "es"
+                        ? "Ingeniero Moodle & Arquitecto de Soluciones"
+                        : "Moodle Engineer & Solution Architect"
+                }
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <div class="social-links">
+                <a
+                    href="https://github.com/jrevilla"
+                    target="_blank"
+                    rel="noopener noreferrer">GitHub</a
+                >
+                <a
+                    href="https://linkedin.com/in/jrevilla"
+                    target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a
+                >
+                <a href={`mailto:jrevilla492@gmail.com`}>Email</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container footer-bottom">
+        <p>
+            &copy; {currentYear} Jair Revilla. {
+                lang === "es"
+                    ? "Todos los derechos reservados."
+                    : "All rights reserved."
+            }
+        </p>
+    </div>
+</footer>
+
+<style>
+    .site-footer {
+        background-color: #f5f5f5;
+        padding: var(--space-8) 0 var(--space-4);
+        margin-top: auto;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--space-8);
+        margin-bottom: var(--space-8);
+    }
+
+    .footer-logo {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--color-text);
+    }
+
+    .footer-desc {
+        color: var(--color-text-light);
+        font-size: 0.9rem;
+        margin-top: var(--space-2);
+    }
+
+    .social-links {
+        display: flex;
+        gap: var(--space-4);
+    }
+
+    .social-links a {
+        color: var(--color-text-light);
+        font-weight: 500;
+    }
+
+    .social-links a:hover {
+        color: var(--color-primary);
+    }
+
+    .footer-bottom {
+        border-top: 1px solid #ddd;
+        padding-top: var(--space-4);
+        text-align: center;
+        font-size: 0.85rem;
+        color: #888;
+    }
+</style>

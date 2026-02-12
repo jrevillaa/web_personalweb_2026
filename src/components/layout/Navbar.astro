@@ -1,0 +1,152 @@
+---
+const { lang = "es" } = Astro.props;
+import es from "../../i18n/es.json";
+import en from "../../i18n/en.json";
+
+const t = lang === "es" ? es : en;
+
+const navItems = [
+    { label: t["nav.home"], href: `/${lang}/` },
+    {
+        label: t["nav.about"],
+        href: `/${lang}/${lang === "es" ? "sobre-mi" : "about"}`,
+    },
+    { label: t["xray.title"], href: `/${lang}/xray/performance` }, // Temporary link to first xray item
+    { label: t["plugins_map.title"], href: `/${lang}/plugins` },
+    {
+        label: t["nav.cases"],
+        href: `/${lang}/${lang === "es" ? "casos" : "case-studies"}`,
+    },
+    {
+        label: t["nav.contact"],
+        href: `/${lang}/${lang === "es" ? "contacto" : "contact"}`,
+    },
+];
+---
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a href={`/${lang}/`} class="logo"> Jair Revilla </a>
+
+        <nav class="site-nav">
+            <ul class="nav-list">
+                {
+                    navItems.map((item) => (
+                        <li>
+                            <a href={item.href} class="nav-link">
+                                {item.label}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </nav>
+
+        <div class="mobile-menu-toggle">
+            <button id="menu-btn" aria-label="Menu"> ☰ </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu hidden">
+        <ul class="mobile-nav-list">
+            {
+                navItems.map((item) => (
+                    <li>
+                        <a href={item.href} class="mobile-nav-link">
+                            {item.label}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</header>
+
+<script>
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuBtn?.addEventListener("click", () => {
+        mobileMenu?.classList.toggle("hidden");
+    });
+</script>
+
+<style>
+    .site-header {
+        background-color: var(--color-bg);
+        border-bottom: 1px solid var(--color-border);
+        padding: var(--space-4) 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: var(--color-primary);
+        text-decoration: none;
+    }
+
+    .nav-list {
+        display: flex;
+        gap: var(--space-6);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-link {
+        font-weight: 500;
+        color: var(--color-text);
+        transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+        color: var(--color-primary);
+    }
+
+    .mobile-menu-toggle {
+        display: none;
+    }
+
+    .mobile-menu {
+        background: var(--color-bg);
+        border-top: 1px solid var(--color-border);
+        padding: var(--space-4);
+    }
+
+    .mobile-menu.hidden {
+        display: none;
+    }
+
+    .mobile-nav-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    @media (max-width: 768px) {
+        .site-nav {
+            display: none;
+        }
+        .mobile-menu-toggle {
+            display: block;
+        }
+        #menu-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    }
+</style>
