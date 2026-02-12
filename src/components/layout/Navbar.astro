@@ -11,7 +11,7 @@ const navItems = [
         label: t["nav.about"],
         href: `/${lang}/${lang === "es" ? "sobre-mi" : "about"}`,
     },
-    { label: t["xray.title"], href: `/${lang}/xray/performance` }, // Temporary link to first xray item
+    { label: t["xray.title"], href: `/${lang}/xray/performance` },
     { label: t["plugins_map.title"], href: `/${lang}/plugins` },
     {
         label: t["nav.cases"],
@@ -22,6 +22,10 @@ const navItems = [
         href: `/${lang}/${lang === "es" ? "contacto" : "contact"}`,
     },
 ];
+
+const toggleLang = lang === "es" ? "en" : "es";
+const toggleLabel = lang === "es" ? "EN" : "ES";
+const togglePath = `/${toggleLang}/`;
 ---
 
 <header class="site-header">
@@ -39,11 +43,25 @@ const navItems = [
                         </li>
                     ))
                 }
+                <li>
+                    <a
+                        href={togglePath}
+                        class="lang-toggle"
+                        aria-label={`Switch to ${toggleLabel}`}
+                    >
+                        {toggleLabel}
+                    </a>
+                </li>
             </ul>
         </nav>
 
-        <div class="mobile-menu-toggle">
-            <button id="menu-btn" aria-label="Menu"> ☰ </button>
+        <div class="mobile-controls">
+            <a href={togglePath} class="mobile-lang-toggle">
+                {toggleLabel}
+            </a>
+            <div class="mobile-menu-toggle">
+                <button id="menu-btn" aria-label="Menu"> ☰ </button>
+            </div>
         </div>
     </div>
 
@@ -100,6 +118,7 @@ const navItems = [
         list-style: none;
         margin: 0;
         padding: 0;
+        align-items: center;
     }
 
     .nav-link {
@@ -112,8 +131,27 @@ const navItems = [
         color: var(--color-primary);
     }
 
-    .mobile-menu-toggle {
+    .lang-toggle {
+        font-weight: 700;
+        padding: var(--space-1) var(--space-2);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-1);
+        font-size: 0.9rem;
+    }
+
+    .lang-toggle:hover {
+        background-color: var(--color-bg-alt);
+        color: var(--color-primary);
+    }
+
+    .mobile-controls {
         display: none;
+        align-items: center;
+        gap: var(--space-4);
+    }
+
+    .mobile-menu-toggle {
+        display: block;
     }
 
     .mobile-menu {
@@ -135,12 +173,17 @@ const navItems = [
         gap: var(--space-4);
     }
 
+    .mobile-lang-toggle {
+        font-weight: 700;
+        font-size: 0.9rem;
+    }
+
     @media (max-width: 768px) {
         .site-nav {
             display: none;
         }
-        .mobile-menu-toggle {
-            display: block;
+        .mobile-controls {
+            display: flex;
         }
         #menu-btn {
             background: none;
