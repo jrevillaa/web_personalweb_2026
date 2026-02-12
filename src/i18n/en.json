@@ -82,5 +82,12 @@
             "role": "IT Manager",
             "company": "Global Learning"
         }
-    ]
+    ],
+    "form.name": "Your Name",
+    "form.email": "Your Email",
+    "form.subject": "Subject",
+    "form.message": "Message",
+    "form.submit": "Send Message",
+    "form.success": "Message sent successfully!",
+    "form.error": "There was an error sending the message."
 }

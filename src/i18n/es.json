@@ -82,5 +82,12 @@
       "role": "Gerente de IT",
       "company": "Global Learning"
     }
-  ]
+  ],
+  "form.name": "Tu Nombre",
+  "form.email": "Tu Correo",
+  "form.subject": "Asunto",
+  "form.message": "Mensaje",
+  "form.submit": "Enviar Mensaje",
+  "form.success": "¡Mensaje enviado con éxito!",
+  "form.error": "Hubo un error al enviar el mensaje."
 }
