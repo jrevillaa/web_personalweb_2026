@@ -1,43 +1,56 @@
 ---
-import BaseLayout from '../../components/layout/BaseLayout.astro';
-import ContactForm from '../../components/ui/ContactForm.astro';
-import es from '../../i18n/es.json';
+import BaseLayout from "../../components/layout/BaseLayout.astro";
+import ContactForm from "../../components/ui/ContactForm.astro";
+import es from "../../i18n/es.json";
 
-const title = `${es['contact.title']} | Jair Revilla`;
-const description = es['contact.desc'];
+const title = `${es["contact.title"]} | Jair Revilla`;
+const description = es["contact.desc"];
 ---
 
 <BaseLayout title={title} description={description} lang="es">
   <main class="container">
     <section class="contact-section">
-      <h1 class="page-title">{es['contact.title']}</h1>
-      <p class="contact-desc">{es['contact.desc']}</p>
-      
+      <h1 class="page-title">{es["contact.title"]}</h1>
+      <p class="contact-desc">{es["contact.desc"]}</p>
+
       <div class="contact-grid">
         <div class="contact-info">
-            <h2 class="subtitle">Información</h2>
-            <div class="contact-links">
-                <a href="mailto:jrevilla492@gmail.com" class="contact-item">
-                <span class="label">{es['contact.email']}</span>
-                <span class="value">jrevilla492@gmail.com</span>
-                </a>
-                <div class="social-links">
-                <p class="label">{es['contact.social']}</p>
-                <a href="https://linkedin.com/in/jrevilla" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://github.com/jrevilla" target="_blank" rel="noopener noreferrer">GitHub</a>
-                </div>
+          <h2 class="subtitle">Información</h2>
+          <div class="contact-links">
+            <a href="mailto:jrevilla492@gmail.com" class="contact-item">
+              <span class="label">{es["contact.email"]}</span>
+              <span class="value">jrevilla492@gmail.com</span>
+            </a>
+            <div class="social-links">
+              <p class="label">{es["contact.social"]}</p>
+              <a
+                href="https://linkedin.com/in/jrevillaa/"
+                target="_blank"
+                rel="noopener noreferrer">LinkedIn</a
+              >
+              <a
+                href="https://github.com/jrevillaa"
+                target="_blank"
+                rel="noopener noreferrer">GitHub</a
+              >
+              <a
+                href="https://wa.me/51987866987"
+                target="_blank"
+                rel="noopener noreferrer">WhatsApp</a
+              >
             </div>
+          </div>
         </div>
-        
+
         <div class="contact-form-wrapper">
-             <h2 class="subtitle">Envíame un mensaje</h2>
-             <ContactForm 
-                nameLabel={es['form.name']}
-                emailLabel={es['form.email']}
-                subjectLabel={es['form.subject']}
-                messageLabel={es['form.message']}
-                submitLabel={es['form.submit']}
-             />
+          <h2 class="subtitle">Envíame un mensaje</h2>
+          <ContactForm
+            nameLabel={es["form.name"]}
+            emailLabel={es["form.email"]}
+            subjectLabel={es["form.subject"]}
+            messageLabel={es["form.message"]}
+            submitLabel={es["form.submit"]}
+          />
         </div>
       </div>
     </section>
@@ -50,13 +63,13 @@ const description = es['contact.desc'];
     max-width: 1000px;
     margin: 0 auto;
   }
-  
+
   .page-title {
     font-size: 2.5rem;
     margin-bottom: var(--space-4);
     text-align: center;
   }
-  
+
   .contact-desc {
     font-size: 1.25rem;
     color: #666;
@@ -65,29 +78,29 @@ const description = es['contact.desc'];
   }
 
   .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-8);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
   }
 
   @media (min-width: 768px) {
-      .contact-grid {
-          grid-template-columns: 1fr 1.5fr;
-      }
+    .contact-grid {
+      grid-template-columns: 1fr 1.5fr;
+    }
   }
-  
+
   .subtitle {
-      font-size: 1.5rem;
-      margin-bottom: var(--space-6);
-      color: #333;
+    font-size: 1.5rem;
+    margin-bottom: var(--space-6);
+    color: #333;
   }
-  
+
   .contact-links {
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
   }
-  
+
   .contact-item {
     padding: var(--space-4);
     background: #f9f9f9;
@@ -96,11 +109,11 @@ const description = es['contact.desc'];
     border: 1px solid #eee;
     transition: box-shadow 0.2s ease;
   }
-  
+
   .contact-item:hover {
-     box-shadow: var(--shadow-1);
+    box-shadow: var(--shadow-1);
   }
-  
+
   .label {
     display: block;
     font-size: 0.875rem;
@@ -109,18 +122,18 @@ const description = es['contact.desc'];
     letter-spacing: 0.05em;
     margin-bottom: var(--space-2);
   }
-  
+
   .value {
     font-size: 1.1rem;
     font-weight: 600;
     color: #1a1a1a;
     word-break: break-all;
   }
-  
+
   .social-links {
     margin-top: var(--space-4);
   }
-  
+
   .social-links a {
     margin-right: var(--space-4);
     font-weight: 600;

@@ -1,51 +1,48 @@
 ---
-import BaseLayout from '../../components/layout/BaseLayout.astro';
-import HeroIntro from '../../components/sections/HeroIntro.astro';
-import TrustSignals from '../../components/sections/TrustSignals.astro';
-import MoodleXRayPreview from '../../components/sections/MoodleXRayPreview.astro';
-import PluginMapPreview from '../../components/sections/PluginMapPreview.astro';
-import Testimonials from '../../components/sections/Testimonials.astro';
-import en from '../../i18n/en.json';
+import BaseLayout from "../../components/layout/BaseLayout.astro";
+import HeroIntro from "../../components/sections/HeroIntro.astro";
+import TrustSignals from "../../components/sections/TrustSignals.astro";
+import MoodleXRayPreview from "../../components/sections/MoodleXRayPreview.astro";
+import PluginMapPreview from "../../components/sections/PluginMapPreview.astro";
+import Testimonials from "../../components/sections/Testimonials.astro";
+import en from "../../i18n/en.json";
 
-const title = en['site.title'];
-const description = en['site.description'];
+const title = en["site.title"];
+const description = en["site.description"];
 ---
 
 <BaseLayout title={title} description={description} lang="en">
   <main>
-    <HeroIntro 
-      title={en['hero.greeting']}
-      subtitle={en['hero.role']}
-      ctaText={en['hero.cta']}
-      ctaLink="#contact"
+    <HeroIntro
+      title={en["hero.greeting"]}
+      subtitle={en["hero.role"]}
+      ctaText={en["hero.cta"]}
+      ctaLink="/en/contact"
     />
-    
+
     <TrustSignals
-      years={en['trust.years']}
-      yearsLabel={en['trust.years_label']}
-      plugins={en['trust.plugins']}
-      pluginsLabel={en['trust.plugins_label']}
-      clients={en['trust.clients']}
-      clientsLabel={en['trust.clients_label']}
-      badges={en['badges']}
+      years={en["trust.years"]}
+      yearsLabel={en["trust.years_label"]}
+      plugins={en["trust.plugins"]}
+      pluginsLabel={en["trust.plugins_label"]}
+      clients={en["trust.clients"]}
+      clientsLabel={en["trust.clients_label"]}
+      badges={en["badges"]}
     />
-    
-    <MoodleXRayPreview
-      title={en['xray.title']}
-      items={en['xray.items']}
-    />
-    
+
+    <MoodleXRayPreview title={en["xray.title"]} items={en["xray.items"]} />
+
     <PluginMapPreview
-      title={en['plugins_map.title']}
-      description={en['plugins_map.description']}
-      categories={en['plugins_map.categories']}
-      ctaText={en['plugins_map.cta']}
+      title={en["plugins_map.title"]}
+      description={en["plugins_map.description"]}
+      categories={en["plugins_map.categories"]}
+      ctaText={en["plugins_map.cta"]}
       ctaLink="/en/plugins"
     />
 
     <Testimonials
-      title={en['testimonials.title']}
-      items={en['testimonials.items']}
+      title={en["testimonials.title"]}
+      items={en["testimonials.items"]}
     />
   </main>
 </BaseLayout>
