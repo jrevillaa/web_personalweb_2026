@@ -4,6 +4,7 @@ import HeroIntro from '../../components/sections/HeroIntro.astro';
 import TrustSignals from '../../components/sections/TrustSignals.astro';
 import MoodleXRayPreview from '../../components/sections/MoodleXRayPreview.astro';
 import PluginMapPreview from '../../components/sections/PluginMapPreview.astro';
+import Testimonials from '../../components/sections/Testimonials.astro';
 import en from '../../i18n/en.json';
 
 const title = en['site.title'];
@@ -40,6 +41,11 @@ const description = en['site.description'];
       categories={en['plugins_map.categories']}
       ctaText={en['plugins_map.cta']}
       ctaLink="/en/plugins"
+    />
+
+    <Testimonials
+      title={en['testimonials.title']}
+      items={en['testimonials.items']}
     />
   </main>
 </BaseLayout>

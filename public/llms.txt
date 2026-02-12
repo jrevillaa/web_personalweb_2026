@@ -1,0 +1,20 @@
+# Jair Revilla - Moodle Engineer
+
+## Overview
+Personal website of Jair Revilla, a Moodle Engineer specializing in high-performance architectures, custom plugin development, and large-scale LMS integrations.
+
+## Core Sections
+- **Home**: Introduction, trust signals, and quick access to expertise areas.
+- **Case Studies**: Detailed breakdown of complex projects (e.g., Aprendo en Casa Offline).
+- **Moodle X-Ray**: Deep dive into technical expertise (Core, Plugins, Integrations, Performance).
+- **Plugins Directory**: Catalog of developed Moodle plugins and tools.
+
+## Technical Stack
+- **Framework**: Astro 5.0 (Static Site Generation)
+- **Styling**: Vanilla CSS with custom Design Tokens
+- **Content**: MDX + Astro Content Collections
+- **i18n**: Manual routing (/es/, /en/)
+
+## Key Links
+- [GitHub Profile](https://github.com/jrevilla)
+- [LinkedIn](https://linkedin.com/in/jrevilla)
