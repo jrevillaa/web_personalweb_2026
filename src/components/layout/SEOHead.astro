@@ -1,6 +1,6 @@
 ---
 const { title, description, image, type = 'website', publishDate } = Astro.props;
-const siteUrl = Astro.site ? Astro.site.origin : 'https://jairrevilla.com'; // Fallback
+const siteUrl = Astro.site ? Astro.site.origin : 'https://jrevilla.404mybad.dev'; // Fallback
 const canonicalURL = new URL(Astro.url.pathname, siteUrl);
 const socialImageURL = new URL(image || '/social-default.jpg', siteUrl);
 

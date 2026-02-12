@@ -61,5 +61,26 @@
   "contact.title": "Contacto",
   "contact.desc": "¿Tienes un proyecto desafiante en mente? Hablemos.",
   "contact.email": "Correo electrónico",
-  "contact.social": "Redes Sociales"
+  "contact.social": "Redes Sociales",
+  "testimonials.title": "Lo que dicen mis clientes",
+  "testimonials.items": [
+    {
+      "quote": "Jair logró optimizar nuestra plataforma Moodle para soportar 50,000 usuarios concurrentes sin caídas. Su conocimiento de la base de datos es impresionante.",
+      "author": "María González",
+      "role": "CTO, Universidad Nacional",
+      "company": "EduTech"
+    },
+    {
+      "quote": "El plugin de asistencia con geolocalización que desarrolló transformó nuestra gestión académica. Código limpio, seguro y bien documentado.",
+      "author": "Carlos Ruiz",
+      "role": "Director de Innovación",
+      "company": "CorpTraining"
+    },
+    {
+      "quote": "Integrar SAP con Moodle parecía imposible hasta que Jair diseñó la arquitectura. La sincronización es perfecta y en tiempo real.",
+      "author": "Ana Pérez",
+      "role": "Gerente de IT",
+      "company": "Global Learning"
+    }
+  ]
 }
