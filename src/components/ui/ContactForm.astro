@@ -1,94 +1,91 @@
 ---
-const { 
-  nameLabel, 
-  emailLabel, 
-  subjectLabel, 
-  messageLabel, 
-  submitLabel 
-} = Astro.props;
+const { nameLabel, emailLabel, subjectLabel, messageLabel, submitLabel } =
+    Astro.props;
 ---
 
-<form 
-  action="https://formspree.io/f/YOUR_FORM_ID" 
-  method="POST" 
-  class="contact-form"
+<form
+    action="https://formspree.io/f/mzdaevpq"
+    method="POST"
+    class="contact-form"
 >
-  <!-- Replace YOUR_FORM_ID with your actual Formspree form ID -->
-  
-  <div class="form-group">
-    <label for="name">{nameLabel}</label>
-    <input type="text" id="name" name="name" required />
-  </div>
+    <!-- Replace YOUR_FORM_ID with your actual Formspree form ID -->
 
-  <div class="form-group">
-    <label for="email">{emailLabel}</label>
-    <input type="email" id="email" name="email" required />
-  </div>
-  
-  <div class="form-group">
-    <label for="subject">{subjectLabel}</label>
-    <input type="text" id="subject" name="subject" required />
-  </div>
+    <div class="form-group">
+        <label for="name">{nameLabel}</label>
+        <input type="text" id="name" name="name" required />
+    </div>
 
-  <div class="form-group">
-    <label for="message">{messageLabel}</label>
-    <textarea id="message" name="message" rows="5" required></textarea>
-  </div>
+    <div class="form-group">
+        <label for="email">{emailLabel}</label>
+        <input type="email" id="email" name="email" required />
+    </div>
 
-  <button type="submit" class="submit-btn">{submitLabel}</button>
+    <div class="form-group">
+        <label for="subject">{subjectLabel}</label>
+        <input type="text" id="subject" name="subject" required />
+    </div>
+
+    <div class="form-group">
+        <label for="message">{messageLabel}</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">{submitLabel}</button>
 </form>
 
 <style>
-  .contact-form {
-    background: #fff;
-    padding: var(--space-6);
-    border-radius: var(--radius-2);
-    box-shadow: var(--shadow-1);
-    border: 1px solid #eee;
-    text-align: left;
-  }
-  
-  .form-group {
-    margin-bottom: var(--space-4);
-  }
-  
-  label {
-    display: block;
-    margin-bottom: var(--space-2);
-    font-weight: 500;
-    color: #444;
-    font-size: 0.9rem;
-  }
-  
-  input, textarea {
-    width: 100%;
-    padding: var(--space-3);
-    border: 1px solid #ddd;
-    border-radius: var(--radius-1);
-    font-family: inherit;
-    font-size: 1rem;
-    transition: border-color 0.2s;
-  }
-  
-  input:focus, textarea:focus {
-    outline: none;
-    border-color: var(--color-primary, #0056b3);
-  }
-  
-  .submit-btn {
-    width: 100%;
-    background-color: var(--color-primary, #0056b3);
-    color: white;
-    border: none;
-    padding: var(--space-3);
-    border-radius: var(--radius-1);
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .submit-btn:hover {
-    background-color: #004494;
-  }
+    .contact-form {
+        background: #fff;
+        padding: var(--space-6);
+        border-radius: var(--radius-2);
+        box-shadow: var(--shadow-1);
+        border: 1px solid #eee;
+        text-align: left;
+    }
+
+    .form-group {
+        margin-bottom: var(--space-4);
+    }
+
+    label {
+        display: block;
+        margin-bottom: var(--space-2);
+        font-weight: 500;
+        color: #444;
+        font-size: 0.9rem;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: var(--space-3);
+        border: 1px solid #ddd;
+        border-radius: var(--radius-1);
+        font-family: inherit;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+    }
+
+    input:focus,
+    textarea:focus {
+        outline: none;
+        border-color: var(--color-primary, #0056b3);
+    }
+
+    .submit-btn {
+        width: 100%;
+        background-color: var(--color-primary, #0056b3);
+        color: white;
+        border: none;
+        padding: var(--space-3);
+        border-radius: var(--radius-1);
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .submit-btn:hover {
+        background-color: #004494;
+    }
 </style>
