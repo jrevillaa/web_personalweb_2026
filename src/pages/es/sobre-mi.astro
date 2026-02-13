@@ -1,19 +1,232 @@
 ---
-import BaseLayout from '../../components/layout/BaseLayout.astro';
-import es from '../../i18n/es.json';
+import BaseLayout from "../../components/layout/BaseLayout.astro";
 
-const title = `${es['about.title']} | Jair Revilla`;
-const description = es['about.intro'];
+const title = "Sobre mí | Jair Revilla";
+const description =
+  "Arquitecto y desarrollador especializado en Moodle: performance, integraciones y plugins.";
 ---
 
 <BaseLayout title={title} description={description} lang="es">
   <main class="container">
     <section class="about-section">
-      <h1 class="page-title">{es['about.title']}</h1>
+      <h1 class="page-title">Sobre mí</h1>
+
       <div class="content">
-        <p class="intro">{es['about.intro']}</p>
-        <p>{es['about.history']}</p>
-        <!-- Aquí iría más contenido estático o desde MD -->
+        <div class="profile-header">
+          <h2>Hola, soy Jair Edson Revilla Arroyo</h2>
+          <p class="lead">
+            Soy desarrollador de software especializado en <strong
+              >E-learning con Moodle</strong
+            >, con una trayectoria enfocada en construir plataformas <strong
+              >estables, seguras y escalables</strong
+            >: desde implementaciones completas, upgrades controlados y
+            arquitecturas de alta disponibilidad, hasta <strong>plugins</strong> e
+            <strong>integraciones enterprise</strong> con sistemas académicos (SGA/ERP).
+          </p>
+          <p>
+            Mi enfoque es 100% profesional: priorizo continuidad operativa,
+            calidad, mantenibilidad y entregables claros (documentación,
+            runbooks, evidencias de QA y trazabilidad).
+          </p>
+        </div>
+
+        <hr />
+
+        <h2>Lo que hago (y por qué funciona)</h2>
+
+        <div class="feature-block">
+          <h3>
+            <i class="fa-solid fa-gauge-high"></i> Moodle para alta concurrencia
+          </h3>
+          <p>
+            Diseño y optimizo Moodle para escenarios críticos: <strong
+              >picos de matrícula</strong
+            > y <strong>exámenes simultáneos</strong>, cuidando cada capa (DB,
+            caching, PHP-FPM, storage, cron/adhoc tasks) y agregando
+            observabilidad para detectar degradación antes de que se convierta
+            en incidente.
+          </p>
+        </div>
+
+        <div class="feature-block">
+          <h3>
+            <i class="fa-solid fa-network-wired"></i> Arquitectura & Alta Disponibilidad
+          </h3>
+          <p>
+            He implementado Moodle preparado para <strong
+              >High Availability</strong
+            > en <strong>Huawei Cloud</strong> para entornos sensibles (por ejemplo,
+            plataformas de exámenes).
+          </p>
+          <p>
+            Trabajo con patrones de resiliencia: balanceo, escalado horizontal,
+            separación de responsabilidades y estrategia real de backup/restore.
+          </p>
+        </div>
+
+        <div class="feature-block">
+          <h3>
+            <i class="fa-solid fa-plug-circle-bolt"></i> Integraciones con SGA/ERP
+            (REST/Web Services)
+          </h3>
+          <p>
+            Automatizo procesos académicos de punta a punta: <strong
+              >usuarios, cursos, secciones, matrículas, certificados</strong
+            >, con trazabilidad, idempotencia y reintentos controlados. He
+            integrado Moodle con sistemas como <strong>Banner</strong>, <strong
+              >PeopleSoft</strong
+            > y plataformas internas vía Web Services.
+          </p>
+        </div>
+
+        <div class="feature-block">
+          <h3>
+            <i class="fa-solid fa-puzzle-piece"></i> Desarrollo de plugins Moodle
+            a medida
+          </h3>
+          <p>
+            Desarrollo plugins <strong
+              >mod / block / local / enrol / auth / report</strong
+            > con buenas prácticas:
+          </p>
+          <ul>
+            <li>capabilities y permisos por contexto</li>
+            <li>eventos, logs y auditoría</li>
+            <li>Privacy API cuando aplica</li>
+            <li>compatibilidad con backup/restore</li>
+            <li>rendimiento (paginación, caché MUC, jobs por cron)</li>
+          </ul>
+          <p>
+            Esto permite construir funcionalidades “de negocio” sin hacks y con
+            una base sostenible para upgrades.
+          </p>
+        </div>
+
+        <hr />
+
+        <h2>Proyectos representativos</h2>
+        <p>
+          A lo largo de los años he participado en iniciativas para
+          instituciones y empresas, incluyendo:
+        </p>
+        <ul class="check-list">
+          <li>
+            Implementaciones y upgrades en versiones modernas (ej. <strong
+              >Moodle 4.4</strong
+            > y upgrades mayores).
+          </li>
+          <li>
+            Implementaciones con <strong
+              >arquitectura de alta disponibilidad</strong
+            > (Huawei Cloud) para escenarios críticos como exámenes.
+          </li>
+          <li>
+            App basada en Moodle con <strong>branding</strong> lista para publicación
+            (Android/iOS).
+          </li>
+          <li>
+            Caso “<strong>Aprendo en Casa</strong>” (app Moodle offline a nivel
+            código para requisitos funcionales especiales).
+          </li>
+          <li>
+            Mejoras a plugins (ej. Zoom: grabaciones + masificación de
+            reuniones).
+          </li>
+          <li>
+            Integraciones históricas con SGA (ej. PeopleSoft, Sócrates)
+            automatizando creación/actualización y matrícula.
+          </li>
+        </ul>
+
+        <hr />
+
+        <h2>Cómo trabajo</h2>
+        <div class="work-method-grid">
+          <div class="method-item">
+            <h3><i class="fa-solid fa-diagram-project"></i> Método</h3>
+            <ul>
+              <li>
+                <strong>Diagnóstico</strong>: objetivos, picos esperados,
+                riesgos, inventario de plugins/integraciones.
+              </li>
+              <li>
+                <strong>Plan ejecutable</strong>: quick wins + roadmap
+                (30/60/90), con impacto y priorización.
+              </li>
+              <li>
+                <strong>Implementación con control</strong>: DEV/UAT/PROD,
+                checklist, evidencias y rollback.
+              </li>
+              <li>
+                <strong>Operación</strong>: monitoreo, runbooks, mantenimiento
+                preventivo y soporte en eventos críticos.
+              </li>
+            </ul>
+          </div>
+
+          <div class="method-item">
+            <h3>
+              <i class="fa-solid fa-shield-halved"></i> Seguridad por defecto
+            </h3>
+            <ul>
+              <li>mínimos privilegios (roles/capabilities)</li>
+              <li>hardening de servidor y aplicación</li>
+              <li>control de cambios y auditoría</li>
+              <li>
+                integraciones seguras (tokens/firmas, idempotencia, reintentos)
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2>Stack técnico</h2>
+        <ul class="tags-list">
+          <li><strong>Moodle / PHP / MySQL</strong></li>
+          <li><strong>Linux</strong> (AMI AWS, CentOS, Ubuntu, Rocky)</li>
+          <li>
+            <strong>AWS</strong> (EC2, RDS, S3) y <strong>Huawei Cloud</strong>
+          </li>
+          <li><strong>Docker</strong></li>
+          <li>Integraciones y backend: <strong>Laravel / Lumen</strong></li>
+          <li>Enfoque ágil: <strong>Scrum</strong></li>
+        </ul>
+
+        <hr />
+
+        <h2>Certificaciones</h2>
+        <ul class="cert-list">
+          <li>
+            <i class="fa-solid fa-certificate"></i> Certificación de <strong
+              >Desarrollador Moodle</strong>
+          </li>
+          <li>
+            <i class="fa-solid fa-certificate"></i> Scrum Fundamentals / Scrum Master
+            (ScrumStudy)
+          </li>
+        </ul>
+
+        <hr />
+
+        <div class="cta-block">
+          <h2>¿Qué puedes esperar al trabajar conmigo?</h2>
+          <ul>
+            <li>Entregables claros (documentación + runbook + evidencias).</li>
+            <li>Soluciones robustas (no “parches”).</li>
+            <li>Enfoque en continuidad y rendimiento real.</li>
+            <li>Comunicación directa y orientación a resultados.</li>
+          </ul>
+        </div>
+
+        <div class="contact-section">
+          <h2>Contacto</h2>
+          <p>
+            Si necesitas implementar, optimizar o escalar tu Moodle (o integrar
+            con tu SGA/ERP), conversemos.
+          </p>
+          <a href="/es/contacto" class="btn btn-primary">Ir a Contacto</a>
+        </div>
       </div>
     </section>
   </main>
@@ -25,17 +238,130 @@ const description = es['about.intro'];
     max-width: 800px;
     margin: 0 auto;
   }
-  
+
   .page-title {
-    font-size: 2.5rem;
-    margin-bottom: var(--space-6);
+    font-size: 3rem;
+    margin-bottom: var(--space-8);
     color: #1a1a1a;
+    text-align: center;
   }
 
-  .intro {
+  .content {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #333;
+  }
+
+  .content h2 {
+    color: #1a1a1a;
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+    font-size: 1.8rem;
+  }
+
+  .content h3 {
+    color: #2c3e50;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .content h3 i {
+    color: var(--color-primary);
+  }
+
+  .content p {
+    margin-bottom: var(--space-4);
+  }
+
+  .content ul {
+    padding-left: 20px;
+    margin-bottom: var(--space-6);
+  }
+
+  .content li {
+    margin-bottom: 8px;
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: var(--space-10) 0;
+  }
+
+  .lead {
     font-size: 1.25rem;
     color: #444;
-    font-weight: 500;
-    margin-bottom: var(--space-4);
+    font-weight: 400;
+  }
+
+  .feature-block {
+    margin-bottom: var(--space-8);
+  }
+
+  /* Lists Styling */
+  .check-list {
+    list-style: none;
+    padding: 0;
+  }
+  .check-list li {
+    position: relative;
+    padding-left: 25px;
+  }
+  .check-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+  }
+
+  .tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+  }
+  .tags-list li {
+    background: #f0f0f0;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .cert-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .cta-block {
+    background: #f9f9f9;
+    padding: var(--space-6);
+    border-radius: 8px;
+    border-left: 4px solid var(--color-primary);
+  }
+  .cta-block h2 {
+    margin-top: 0;
+  }
+
+  .contact-section {
+    text-align: center;
+    margin-top: var(--space-10);
+    background: #eef2f5;
+    padding: var(--space-8);
+    border-radius: 12px;
+  }
+  .contact-section h2 {
+    margin-top: 0;
+  }
+  .contact-section .btn {
+    display: inline-block;
+    margin-top: var(--space-4);
   }
 </style>
