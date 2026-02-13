@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
 
-local_backend: true
+
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
@@ -13,6 +13,7 @@ collections:
     folder: "src/content/plugins"
     create: true
     slug: "{{slug}}-{{lang}}"
+    summary: "{{name}} [{{lang}} | {{type}}]"
     fields:
       - {label: "Name", name: "name", widget: "string"}
       - {label: "Language", name: "lang", widget: "select", options: ["es", "en"], default: "es"}
@@ -29,6 +30,7 @@ collections:
     folder: "src/content/case-studies"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} [{{lang}}]"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
@@ -38,14 +40,26 @@ collections:
       - {label: "Language", name: "lang", widget: "select", options: ["es", "en"], default: "es"}
       - {label: "Body", name: "body", widget: "markdown"}
 
-  - name: "xray" // Configuration for the X-Ray section
+  - name: "xray" # Configuration for the X-Ray section
     label: "Moodle X-Ray"
     folder: "src/content/xray"
     create: true
+    summary: "{{title}} [{{lang}}]"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
-      - {label: "Icon (FontAwesome Class)", name: "icon", widget: "string"}
+      - {label: "Icon", name: "icon", widget: "select", options: [
+          {label: "Brain (Core)", value: "fa-solid fa-brain"},
+          {label: "Puzzle (Plugins)", value: "fa-solid fa-puzzle-piece"},
+          {label: "Plug (Integrations)", value: "fa-solid fa-plug"},
+          {label: "Rocket (Performance)", value: "fa-solid fa-rocket"},
+          {label: "Server (Infra)", value: "fa-solid fa-server"},
+          {label: "Database (DB)", value: "fa-solid fa-database"},
+          {label: "Code (Dev)", value: "fa-solid fa-code"},
+          {label: "Users (Auth)", value: "fa-solid fa-users"},
+          {label: "Graduation (LMS)", value: "fa-solid fa-graduation-cap"},
+          {label: "Chart (Analytics)", value: "fa-solid fa-chart-line"}
+        ]}
       - {label: "Order", name: "order", widget: "number", value_type: "int"}
       - {label: "Language", name: "lang", widget: "select", options: ["es", "en"], default: "es"}
       - {label: "Body", name: "body", widget: "markdown"}

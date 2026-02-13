@@ -89,5 +89,13 @@
   "form.message": "Mensaje",
   "form.submit": "Enviar Mensaje",
   "form.success": "¡Mensaje enviado con éxito!",
-  "form.error": "Hubo un error al enviar el mensaje."
+  "form.error": "Hubo un error al enviar el mensaje.",
+  "disclaimer.text": "Nota: Este portafolio representa una selección de mis trabajos. Algunos proyectos no se listan debido a acuerdos de confidencialidad o cambios de marca.",
+  "plugin_types.mod": "Módulos de Actividad",
+  "plugin_types.block": "Bloques",
+  "plugin_types.local": "Plugins Locales",
+  "plugin_types.auth": "Autenticación",
+  "plugin_types.enrol": "Matriculación",
+  "plugin_types.report": "Reportes",
+  "plugin_types.theme": "Temas"
 }

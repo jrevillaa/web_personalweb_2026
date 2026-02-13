@@ -5,10 +5,20 @@ import TrustSignals from "../../components/sections/TrustSignals.astro";
 import MoodleXRayPreview from "../../components/sections/MoodleXRayPreview.astro";
 import PluginMapPreview from "../../components/sections/PluginMapPreview.astro";
 import Testimonials from "../../components/sections/Testimonials.astro";
+import ConfidentialityNote from "../../components/ui/ConfidentialityNote.astro";
 import en from "../../i18n/en.json";
+import { getCollection } from "astro:content";
 
 const title = en["site.title"];
 const description = en["site.description"];
+
+// Dynamic Plugin Categories
+const allPlugins = await getCollection("plugins");
+const enPlugins = allPlugins.filter((p) => p.data.lang === "en");
+const uniqueTypes = [...new Set(enPlugins.map((p) => p.data.type))];
+const pluginCategories = uniqueTypes.map(
+  (type) => en[`plugin_types.${type}`] || type,
+);
 ---
 
 <BaseLayout title={title} description={description} lang="en">
@@ -35,10 +45,14 @@ const description = en["site.description"];
     <PluginMapPreview
       title={en["plugins_map.title"]}
       description={en["plugins_map.description"]}
-      categories={en["plugins_map.categories"]}
+      categories={pluginCategories}
       ctaText={en["plugins_map.cta"]}
       ctaLink="/en/plugins"
     />
+
+    <div class="container">
+      <ConfidentialityNote text={en["disclaimer.text"]} />
+    </div>
 
     <Testimonials
       title={en["testimonials.title"]}
