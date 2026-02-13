@@ -25,22 +25,22 @@
     {
       "title": "Moodle Core",
       "description": "Arquitectura profunda, APIs internas y optimización de base de datos.",
-      "icon": "🧠"
+      "icon": "fa-solid fa-brain"
     },
     {
       "title": "Desarrollo de Plugins",
       "description": "Creación de módulos, bloques y tipos de preguntas a medida.",
-      "icon": "🧩"
+      "icon": "fa-solid fa-puzzle-piece"
     },
     {
       "title": "Integraciones",
       "description": "Conexión con ERPs (SAP, PeopleSoft), CRMs y sistemas externos.",
-      "icon": "🔌"
+      "icon": "fa-solid fa-plug"
     },
     {
       "title": "High Performance",
       "description": "Optimización para alta concurrencia y despliegues masivos.",
-      "icon": "🚀"
+      "icon": "fa-solid fa-rocket"
     }
   ],
   "plugins_map.title": "Mapa de Plugins",

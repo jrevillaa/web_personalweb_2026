@@ -1,39 +1,51 @@
 ---
-const { title, description, image, type = 'website', publishDate } = Astro.props;
-const siteUrl = Astro.site ? Astro.site.origin : 'https://jrevilla.404mybad.dev'; // Fallback
+const {
+  title,
+  description,
+  image,
+  type = "website",
+  publishDate,
+} = Astro.props;
+const siteUrl = Astro.site
+  ? Astro.site.origin
+  : "https://jrevilla.404mybad.dev"; // Fallback
+// FontAwesome
+const fontAwesomeUrl =
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css";
 const canonicalURL = new URL(Astro.url.pathname, siteUrl);
-const socialImageURL = new URL(image || '/social-default.jpg', siteUrl);
+const socialImageURL = new URL(image || "/social-default.jpg", siteUrl);
 
 // JSON-LD Schemas
 const personSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Jair Revilla",
-  "url": siteUrl,
-  "jobTitle": "Moodle Engineer",
-  "sameAs": [
-    "https://github.com/jrevilla",
-    "https://linkedin.com/in/jrevilla"
-  ]
+  name: "Jair Revilla",
+  url: siteUrl,
+  jobTitle: "Moodle Engineer",
+  sameAs: ["https://github.com/jrevilla", "https://linkedin.com/in/jrevilla"],
 });
 
-const articleSchema = type === 'article' ? JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": title,
-  "description": description,
-  "author": {
-      "@type": "Person",
-      "name": "Jair Revilla"
-  },
-  "datePublished": publishDate
-}) : null;
+const articleSchema =
+  type === "article"
+    ? JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: title,
+        description: description,
+        author: {
+          "@type": "Person",
+          name: "Jair Revilla",
+        },
+        datePublished: publishDate,
+      })
+    : null;
 ---
 
 <!-- Global Metadata -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="stylesheet" href={fontAwesomeUrl} />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <meta name="generator" content={Astro.generator} />
 
@@ -61,4 +73,8 @@ const articleSchema = type === 'article' ? JSON.stringify({
 
 <!-- JSON-LD -->
 <script type="application/ld+json" set:html={personSchema} />
-{articleSchema && <script type="application/ld+json" set:html={articleSchema} />}
+{
+  articleSchema && (
+    <script type="application/ld+json" set:html={articleSchema} />
+  )
+}

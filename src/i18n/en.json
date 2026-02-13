@@ -25,22 +25,22 @@
         {
             "title": "Moodle Core",
             "description": "Deep architecture, internal APIs, and database optimization.",
-            "icon": "🧠"
+            "icon": "fa-solid fa-brain"
         },
         {
             "title": "Plugin Development",
             "description": "Custom modules, blocks, and question types development.",
-            "icon": "🧩"
+            "icon": "fa-solid fa-puzzle-piece"
         },
         {
             "title": "Integrations",
             "description": "Connecting with ERPs (SAP, PeopleSoft), CRMs, and external systems.",
-            "icon": "🔌"
+            "icon": "fa-solid fa-plug"
         },
         {
             "title": "High Performance",
             "description": "Optimization for high concurrency and massive deployments.",
-            "icon": "🚀"
+            "icon": "fa-solid fa-rocket"
         }
     ],
     "plugins_map.title": "Plugin Map",

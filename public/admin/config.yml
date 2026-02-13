@@ -1,0 +1,49 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "plugins"
+    label: "Plugins"
+    folder: "src/content/plugins"
+    create: true
+    slug: "{{slug}}-{{lang}}"
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Language", name: "lang", widget: "select", options: ["es", "en"], default: "es"}
+      - {label: "Type", name: "type", widget: "select", options: ["block", "mod", "theme", "local", "report", "auth", "enrol"]}
+      - {label: "Version", name: "version", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Features", name: "features", widget: "list"}
+      - {label: "Repository URL", name: "repoUrl", widget: "string", required: false}
+      - {label: "Download URL", name: "downloadUrl", widget: "string", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "case-studies"
+    label: "Case Studies"
+    folder: "src/content/case-studies"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Client", name: "client", widget: "string", required: false}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Language", name: "lang", widget: "select", options: ["es", "en"], default: "es"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "xray" // Configuration for the X-Ray section
+    label: "Moodle X-Ray"
+    folder: "src/content/xray"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Icon (FontAwesome Class)", name: "icon", widget: "string"}
+      - {label: "Order", name: "order", widget: "number", value_type: "int"}
+      - {label: "Language", name: "lang", widget: "select", options: ["es", "en"], default: "es"}
+      - {label: "Body", name: "body", widget: "markdown"}

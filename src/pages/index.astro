@@ -46,7 +46,8 @@
     <script>
       // Simple language detection
       const lang = navigator.language || navigator.userLanguage;
-      const targetPath = lang.startsWith("en") ? "/en/" : "/es/";
+      // Default to English for everyone, unless explicitly Spanish
+      const targetPath = lang.startsWith("es") ? "/es/" : "/en/";
 
       // Wait a brief moment for the loader to be seen (optional, improves UX feel)
       setTimeout(() => {
