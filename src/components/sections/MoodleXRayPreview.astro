@@ -8,9 +8,9 @@ const { title, items = [] } = Astro.props;
 
     <div class="xray-grid">
       {
+      {
         items
-          .sort(() => 0.5 - Math.random()) // Shuffle
-          .slice(0, 4) // Take 4 random items
+          .sort(() => 0.5 - Math.random()) // Server-side shuffle (Initial state)
           .map((item) => (
             <a
               href={`/${item.lang === "es" ? "es" : "en"}/xray/${item.slug.replace(`-${item.lang === "es" ? "es" : "en"}`, "")}`}
@@ -27,6 +27,18 @@ const { title, items = [] } = Astro.props;
     </div>
   </div>
 </section>
+
+<script>
+  // Client-side shuffle to ensure randomness on every refresh
+  document.addEventListener("DOMContentLoaded", () => {
+    const grid = document.querySelector(".xray-grid");
+    if (grid) {
+      for (let i = grid.children.length; i >= 0; i--) {
+        grid.appendChild(grid.children[(Math.random() * i) | 0]);
+      }
+    }
+  });
+</script>
 
 <style>
   .xray-preview {
@@ -45,6 +57,11 @@ const { title, items = [] } = Astro.props;
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-6);
+  }
+
+  /* Show only the first 4 items */
+  .xray-card:nth-child(n + 5) {
+    display: none;
   }
 
   /* Tablet */
