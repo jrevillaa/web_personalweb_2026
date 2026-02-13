@@ -19,6 +19,17 @@ const uniqueTypes = [...new Set(enPlugins.map((p) => p.data.type))];
 const pluginCategories = uniqueTypes.map(
   (type) => en[`plugin_types.${type}`] || type,
 );
+
+// Dynamic X-Ray Items
+const allXray = await getCollection("xray");
+const xrayItems = allXray
+  .filter((item) => item.data.lang === "en")
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((item) => ({
+    title: item.data.title,
+    description: item.data.description,
+    icon: item.data.icon,
+  }));
 ---
 
 <BaseLayout title={title} description={description} lang="en">
@@ -40,7 +51,7 @@ const pluginCategories = uniqueTypes.map(
       badges={en["badges"]}
     />
 
-    <MoodleXRayPreview title={en["xray.title"]} items={en["xray.items"]} />
+    <MoodleXRayPreview title={en["xray.title"]} items={xrayItems} />
 
     <PluginMapPreview
       title={en["plugins_map.title"]}
