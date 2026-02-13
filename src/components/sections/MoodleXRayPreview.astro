@@ -5,15 +5,19 @@ const { title, items = [] } = Astro.props;
 <section class="xray-preview">
   <div class="container">
     <h2 class="section-title">{title}</h2>
-    
+
     <div class="xray-grid">
-      {items.map((item) => (
-        <div class="xray-card">
-          <div class="xray-icon" set:html={item.icon} />
-          <h3 class="xray-card-title">{item.title}</h3>
-          <p class="xray-card-desc">{item.description}</p>
-        </div>
-      ))}
+      {
+        items.map((item) => (
+          <div class="xray-card">
+            <div class="xray-icon">
+              <i class={item.icon} />
+            </div>
+            <h3 class="xray-card-title">{item.title}</h3>
+            <p class="xray-card-desc">{item.description}</p>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
@@ -56,7 +60,9 @@ const { title, items = [] } = Astro.props;
     padding: var(--space-6);
     border-radius: var(--radius-2);
     box-shadow: var(--shadow-1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
     border: 1px solid #eee;
     text-align: center;
   }
