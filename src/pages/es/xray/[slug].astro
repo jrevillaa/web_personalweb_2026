@@ -24,6 +24,9 @@ const { Content } = await item.render();
   <main class="container">
     <article class="xray-detail">
       <header class="xray-header">
+        <div class="back-link-wrapper">
+          <a href="/es/xray" class="back-link">← Volver a X-Ray</a>
+        </div>
         <div class="xray-icon-large"><i class={item.data.icon}></i></div>
         <h1 class="xray-title">{item.data.title}</h1>
         <p class="xray-lead">{item.data.description}</p>
@@ -44,10 +47,28 @@ const { Content } = await item.render();
   }
 
   .xray-header {
-    text-align: center;
     margin-bottom: var(--space-8);
     border-bottom: 1px solid #eee;
     padding-bottom: var(--space-8);
+  }
+
+  .back-link-wrapper {
+    margin-bottom: var(--space-4);
+    text-align: left;
+  }
+
+  .back-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .back-link:hover {
+    opacity: 1;
+    color: var(--color-primary);
   }
 
   .xray-icon-large {

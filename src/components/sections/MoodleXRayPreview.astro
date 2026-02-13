@@ -8,15 +8,21 @@ const { title, items = [] } = Astro.props;
 
     <div class="xray-grid">
       {
-        items.map((item) => (
-          <div class="xray-card">
-            <div class="xray-icon">
-              <i class={item.icon} />
-            </div>
-            <h3 class="xray-card-title">{item.title}</h3>
-            <p class="xray-card-desc">{item.description}</p>
-          </div>
-        ))
+        items
+          .sort(() => 0.5 - Math.random()) // Shuffle
+          .slice(0, 4) // Take 4 random items
+          .map((item) => (
+            <a
+              href={`/${item.lang === "es" ? "es" : "en"}/xray/${item.slug.replace(`-${item.lang === "es" ? "es" : "en"}`, "")}`}
+              class="xray-card"
+            >
+              <div class="xray-icon">
+                <i class={item.icon} />
+              </div>
+              <h3 class="xray-card-title">{item.title}</h3>
+              <p class="xray-card-desc">{item.description}</p>
+            </a>
+          ))
       }
     </div>
   </div>
@@ -65,12 +71,19 @@ const { title, items = [] } = Astro.props;
       box-shadow 0.2s ease;
     border: 1px solid #eee;
     text-align: center;
+    text-decoration: none;
+    display: block;
+    color: inherit;
   }
 
   .xray-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-2);
-    border-color: #e0e0e0;
+    border-color: var(--color-primary);
+  }
+
+  .xray-card:hover .xray-icon {
+    color: var(--color-primary);
   }
 
   .xray-icon {
