@@ -1,0 +1,115 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../components/layout/BaseLayout.astro";
+
+const allXray = await getCollection("xray");
+const enXray = allXray.filter((post) => post.data.lang === "en");
+
+const title = "Moodle X-Ray | Jair Revilla";
+const description = "Deep diagnosis and analysis of Moodle components.";
+---
+
+<BaseLayout title={title} description={description} lang="en">
+    <main class="container">
+        <header class="xray-index-header">
+            <h1 class="page-title">Moodle X-Ray</h1>
+            <p class="page-desc">
+                Detailed analysis of every critical component of your platform.
+            </p>
+        </header>
+
+        <div class="xray-grid">
+            {
+                enXray.map((item) => (
+                    <a
+                        href={`/en/xray/${item.slug.replace("-en", "")}`}
+                        class="xray-card"
+                    >
+                        <div class="xray-icon">
+                            <i class={item.data.icon} />
+                        </div>
+                        <h3 class="xray-card-title">{item.data.title}</h3>
+                        <p class="xray-card-desc">{item.data.description}</p>
+                    </a>
+                ))
+            }
+        </div>
+    </main>
+</BaseLayout>
+
+<style>
+    .xray-index-header {
+        padding: var(--space-8) 0;
+        text-align: center;
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+        margin-bottom: var(--space-2);
+        color: #1a1a1a;
+    }
+
+    .page-desc {
+        color: #666;
+        font-size: 1.2rem;
+    }
+
+    .xray-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+        padding-bottom: var(--space-12);
+    }
+
+    @media (min-width: 768px) {
+        .xray-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .xray-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .xray-card {
+        background: #fff;
+        padding: var(--space-6);
+        border-radius: var(--radius-2);
+        box-shadow: var(--shadow-1);
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+        border: 1px solid #eee;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+    }
+
+    .xray-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-2);
+        border-color: var(--color-primary);
+    }
+
+    .xray-icon {
+        font-size: 2.5rem;
+        margin-bottom: var(--space-4);
+        display: inline-block;
+        color: var(--color-primary);
+    }
+
+    .xray-card-title {
+        font-size: 1.25rem;
+        margin-bottom: var(--space-2);
+        color: #1a1a1a;
+    }
+
+    .xray-card-desc {
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.4;
+        margin: 0;
+    }
+</style>
