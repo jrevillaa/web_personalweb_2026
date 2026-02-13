@@ -1,43 +1,72 @@
-# Astro Starter Kit: Minimal
+# Jair Revilla - Moodle Engineer Portfolio
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Sitio web personal profesional desarrollado con **Astro**, enfocado en SEO técnico, performance y gestión de contenido estático.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🛠 Tech Stack
 
-## 🚀 Project Structure
+- **Framework**: Astro 5.0
+- **Lenguajes**: TypeScript, CSS (Vanilla Tokens), HTML5
+- **Icons**: FontAwesome 6 Free
+- **CMS**: Decap CMS (Open Source)
+- **i18n**: Soporte nativo para Español e Inglés
+- **Deployment**: GitHub Pages (via GitHub Actions)
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🚀 Inicio Rápido
+
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone <tu-repo-url>
+    cd <tu-repo-nombre>
+    ```
+
+2.  **Instalar dependencias:**
+    ```bash
+    npm install
+    ```
+
+3.  **Iniciar servidor de desarrollo:**
+    ```bash
+    npm run dev
+    ```
+    Visita `http://localhost:4321`.
+
+## 📝 Gestión de Contenido (CMS) - ¡Nuevo!
+
+Este proyecto incluye **Decap CMS** para gestionar el contenido (Plugins, Casos de Estudio, X-Ray) a través de una interfaz gráfica, sin necesidad de editar código ni pagar servicios externos.
+
+**Pasos para editar contenido:**
+
+1.  Abre una terminal y ejecuta el servidor local del CMS:
+    ```bash
+    npx decap-server
+    ```
+
+2.  En **otra** terminal, asegúrate de que tu sitio esté corriendo:
+    ```bash
+    npm run dev
+    ```
+
+3.  Abre tu navegador en:
+    👉 **http://localhost:4321/admin**
+
+4.  ¡Listo! Usa la interfaz para crear, editar o borrar contenido. Al guardar, el CMS hará automáticamente el **commit** y **push** a tu rama actual en GitHub.
+
+## 📂 Estructura del Proyecto
 
 ```text
 /
 ├── public/
+│   ├── admin/          # Configuración del CMS
+│   └── ...
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/     # Componentes Astro reutilizables
+│   ├── content/        # Colecciones de contenido (MD/MDX)
+│   ├── i18n/           # Archivos de traducción (JSON)
+│   ├── layouts/        # Plantillas de página
+│   └── pages/          # Rutas del sitio
+└── astro.config.mjs
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 📄 Licencia
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Este proyecto es propiedad de Jair Revilla.
