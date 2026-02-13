@@ -56,6 +56,7 @@ const description =
 <script>
   const filterBtns = document.querySelectorAll(".filter-btn");
   const pluginItems = document.querySelectorAll(".plugin-wrapper");
+  const pluginsGrid = document.querySelector(".plugins-grid");
 
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -65,14 +66,26 @@ const description =
 
       const filterValue = btn.getAttribute("data-filter");
 
-      pluginItems.forEach((item) => {
-        const itemType = item.getAttribute("data-type");
-        if (filterValue === "all" || filterValue === itemType) {
-          (item as HTMLElement).style.display = "block";
-        } else {
-          (item as HTMLElement).style.display = "none";
+      // Animate Grid Fade Out
+      if (pluginsGrid) {
+        pluginsGrid.classList.add("fade-out");
+      }
+
+      setTimeout(() => {
+        pluginItems.forEach((item) => {
+          const itemType = item.getAttribute("data-type");
+          if (filterValue === "all" || filterValue === itemType) {
+            (item as HTMLElement).style.display = "block";
+          } else {
+            (item as HTMLElement).style.display = "none";
+          }
+        });
+
+        // Animate Grid Fade In
+        if (pluginsGrid) {
+          pluginsGrid.classList.remove("fade-out");
         }
-      });
+      }, 300); // Wait for transition
     });
   });
 </script>
@@ -124,5 +137,15 @@ const description =
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: var(--space-6);
     padding-bottom: var(--space-12);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .plugins-grid.fade-out {
+    opacity: 0;
+    transform: translateY(10px);
   }
 </style>
