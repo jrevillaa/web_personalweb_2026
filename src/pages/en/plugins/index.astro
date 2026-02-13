@@ -7,6 +7,7 @@ import en from "../../../i18n/en.json";
 
 const allPlugins = await getCollection("plugins");
 const enPlugins = allPlugins.filter((post) => post.data.lang === "en");
+const uniqueTypes = [...new Set(enPlugins.map((p) => p.data.type))];
 
 const title = "Plugin Directory | Jair Revilla";
 const description =
@@ -22,22 +23,59 @@ const description =
 
     <ConfidentialityNote text={en["disclaimer.text"]} />
 
+    <div class="filters-container">
+      <button class="filter-btn active" data-filter="all">All</button>
+      {
+        uniqueTypes.map((type) => (
+          <button class="filter-btn" data-filter={type}>
+            {en[`plugin_types.${type}`] || type}
+          </button>
+        ))
+      }
+    </div>
+
     <div class="plugins-grid">
       {
         enPlugins.map((plugin) => (
-          <PluginCard
-            name={plugin.data.name}
-            type={plugin.data.type}
-            version={plugin.data.version}
-            description={plugin.data.description}
-            features={plugin.data.features}
-            url={`/en/plugins/${plugin.slug.replace("-en", "")}`}
-          />
+          <div class="plugin-wrapper" data-type={plugin.data.type}>
+            <PluginCard
+              name={plugin.data.name}
+              type={plugin.data.type}
+              version={plugin.data.version}
+              description={plugin.data.description}
+              features={plugin.data.features}
+              url={`/en/plugins/${plugin.slug.replace("-en", "")}`}
+            />
+          </div>
         ))
       }
     </div>
   </main>
 </BaseLayout>
+
+<script>
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const pluginItems = document.querySelectorAll(".plugin-wrapper");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // Remove active class from all
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filterValue = btn.getAttribute("data-filter");
+
+      pluginItems.forEach((item) => {
+        const itemType = item.getAttribute("data-type");
+        if (filterValue === "all" || filterValue === itemType) {
+          (item as HTMLElement).style.display = "block";
+        } else {
+          (item as HTMLElement).style.display = "none";
+        }
+      });
+    });
+  });
+</script>
 
 <style>
   .plugins-header {
@@ -53,6 +91,32 @@ const description =
   .page-desc {
     color: #666;
     font-size: 1.2rem;
+  }
+
+  .filters-container {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-8);
+  }
+
+  .filter-btn {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    padding: var(--space-2) var(--space-4);
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    color: var(--color-text);
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
   }
 
   .plugins-grid {
