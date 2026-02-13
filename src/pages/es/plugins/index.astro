@@ -1,33 +1,41 @@
 ---
-import BaseLayout from '../../../components/layout/BaseLayout.astro';
-import PluginCard from '../../../components/ui/PluginCard.astro';
-import { getCollection } from 'astro:content';
+import BaseLayout from "../../../components/layout/BaseLayout.astro";
+import PluginCard from "../../../components/ui/PluginCard.astro";
+import ConfidentialityNote from "../../../components/ui/ConfidentialityNote.astro";
+import es from "../../../i18n/es.json";
 
-const allPlugins = await getCollection('plugins');
-const esPlugins = allPlugins.filter(post => post.data.lang === 'es');
+const allPlugins = await getCollection("plugins");
+const esPlugins = allPlugins.filter((post) => post.data.lang === "es");
 
 const title = "Directorio de Plugins | Jair Revilla";
-const description = "Colección de plugins, bloques y módulos para Moodle desarrollados para resolver problemas complejos.";
+const description =
+  "Colección de plugins, bloques y módulos para Moodle desarrollados para resolver problemas complejos.";
 ---
 
 <BaseLayout title={title} description={description} lang="es">
   <main class="container">
     <header class="plugins-header">
       <h1 class="page-title">Directorio de Plugins</h1>
-      <p class="page-desc">Soluciones robustas para extender la funcionalidad de Moodle.</p>
+      <p class="page-desc">
+        Soluciones robustas para extender la funcionalidad de Moodle.
+      </p>
     </header>
 
+    <ConfidentialityNote text={es["disclaimer.text"]} />
+
     <div class="plugins-grid">
-      {esPlugins.map((plugin) => (
-        <PluginCard
-          name={plugin.data.name}
-          type={plugin.data.type}
-          version={plugin.data.version}
-          description={plugin.data.description}
-          features={plugin.data.features}
-          url={`/es/plugins/${plugin.slug.replace('-es', '')}`}
-        />
-      ))}
+      {
+        esPlugins.map((plugin) => (
+          <PluginCard
+            name={plugin.data.name}
+            type={plugin.data.type}
+            version={plugin.data.version}
+            description={plugin.data.description}
+            features={plugin.data.features}
+            url={`/es/plugins/${plugin.slug.replace("-es", "")}`}
+          />
+        ))
+      }
     </div>
   </main>
 </BaseLayout>
@@ -37,12 +45,12 @@ const description = "Colección de plugins, bloques y módulos para Moodle desar
     padding: var(--space-8) 0;
     text-align: center;
   }
-  
+
   .page-title {
     font-size: 2.5rem;
     margin-bottom: var(--space-2);
   }
-  
+
   .page-desc {
     color: #666;
     font-size: 1.2rem;

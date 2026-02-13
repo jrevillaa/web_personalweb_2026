@@ -89,5 +89,13 @@
     "form.message": "Message",
     "form.submit": "Send Message",
     "form.success": "Message sent successfully!",
-    "form.error": "There was an error sending the message."
+    "form.error": "There was an error sending the message.",
+    "disclaimer.text": "Note: This portfolio represents a selection of my work. Some projects are not listed due to confidentiality agreements or rebranding.",
+    "plugin_types.mod": "Activity Modules",
+    "plugin_types.block": "Blocks",
+    "plugin_types.local": "Local Plugins",
+    "plugin_types.auth": "Authentication",
+    "plugin_types.enrol": "Enrolment Plugins",
+    "plugin_types.report": "Reports",
+    "plugin_types.theme": "Themes"
 }

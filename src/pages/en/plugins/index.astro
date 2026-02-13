@@ -1,13 +1,15 @@
 ---
-import BaseLayout from '../../../components/layout/BaseLayout.astro';
-import PluginCard from '../../../components/ui/PluginCard.astro';
-import { getCollection } from 'astro:content';
+import BaseLayout from "../../../components/layout/BaseLayout.astro";
+import PluginCard from "../../../components/ui/PluginCard.astro";
+import ConfidentialityNote from "../../../components/ui/ConfidentialityNote.astro";
+import en from "../../../i18n/en.json";
 
-const allPlugins = await getCollection('plugins');
-const enPlugins = allPlugins.filter(post => post.data.lang === 'en');
+const allPlugins = await getCollection("plugins");
+const enPlugins = allPlugins.filter((post) => post.data.lang === "en");
 
 const title = "Plugin Directory | Jair Revilla";
-const description = "Collection of Moodle plugins, blocks, and modules developed to solve complex problems.";
+const description =
+  "Collection of Moodle plugins, blocks, and modules developed to solve complex problems.";
 ---
 
 <BaseLayout title={title} description={description} lang="en">
@@ -17,17 +19,21 @@ const description = "Collection of Moodle plugins, blocks, and modules developed
       <p class="page-desc">Robust solutions to extend Moodle functionality.</p>
     </header>
 
+    <ConfidentialityNote text={en["disclaimer.text"]} />
+
     <div class="plugins-grid">
-      {enPlugins.map((plugin) => (
-        <PluginCard
-          name={plugin.data.name}
-          type={plugin.data.type}
-          version={plugin.data.version}
-          description={plugin.data.description}
-          features={plugin.data.features}
-          url={`/en/plugins/${plugin.slug.replace('-en', '')}`}
-        />
-      ))}
+      {
+        enPlugins.map((plugin) => (
+          <PluginCard
+            name={plugin.data.name}
+            type={plugin.data.type}
+            version={plugin.data.version}
+            description={plugin.data.description}
+            features={plugin.data.features}
+            url={`/en/plugins/${plugin.slug.replace("-en", "")}`}
+          />
+        ))
+      }
     </div>
   </main>
 </BaseLayout>

@@ -13,7 +13,7 @@ To achieve superior performance in massive Moodle installations, we implement a 
 ### 1. Database Layer
 * **Galera/Aurora Clustering**: For high availability and read scalability.
 * **Query Tuning**: Analysis and rewriting of slow queries in critical reports.
-* **Connection Pooling**: Using ProxySQL for efficient connection management.
+* **Connection Pooling**: Use of ProxySQL for efficient connection management.
 
 ### 2. Caching
 * **Redis Cluster**: Separate implementation for Sessions, MUC (Moodle Universal Cache), and Application.

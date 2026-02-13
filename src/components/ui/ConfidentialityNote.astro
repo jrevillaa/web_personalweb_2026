@@ -1,0 +1,43 @@
+---
+interface Props {
+    text: string;
+}
+const { text } = Astro.props;
+---
+
+<div class="confidentiality-note">
+    <i class="fa-solid fa-circle-info icon"></i>
+    <p>{text}</p>
+</div>
+
+<style>
+    .confidentiality-note {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background-color: rgba(0, 0, 0, 0.03);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        margin: 2rem auto;
+        max-width: 800px;
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    /* Dark mode support if applicable, assuming global classes or media query */
+    @media (prefers-color-scheme: dark) {
+        .confidentiality-note {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: #aaa;
+        }
+    }
+
+    .icon {
+        font-size: 1.2rem;
+        color: #3b82f6; /* Blue accent */
+        flex-shrink: 0;
+    }
+</style>
