@@ -1,13 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../../../components/layout/BaseLayout.astro';
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../components/layout/BaseLayout.astro";
 
 export async function getStaticPaths() {
-  const allCases = await getCollection('case-studies');
-  const esCases = allCases.filter(post => post.data.lang === 'es');
-  
-  return esCases.map(post => ({
-    params: { slug: post.slug.replace(/-es$/, '') },
+  const allCases = await getCollection("case-studies");
+  const esCases = allCases.filter((post) => post.data.lang === "es");
+
+  return esCases.map((post) => ({
+    params: { slug: post.slug.replace(/-es$/, "") },
     props: { post },
   }));
 }
@@ -16,17 +16,35 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BaseLayout title={`${post.data.title} | Jair Revilla`} description={post.data.description} lang="es">
+<BaseLayout
+  title={`${post.data.title} | Jair Revilla`}
+  description={post.data.description}
+  lang="es"
+>
   <main class="container">
     <article class="case-detail">
       <header class="case-header">
+        <div class="back-link-wrapper">
+          <a href="/es/casos" class="back-link">← Volver a Casos</a>
+        </div>
         <div class="meta">
-            <span class="date">{post.data.date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long' })}</span>
-            {post.data.client && <span class="client">Cliente: {post.data.client}</span>}
+          <span class="date"
+            >{
+              post.data.date.toLocaleDateString("es-ES", {
+                year: "numeric",
+                month: "long",
+              })
+            }</span
+          >
+          {
+            post.data.client && (
+              <span class="client">Cliente: {post.data.client}</span>
+            )
+          }
         </div>
         <h1 class="case-title">{post.data.title}</h1>
         <div class="tags">
-            {post.data.tags.map(tag => <span class="tag">{tag}</span>)}
+          {post.data.tags.map((tag) => <span class="tag">{tag}</span>)}
         </div>
       </header>
 
@@ -49,6 +67,25 @@ const { Content } = await post.render();
     text-align: center;
     border-bottom: 1px solid #eee;
     padding-bottom: var(--space-8);
+  }
+
+  .back-link-wrapper {
+    margin-bottom: var(--space-4);
+    text-align: left;
+  }
+
+  .back-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .back-link:hover {
+    opacity: 1;
+    color: var(--color-primary);
   }
 
   .meta {
@@ -102,7 +139,7 @@ const { Content } = await post.render();
   .case-content :global(li) {
     margin-bottom: var(--space-2);
   }
-  
+
   .case-content :global(strong) {
     color: #000;
     font-weight: 700;
