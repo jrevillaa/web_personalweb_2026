@@ -10,6 +10,11 @@ const description = es["site.description"];
 <html lang="es">
   <head>
     <SEOHead title={title} description={description} />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://jrevilla.404mybad.dev/"
+    />
     <meta http-equiv="refresh" content="0;url=/es/" />
     <style>
       body {
@@ -21,11 +26,13 @@ const description = es["site.description"];
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        min-height: 100vh;
         margin: 0;
         background-color: #f9f9f9;
         color: #333;
         text-align: center;
+        padding: 20px;
+        line-height: 1.6;
       }
       .loader {
         width: 48px;
@@ -47,18 +54,25 @@ const description = es["site.description"];
         }
       }
       h1 {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
+        font-size: 2rem;
+        margin-bottom: 1rem;
         color: #1a1a1a;
       }
       p {
-        font-size: 1.1rem;
+        font-size: 1.1rem; /* 17.6px approx */
         color: #666;
+        margin-bottom: 1rem;
       }
       .content-for-seo {
-        opacity: 0;
+        position: absolute;
+        width: 1px;
         height: 1px;
+        padding: 0;
+        margin: -1px;
         overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
       }
     </style>
     <script>
@@ -72,14 +86,55 @@ const description = es["site.description"];
   <body>
     <span class="loader"></span>
     <h1>Jair Revilla</h1>
-    <p>Redirigiendo / Redirecting...</p>
+    <p>
+      Redirigiendo a la versión en Español / Redirecting to English version...
+    </p>
 
-    <!-- Hidden content for SEO crawlers to index context before redirect -->
+    <!-- Rich content for SEO crawlers (Hidden visually but accessible to bots) -->
     <div class="content-for-seo">
-      <h2>Moodle Expert & Plugin Developer</h2>
+      <h2>Experto Moodle & Desarrollador de Plugins</h2>
       <p>{description}</p>
-      <a href="/es/">Versión en Español</a>
-      <a href="/en/">English Version</a>
+
+      <h3>Perfil Profesional</h3>
+      <p>
+        Soy Jair Revilla, Ingeniero de Software con más de 12 años de
+        experiencia especializado en la plataforma LMS Moodle. Mi enfoque se
+        centra en el desarrollo backend de alto rendimiento, la creación de
+        plugins personalizados y la integración de sistemas complejos. He
+        trabajado con universidades, corporaciones y organizaciones
+        gubernamentales para optimizar sus entornos de aprendizaje virtual.
+      </p>
+
+      <h3>Servicios y Especialidades</h3>
+      <ul>
+        <li>
+          <strong>Desarrollo de Plugins Moodle:</strong> Módulos de actividad, bloques,
+          formatos de curso, tipos de preguntas y extensiones locales.
+        </li>
+        <li>
+          <strong>Optimización de Rendimiento (High Performance):</strong> Tuning
+          de base de datos (PostgreSQL/MySQL), configuración de cachés (Redis/Memcached)
+          y balanceo de carga para soportar miles de usuarios concurrentes.
+        </li>
+        <li>
+          <strong>Integraciones de Sistemas:</strong> Conexión de Moodle con ERPs
+          (SAP, PeopleSoft), CRMs (Salesforce) y sistemas de autenticación SSO (OAuth2,
+          SAML, LDAP).
+        </li>
+        <li>
+          <strong>Consultoría Técnica:</strong> Auditoría de código, migraciones de
+          versión y diseño de arquitectura escalable en nube (AWS, Azure).
+        </li>
+      </ul>
+
+      <h3>Enlaces Principales</h3>
+      <ul>
+        <li><a href="/es/">Portafolio en Español</a></li>
+        <li><a href="/en/">Portfolio in English</a></li>
+        <li><a href="/es/xray">Moodle X-Ray (Casos Técnicos)</a></li>
+        <li><a href="/es/plugins">Directorio de Plugins</a></li>
+        <li><a href="/es/contacto">Contactar</a></li>
+      </ul>
     </div>
   </body>
 </html>
