@@ -29,13 +29,16 @@ const { title, items = [] } = Astro.props;
 
 <script>
   // Client-side shuffle to ensure randomness on every refresh
+  // Optimized for INP: Run after main thread is free
   document.addEventListener("DOMContentLoaded", () => {
-    const grid = document.querySelector(".xray-grid");
-    if (grid) {
-      for (let i = grid.children.length; i >= 0; i--) {
-        grid.appendChild(grid.children[(Math.random() * i) | 0]);
+    requestAnimationFrame(() => {
+      const grid = document.querySelector(".xray-grid");
+      if (grid) {
+        for (let i = grid.children.length; i >= 0; i--) {
+          grid.appendChild(grid.children[(Math.random() * i) | 0]);
+        }
       }
-    }
+    });
   });
 </script>
 

@@ -52,6 +52,18 @@ const articleSchema =
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
+<!-- Alternate Languages -->
+<link
+  rel="alternate"
+  hreflang="es"
+  href={`${siteUrl}/es${Astro.url.pathname.replace(/^\/(es|en)/, "")}`}
+/>
+<link
+  rel="alternate"
+  hreflang="en"
+  href={`${siteUrl}/en${Astro.url.pathname.replace(/^\/(es|en)/, "")}`}
+/>
+
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />

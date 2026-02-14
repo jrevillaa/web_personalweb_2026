@@ -3,7 +3,9 @@
     font-family: var(--font-sans);
     background-color: #ffffff;
     color: #1a1a1a;
-    line-height: 1.5;
+    line-height: 1.6;
+    font-size: 16px;
+    /* Ensure base size for mobile */
 }
 
 body {
