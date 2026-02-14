@@ -17,22 +17,45 @@ const currentYear = new Date().getFullYear();
         </div>
 
         <div class="footer-col">
+            <nav class="footer-nav">
+                <a href={`/${lang}/`}>{lang === "es" ? "Inicio" : "Home"}</a>
+                <a href={`/${lang}/${lang === "es" ? "sobre-mi" : "about"}`}
+                    >{lang === "es" ? "Sobre mí" : "About"}</a
+                >
+                <a href={`/${lang}/xray`}>X-Ray</a>
+                <a href={`/${lang}/plugins`}>Plugins</a>
+                <a href={`/${lang}/${lang === "es" ? "contacto" : "contact"}`}
+                    >{lang === "es" ? "Contacto" : "Contact"}</a
+                >
+            </nav>
+        </div>
+
+        <div class="footer-col">
             <div class="social-links">
                 <a
                     href="https://github.com/jrevillaa"
                     target="_blank"
-                    rel="noopener noreferrer">GitHub</a
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
                 >
+                    <i class="fa-brands fa-github"></i>
+                </a>
                 <a
                     href="https://www.linkedin.com/in/jrevillaa/"
                     target="_blank"
-                    rel="noopener noreferrer">LinkedIn</a
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
                 >
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
                 <a
                     href="https://wa.me/51987866987"
                     target="_blank"
-                    rel="noopener noreferrer">WhatsApp</a
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
                 >
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
             </div>
         </div>
     </div>
@@ -74,6 +97,24 @@ const currentYear = new Date().getFullYear();
         color: var(--color-text-light);
         font-size: 0.9rem;
         margin-top: var(--space-2);
+        max-width: 300px;
+    }
+
+    .footer-nav {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .footer-nav a {
+        color: var(--color-text);
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+    }
+
+    .footer-nav a:hover {
+        color: var(--color-primary);
     }
 
     .social-links {
