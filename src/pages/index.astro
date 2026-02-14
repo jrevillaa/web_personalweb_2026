@@ -62,7 +62,7 @@ const description = es["site.description"];
       }
     </style>
     <script>
-      const lang = navigator.language || navigator.userLanguage;
+      const lang = navigator.language;
       const targetPath = lang.startsWith("en") ? "/en/" : "/es/";
 
       // Immediate redirect if JS is enabled
