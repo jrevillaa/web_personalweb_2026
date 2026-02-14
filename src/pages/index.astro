@@ -1,9 +1,16 @@
+---
+import SEOHead from "../components/layout/SEOHead.astro";
+import es from "../i18n/es.json";
+
+const title = es["site.title"];
+const description = es["site.description"];
+---
+
 <!doctype html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jair Revilla - Redirecting...</title>
+    <SEOHead title={title} description={description} />
+    <meta http-equiv="refresh" content="0;url=/es/" />
     <style>
       body {
         font-family:
@@ -18,6 +25,7 @@
         margin: 0;
         background-color: #f9f9f9;
         color: #333;
+        text-align: center;
       }
       .loader {
         width: 48px;
@@ -38,25 +46,40 @@
           transform: rotate(360deg);
         }
       }
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: #1a1a1a;
+      }
       p {
         font-size: 1.1rem;
         color: #666;
       }
+      .content-for-seo {
+        opacity: 0;
+        height: 1px;
+        overflow: hidden;
+      }
     </style>
     <script>
-      // Simple language detection
-      const lang = navigator.language || navigator.userLanguage;
-      // Default to English for everyone, unless explicitly Spanish
-      const targetPath = lang.startsWith("es") ? "/es/" : "/en/";
+      const lang = navigator.language;
+      const targetPath = lang.startsWith("en") ? "/en/" : "/es/";
 
-      // Wait a brief moment for the loader to be seen (optional, improves UX feel)
-      setTimeout(() => {
-        window.location.href = targetPath;
-      }, 800);
+      // Immediate redirect if JS is enabled
+      window.location.replace(targetPath);
     </script>
   </head>
   <body>
     <span class="loader"></span>
-    <p>Detecting language / Detectando idioma...</p>
+    <h1>Jair Revilla</h1>
+    <p>Redirigiendo / Redirecting...</p>
+
+    <!-- Hidden content for SEO crawlers to index context before redirect -->
+    <div class="content-for-seo">
+      <h2>Moodle Expert & Plugin Developer</h2>
+      <p>{description}</p>
+      <a href="/es/">Versión en Español</a>
+      <a href="/en/">English Version</a>
+    </div>
   </body>
 </html>
