@@ -1,211 +1,358 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../../../components/layout/BaseLayout.astro";
+import PortfolioShellLayout from "../../../components/portfolio/PortfolioShellLayout.astro";
+
+const typeLabels: Record<string, string> = {
+  auth: "Autenticación",
+  block: "Bloques",
+  enrol: "Matriculación",
+  local: "Locales",
+  mod: "Módulos",
+  report: "Reportes",
+  theme: "Temas",
+};
 
 export async function getStaticPaths() {
-    const allPlugins = await getCollection("plugins");
-    const esPlugins = allPlugins.filter((post) => post.data.lang === "es");
+  const allPlugins = await getCollection("plugins");
+  const esPlugins = allPlugins.filter((post) => post.data.lang === "es");
 
-    return esPlugins.map((plugin) => ({
-        params: { slug: plugin.slug.replace(/-es$/, "") },
-        props: { plugin },
-    }));
+  return esPlugins.map((plugin) => ({
+    params: { slug: plugin.slug.replace(/-es$/, "") },
+    props: { plugin },
+  }));
 }
 
 const { plugin } = Astro.props;
 const { Content } = await plugin.render();
 ---
 
-<BaseLayout
-    title={`${plugin.data.name} | Plugins`}
-    description={plugin.data.description}
-    lang="es"
+<PortfolioShellLayout
+  title={`${plugin.data.name} | Plugins`}
+  description={plugin.data.description}
+  active="servicios"
 >
-    <main class="container">
-        <article class="plugin-detail">
-            <header class="plugin-header">
-                <div class="back-link-wrapper">
-                    <a href="/es/plugins" class="back-link"
-                        >← Volver al Directorio</a
-                    >
-                </div>
-                <div class="plugin-meta-top">
-                    <span class="type-badge">{plugin.data.type}</span>
-                    <span class="ver-badge">v{plugin.data.version}</span>
-                </div>
-                <h1 class="plugin-title">{plugin.data.name}</h1>
-                <p class="plugin-lead">{plugin.data.description}</p>
-
-                <div class="actions">
-                    {
-                        plugin.data.downloadUrl && (
-                            <a
-                                href={plugin.data.downloadUrl}
-                                class="btn btn-primary"
-                            >
-                                Descargar
-                            </a>
-                        )
-                    }
-                    {
-                        plugin.data.repoUrl && (
-                            <a
-                                href={plugin.data.repoUrl}
-                                class="btn btn-secondary"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                Ver Repositorio
-                            </a>
-                        )
-                    }
-                </div>
-            </header>
-
-            <div class="content-grid">
-                <div class="main-content">
-                    <Content />
-                </div>
-                <aside class="sidebar">
-                    <h3>Características</h3>
-                    <ul class="features-list">
-                        {
-                            plugin.data.features.map((feature) => (
-                                <li>{feature}</li>
-                            ))
-                        }
-                    </ul>
-                </aside>
-            </div>
-        </article>
-    </main>
-</BaseLayout>
-
-<style>
-    .plugin-detail {
-        padding: var(--space-8) 0;
+  <style>
+    .detail-shell {
+      padding-bottom: 88px;
     }
 
-    .plugin-header {
-        text-align: center;
-        max-width: 700px;
-        margin: 0 auto var(--space-12);
+    .detail-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.14fr) minmax(300px, 0.86fr);
+      gap: 28px;
+      align-items: start;
     }
 
-    .back-link-wrapper {
-        margin-bottom: var(--space-6);
-        text-align: left;
+    .detail-main {
+      margin-top: 96px;
+    }
+
+    .hero-panel,
+    .summary-panel,
+    .content-panel,
+    .cta-panel {
+      border-radius: 32px;
+    }
+
+    .hero-panel {
+      background: var(--gradient-panel);
+      padding: 40px;
+      border: 1px solid var(--outline);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--tertiary-fixed);
+      color: var(--tertiary-text);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
 
     .back-link {
-        color: var(--color-text);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 0.9rem;
-        opacity: 0.7;
-        transition: opacity 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      color: var(--primary);
+      font-weight: 800;
     }
 
-    .back-link:hover {
-        opacity: 1;
-        color: var(--color-primary);
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 24px 0 18px;
     }
 
-    .plugin-meta-top {
-        display: flex;
-        justify-content: center;
-        gap: var(--space-2);
-        margin-bottom: var(--space-4);
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--bg-panel);
+      border: 1px solid var(--outline);
+      color: var(--text-soft);
+      font-size: 0.78rem;
+      font-weight: 800;
     }
 
-    .type-badge,
-    .ver-badge {
-        background: #f0f0f0;
-        padding: 4px 12px;
-        border-radius: 100px;
-        font-size: 0.85rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        color: #555;
+    .hero-panel h1 {
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      margin-bottom: 16px;
     }
 
-    .plugin-title {
-        font-size: 3rem;
-        margin-bottom: var(--space-4);
-        color: #1a1a1a;
+    .hero-panel p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.8;
+      font-size: 1.05rem;
     }
 
-    .plugin-lead {
-        font-size: 1.25rem;
-        color: #666;
-        margin-bottom: var(--space-8);
+    .summary-panel {
+      background: var(--surface-lowest);
+      border: 1px solid var(--outline);
+      padding: 30px;
+      box-shadow: var(--shadow-panel);
+      position: sticky;
+      top: 116px;
     }
 
-    .actions {
-        display: flex;
-        justify-content: center;
-        gap: var(--space-4);
+    .summary-panel h2,
+    .content-panel :global(h2) {
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
     }
 
-    .content-grid {
-        display: grid;
+    .summary-panel p {
+      color: var(--text-soft);
+      line-height: 1.75;
+      margin: 0 0 22px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      color: var(--text-soft);
+      line-height: 1.65;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--primary-strong);
+    }
+
+    .content-panel {
+      margin-top: 24px;
+      background: var(--surface-lowest);
+      border: 1px solid var(--outline);
+      padding: 38px 40px;
+      box-shadow: var(--shadow-panel);
+    }
+
+    .content-panel :global(p),
+    .content-panel :global(li) {
+      color: var(--text-soft);
+      line-height: 1.9;
+      font-size: 1.03rem;
+    }
+
+    .content-panel :global(h2) {
+      margin-top: 0;
+      margin-bottom: 18px;
+    }
+
+    .content-panel :global(h3) {
+      font-size: 1.24rem;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .content-panel :global(ul) {
+      padding-left: 22px;
+      margin: 0 0 14px;
+    }
+
+    .content-panel :global(strong) {
+      color: var(--text);
+    }
+
+    .cta-panel {
+      margin-top: 26px;
+      padding: 32px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-strong) 100%);
+      color: var(--surface-lowest);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-panel::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      top: -60px;
+      right: -40px;
+      background: var(--bg-on-dark-soft);
+    }
+
+    .cta-panel p {
+      color: var(--text-on-dark-soft);
+      line-height: 1.8;
+      margin: 14px 0 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .primary-cta,
+    .ghost-cta {
+      padding: 14px 18px;
+      border-radius: 16px;
+      font-weight: 800;
+    }
+
+    .primary-cta {
+      background: var(--surface-lowest);
+      color: var(--primary);
+    }
+
+    .ghost-cta {
+      background: var(--bg-on-dark-strong);
+      color: var(--surface-lowest);
+    }
+
+    .eyebrow-inverse {
+      background: var(--bg-on-dark-accent);
+      color: var(--surface-lowest);
+    }
+
+    @media (max-width: 1024px) {
+      .detail-grid {
         grid-template-columns: 1fr;
-        gap: var(--space-8);
+      }
+
+      .detail-main,
+      .summary-panel {
+        margin-top: 0;
+        position: static;
+        top: auto;
+      }
     }
 
-    @media (min-width: 900px) {
-        .content-grid {
-            grid-template-columns: 2fr 1fr;
+    @media (max-width: 760px) {
+      .detail-shell {
+        padding-bottom: 64px;
+      }
+
+      .hero-panel,
+      .summary-panel,
+      .content-panel,
+      .cta-panel {
+        padding: 26px 22px;
+        border-radius: 26px;
+      }
+
+      .content-panel {
+        margin-top: 18px;
+      }
+
+      .cta-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+
+  <main class="material-shell detail-shell">
+    <section class="detail-grid">
+      <article class="detail-main reveal">
+        <header class="hero-panel">
+          <a href="/es/plugins" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i>
+            Volver al directorio
+          </a>
+          <span class="eyebrow">Plugin Moodle</span>
+          <div class="meta-row">
+            <span class="meta-chip">{typeLabels[plugin.data.type] ?? plugin.data.type}</span>
+            <span class="meta-chip">v{plugin.data.version}</span>
+          </div>
+          <h1>{plugin.data.name}</h1>
+          <p>{plugin.data.description}</p>
+        </header>
+
+        <div class="content-panel reveal">
+          <Content />
+        </div>
+
+        <div class="cta-panel reveal">
+          <span class="eyebrow eyebrow-inverse">
+            Siguiente paso
+          </span>
+          <h2 style="margin-top: 16px; font-size: clamp(1.9rem, 3vw, 2.7rem); letter-spacing: -0.03em;">
+            Si este plugin resuelve una necesidad real, lo aterrizamos a implementación.
+          </h2>
+          <p>
+            Se puede adaptar a tu entorno, conectarlo con otros flujos y dejarlo listo para operación y upgrades futuros.
+          </p>
+          <div class="cta-actions">
+            <a class="primary-cta" href="/es/contacto">Solicitar implementación</a>
+            <a class="ghost-cta" href="/es/plugins">Volver al directorio</a>
+          </div>
+        </div>
+      </article>
+
+      <aside class="summary-panel reveal">
+        <h2>Qué cubre este plugin</h2>
+        <p>
+          Resumen funcional y técnico del componente, pensado para que luego se
+          pueda alimentar desde backend sin rehacer la presentación.
+        </p>
+        <ul class="feature-list">
+          {plugin.data.features.map((feature) => <li>{feature}</li>)}
+        </ul>
+        {
+          (plugin.data.downloadUrl || plugin.data.repoUrl) && (
+            <div class="cta-actions" style="margin-top: 22px;">
+              {plugin.data.downloadUrl && (
+                <a class="primary-cta" href={plugin.data.downloadUrl}>Descargar</a>
+              )}
+              {plugin.data.repoUrl && (
+                <a class="ghost-cta" href={plugin.data.repoUrl} target="_blank" rel="noopener noreferrer">Repositorio</a>
+              )}
+            </div>
+          )
         }
-    }
-
-    .sidebar {
-        background: #f9f9f9;
-        padding: var(--space-6);
-        border-radius: var(--radius-2);
-        height: fit-content;
-    }
-
-    .sidebar h3 {
-        font-size: 1.1rem;
-        margin-bottom: var(--space-4);
-        border-bottom: 2px solid #ddd;
-        padding-bottom: var(--space-2);
-    }
-
-    .features-list {
-        list-style: none;
-        padding: 0;
-    }
-
-    .features-list li {
-        margin-bottom: var(--space-2);
-        padding-left: 20px;
-        position: relative;
-    }
-
-    .features-list li:before {
-        content: "•";
-        color: var(--color-primary, #0056b3);
-        position: absolute;
-        left: 0;
-    }
-
-    /* Markdown Content Styles */
-    .main-content {
-        font-size: 1.1rem;
-        line-height: 1.7;
-    }
-
-    .main-content :global(h2) {
-        font-size: 1.8rem;
-        margin-top: var(--space-6);
-        margin-bottom: var(--space-4);
-    }
-
-    .main-content :global(h3) {
-        font-size: 1.4rem;
-        margin-top: var(--space-4);
-        margin-bottom: var(--space-2);
-    }
-</style>
+      </aside>
+    </section>
+  </main>
+</PortfolioShellLayout>

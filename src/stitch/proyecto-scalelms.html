@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ScaleLMS Framework - Jair Revilla</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, .font-headline {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#d7e2ff",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "inverse-on-surface": "#f2f0f0",
+                        "surface-container": "#efeded",
+                        "on-tertiary-fixed-variant": "#004d67",
+                        "primary-container": "#0056b3",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#006080",
+                        "surface-container-high": "#e9e8e7",
+                        "on-primary-container": "#bbd0ff",
+                        "surface-dim": "#dbdad9",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f5f3f3",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "secondary-container": "#e2dfde",
+                        "surface": "#fbf9f8",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#004760",
+                        "surface-bright": "#fbf9f8",
+                        "on-primary-fixed": "#001a40",
+                        "on-surface-variant": "#424752",
+                        "primary-fixed-dim": "#acc7ff",
+                        "outline-variant": "#c2c6d4",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#636262",
+                        "on-primary-fixed-variant": "#004491",
+                        "on-tertiary-fixed": "#001e2b",
+                        "tertiary-fixed-dim": "#75d1ff",
+                        "surface-tint": "#115cb9",
+                        "secondary": "#5f5e5e",
+                        "on-secondary-fixed-variant": "#474746",
+                        "outline": "#727784",
+                        "on-background": "#1b1c1c",
+                        "surface-variant": "#e4e2e2",
+                        "on-surface": "#1b1c1c",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#303031",
+                        "tertiary-fixed": "#c2e8ff",
+                        "secondary-fixed": "#e5e2e1",
+                        "background": "#fbf9f8",
+                        "surface-container-highest": "#e4e2e2",
+                        "primary": "#003f87",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#92d9ff",
+                        "inverse-primary": "#acc7ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 font-headline">
+                Jair Revilla
+            </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-300 transition-colors duration-200" href="#">Services</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-300 transition-colors duration-200" href="#">Utilities</a>
+<a class="text-blue-700 dark:text-blue-400 font-bold border-b-2 border-blue-700 dark:border-blue-400 pb-1 hover:text-blue-600 dark:hover:text-blue-300 transition-colors duration-200" href="#">Experience</a>
+<button class="bg-primary hover:bg-primary-container text-white px-6 py-2 rounded-xl font-bold transition-all duration-300 active:scale-95">
+                    Request Quote
+                </button>
+</div>
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<header class="relative overflow-hidden bg-surface py-24 md:py-32">
+<div class="max-w-7xl mx-auto px-8 relative z-10">
+<div class="flex flex-col md:flex-row gap-12 items-center">
+<div class="w-full md:w-1/2">
+<span class="inline-block text-primary font-bold tracking-widest text-xs uppercase mb-4 px-3 py-1 bg-primary-fixed rounded-full">CASO DE ESTUDIO ARCHITECTURAL</span>
+<h1 class="text-5xl md:text-7xl font-extrabold text-on-surface tracking-tight mb-6 leading-none">ScaleLMS Framework</h1>
+<p class="text-xl text-on-surface-variant leading-relaxed mb-8 max-w-xl">
+                            Reingeniería de infraestructura Moodle para soportar el crecimiento masivo y la alta disponibilidad en entornos empresariales críticos.
+                        </p>
+<div class="flex flex-wrap gap-4">
+<div class="flex items-center gap-2 bg-surface-container px-4 py-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">cloud</span>
+<span class="text-sm font-bold text-on-surface">AWS Architecture</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container px-4 py-2 rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="text-sm font-bold text-on-surface">1M+ Usuarios</span>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 relative">
+<div class="rounded-xl overflow-hidden shadow-2xl transform md:rotate-2 hover:rotate-0 transition-transform duration-500 bg-surface-container-low p-2">
+<img alt="ScaleLMS Dashboard" class="w-full h-auto rounded-lg" data-alt="Modern technical dashboard showing server metrics, user growth charts, and infrastructure latency in a clean high-end interface with deep blue accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCETfniHHHbcauN3MswEzyDlIlonGNN9TTmnR2upK7ESrjaB70rdQQ5bXseCb34Lu5PyaL80uPtlM51imF90zNh6E5pSWAuy2wSf-n08K16If4TZ2c6yefzlNhAFfh05kSrW-whUrYCmo17XeJWrhjTNTr76jPWAALRw4GxfwEFKxjiSC3LT-QYnsaN5ZwJWCnkmJwEMBXfDxhRerKZEYtdL3aBe4Wk8QL-4I2YqFQ2CYIxAVLXO0xSDHvjsICDST5Ijc19NeFKic8"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute top-0 right-0 -z-0 opacity-10 pointer-events-none">
+<svg fill="none" height="600" viewbox="0 0 600 600" width="600" xmlns="http://www.w3.org/2000/svg">
+<circle cx="300" cy="300" fill="url(#paint0_linear)" r="300"></circle>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint0_linear" x1="300" x2="300" y1="0" y2="600">
+<stop stop-color="#003f87"></stop>
+<stop offset="1" stop-color="#0056b3" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</header>
+<!-- Challenge Section -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid md:grid-cols-2 gap-16 items-start">
+<div>
+<h2 class="text-3xl font-bold mb-8 flex items-center gap-4">
+<span class="w-12 h-1 bg-primary rounded-full"></span>
+                            El Desafío Técnico
+                        </h2>
+<div class="space-y-6 text-on-surface-variant leading-relaxed">
+<p>
+                                El cliente enfrentaba cuellos de botella críticos durante los periodos de exámenes masivos. La arquitectura monolítica tradicional de Moodle no era capaz de escalar dinámicamente, lo que resultaba en tiempos de respuesta superiores a los 5 segundos y caídas frecuentes del sistema.
+                            </p>
+<p>
+                                Con una base de usuarios proyectada de más de un millón, la solución requería no solo capacidad de cómputo, sino una estrategia de almacenamiento de sesiones y base de datos distribuida que garantizara integridad y velocidad.
+                            </p>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-8 rounded-xl border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">timer_off</span>
+<h3 class="font-bold mb-2">Latencia Alta</h3>
+<p class="text-sm text-on-secondary-container">Tiempos de carga de página &gt; 8s en picos de tráfico.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl border-l-4 border-error">
+<span class="material-symbols-outlined text-error text-4xl mb-4">leak_remove</span>
+<h3 class="font-bold mb-2">Fuga de Sesiones</h3>
+<p class="text-sm text-on-secondary-container">Pérdida de datos de usuarios por saturación de memoria.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl border-l-4 border-tertiary">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-4">storage</span>
+<h3 class="font-bold mb-2">DB Overload</h3>
+<p class="text-sm text-on-secondary-container">Bloqueos de lectura/escritura en base de datos única.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl border-l-4 border-primary-container">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-4">settings_suggest</span>
+<h3 class="font-bold mb-2">Rigidez</h3>
+<p class="text-sm text-on-secondary-container">Imposibilidad de actualizar sin tiempo de inactividad.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Architectural Solution (Bento Grid Style) -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-extrabold mb-4 tracking-tight">Solución Arquitectónica</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">Implementación de un ecosistema desacoplado basado en AWS para máxima resiliencia.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
+<!-- Main Architecture Card -->
+<div class="md:col-span-8 bg-primary rounded-xl p-10 text-white relative overflow-hidden group">
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div>
+<h3 class="text-2xl font-bold mb-4">Auto-Scaling &amp; Load Balancing</h3>
+<p class="opacity-90 max-w-md leading-relaxed">
+                                    Diseñé una flota de servidores de aplicación (EC2) gestionados por un Application Load Balancer que escala horizontalmente según el consumo de CPU y conexiones activas.
+                                </p>
+</div>
+<div class="flex gap-4 items-center">
+<span class="bg-white/20 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider">High Availability</span>
+<span class="bg-white/20 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider">Horizontal Scaling</span>
+</div>
+</div>
+<div class="absolute -right-20 -bottom-20 opacity-20 group-hover:scale-110 transition-transform duration-700">
+<span class="material-symbols-outlined text-[300px]" style="font-variation-settings: 'FILL' 1;">hub</span>
+</div>
+</div>
+<!-- RDS / Database Card -->
+<div class="md:col-span-4 bg-tertiary-container rounded-xl p-8 text-on-tertiary-container">
+<span class="material-symbols-outlined text-white text-4xl mb-6">database</span>
+<h3 class="text-xl font-bold text-white mb-3">Multi-AZ RDS</h3>
+<p class="text-sm opacity-90 leading-relaxed">
+                            Migración a Amazon Aurora con réplicas de lectura automáticas, distribuyendo la carga de los reportes administrativos sin afectar la experiencia de los estudiantes.
+                        </p>
+</div>
+<!-- Redis / Session Card -->
+<div class="md:col-span-4 bg-surface-container-highest rounded-xl p-8 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-6">memory</span>
+<h3 class="text-xl font-bold mb-3">ElastiCache (Redis)</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                Centralización de sesiones fuera del servidor web, permitiendo el escalamiento de nodos sin desconectar a los usuarios.
+                            </p>
+</div>
+</div>
+<!-- S3 / Storage Card -->
+<div class="md:col-span-8 bg-surface-container-low rounded-xl p-10 flex flex-col md:flex-row gap-8 items-center border border-outline-variant/20">
+<div class="flex-1">
+<h3 class="text-2xl font-bold mb-4">Amazon S3 &amp; CloudFront</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                                Externalización del MoodleData a S3 con entrega de contenido vía CDN, reduciendo la carga de entrada/salida (I/O) en los servidores y mejorando la carga de archivos multimedia en un 60%.
+                            </p>
+</div>
+<div class="w-full md:w-48 h-48 bg-white rounded-xl shadow-inner p-4 flex items-center justify-center">
+<img alt="Data Flow" class="w-full h-full object-cover rounded-lg" data-alt="Abstract blue digital grid representing fast data transfer and cloud storage connectivity in a technical networking style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbEhsBualKn98k8UZWhIemwwTT4fKbEnuoDyHT1nY82Ye7X0lWuG4il9wndSNm8bXD3ZFhEMbF-C_HEI9bh7ndzU3a-vy6tOywFpsmdbjj0dvB-4BFEJ9fXoxmoACvIgM3-4X5Qn9hH4iARWe42bJlF96iy4M44pLKoC76iI4y7j7qrKIuW5ecn2iRgcXuIcnWXCjRfVAl8g_2o3ZV0xyJZHpXB7ArU4dMQnPcMxsWRCTHc11g2t0kpUdoO2hGSgsAWJvL-PLihAU"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Impact Section -->
+<section class="py-24 bg-slate-900 text-white">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col md:flex-row gap-12 items-center">
+<div class="md:w-1/3">
+<h2 class="text-3xl font-bold mb-4">Impacto Realizado</h2>
+<p class="opacity-70">Métricas clave después de la implementación de la arquitectura ScaleLMS.</p>
+<div class="mt-8">
+<button class="bg-primary text-white font-bold px-8 py-3 rounded-xl hover:bg-primary-container transition-all">Ver Documentación Técnica</button>
+</div>
+</div>
+<div class="md:w-2/3 grid grid-cols-2 md:grid-cols-3 gap-8 w-full">
+<div class="text-center">
+<span class="text-5xl font-extrabold text-primary-fixed tracking-tight block mb-2 leading-none">1.2M</span>
+<span class="text-sm font-bold opacity-60 uppercase tracking-widest">Usuarios Activos</span>
+</div>
+<div class="text-center">
+<span class="text-5xl font-extrabold text-primary-fixed tracking-tight block mb-2 leading-none">99.9%</span>
+<span class="text-sm font-bold opacity-60 uppercase tracking-widest">Uptime Garantizado</span>
+</div>
+<div class="text-center">
+<span class="text-5xl font-extrabold text-primary-fixed tracking-tight block mb-2 leading-none">85%</span>
+<span class="text-sm font-bold opacity-60 uppercase tracking-widest">Menos Latencia</span>
+</div>
+<div class="text-center">
+<span class="text-5xl font-extrabold text-primary-fixed tracking-tight block mb-2 leading-none">0s</span>
+<span class="text-sm font-bold opacity-60 uppercase tracking-widest">Downtime Updates</span>
+</div>
+<div class="text-center">
+<span class="text-5xl font-extrabold text-primary-fixed tracking-tight block mb-2 leading-none">40%</span>
+<span class="text-sm font-bold opacity-60 uppercase tracking-widest">Ahorro en Costes</span>
+</div>
+<div class="text-center">
+<span class="text-5xl font-extrabold text-primary-fixed tracking-tight block mb-2 leading-none">x10</span>
+<span class="text-sm font-bold opacity-60 uppercase tracking-widest">Capacidad Exámenes</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA / Footer Transition -->
+<section class="py-24 bg-surface">
+<div class="max-w-3xl mx-auto text-center px-8">
+<h2 class="text-3xl font-bold mb-6">¿Necesitas escalar tu plataforma Moodle?</h2>
+<p class="text-on-surface-variant mb-10 text-lg">Hablemos sobre cómo puedo ayudar a tu institución a lograr una arquitectura robusta, segura y escalable.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-container transition-all shadow-lg shadow-primary/20">Contactar Ahora</button>
+<button class="bg-surface-container-high text-on-surface px-8 py-4 rounded-xl font-bold text-lg hover:bg-surface-container-highest transition-all">Ver Otros Proyectos</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 py-12 w-full max-w-7xl mx-auto">
+<div class="mb-8 md:mb-0">
+<span class="font-manrope font-extrabold text-slate-900 dark:text-white text-lg">Jair Revilla.</span>
+<p class="text-slate-500 text-sm mt-1">Solutions Architect.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-slate-500 font-inter text-sm hover:text-blue-600 dark:hover:text-blue-300 underline underline-offset-4 transition-all duration-300" href="#">Contact</a>
+<a class="text-slate-500 font-inter text-sm hover:text-blue-600 dark:hover:text-blue-300 underline underline-offset-4 transition-all duration-300" href="#">LinkedIn</a>
+<a class="text-slate-500 font-inter text-sm hover:text-blue-600 dark:hover:text-blue-300 underline underline-offset-4 transition-all duration-300" href="#">GitHub</a>
+<a class="text-slate-500 font-inter text-sm hover:text-blue-600 dark:hover:text-blue-300 underline underline-offset-4 transition-all duration-300" href="#">Privacy</a>
+</div>
+<div class="mt-8 md:mt-0 text-slate-500 font-inter text-sm">
+                © 2024 Jair Revilla. Solutions Architect.
+            </div>
+</div>
+</footer>
+</body></html>

@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../../../components/layout/BaseLayout.astro";
+import PortfolioShellLayout from "../../../components/portfolio/PortfolioShellLayout.astro";
 
 export async function getStaticPaths() {
   const allXray = await getCollection("xray");
@@ -16,109 +16,342 @@ const { item } = Astro.props;
 const { Content } = await item.render();
 ---
 
-<BaseLayout
-  title={`${item.data.title} | Moodle X-Ray`}
+<PortfolioShellLayout
+  title={`${item.data.title} | Servicios Técnicos`}
   description={item.data.description}
-  lang="es"
+  active="xray"
 >
-  <main class="container">
-    <article class="xray-detail">
-      <header class="xray-header">
-        <div class="back-link-wrapper">
-          <a href="/es/xray" class="back-link">← Volver a X-Ray</a>
+  <style>
+    .detail-shell {
+      padding-bottom: 88px;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .detail-main {
+      margin-top: 132px;
+    }
+
+    .hero-panel,
+    .summary-panel,
+    .content-panel,
+    .cta-panel {
+      border-radius: 32px;
+    }
+
+    .hero-panel {
+      background: var(--gradient-panel);
+      padding: 40px;
+      border: 1px solid var(--outline);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--tertiary-fixed);
+      color: var(--tertiary-text);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .hero-icon {
+      width: 72px;
+      height: 72px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 26px 0 18px;
+      border-radius: 22px;
+      background: var(--bg-primary-soft);
+      color: var(--primary-strong);
+      font-size: 1.7rem;
+    }
+
+    .hero-panel h1 {
+      font-size: clamp(2.6rem, 4vw, 4.3rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      margin-bottom: 16px;
+    }
+
+    .hero-panel p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    .summary-panel {
+      background: var(--surface-lowest);
+      border: 1px solid var(--outline);
+      padding: 30px;
+      box-shadow: var(--shadow-panel);
+      position: sticky;
+      top: 116px;
+    }
+
+    .summary-panel h2,
+    .content-panel h2,
+    .content-panel :global(h2) {
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+    }
+
+    .summary-panel p {
+      color: var(--text-soft);
+      line-height: 1.75;
+      margin: 0 0 22px;
+    }
+
+    .summary-list {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .summary-list li {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: var(--text-soft);
+      line-height: 1.65;
+    }
+
+    .summary-badge {
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: var(--primary-fixed);
+      color: var(--primary-fixed-strong);
+      font-size: 0.95rem;
+    }
+
+    .content-panel {
+      margin-top: 24px;
+      background: var(--surface-lowest);
+      border: 1px solid var(--outline);
+      padding: 38px 40px;
+      box-shadow: var(--shadow-panel);
+    }
+
+    .content-panel :global(p),
+    .content-panel :global(li) {
+      color: var(--text-soft);
+      line-height: 1.9;
+      font-size: 1.03rem;
+    }
+
+    .content-panel :global(h2) {
+      margin-top: 0;
+      margin-bottom: 18px;
+    }
+
+    .content-panel :global(h3) {
+      font-size: 1.25rem;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .content-panel :global(ul) {
+      padding-left: 22px;
+      margin: 0 0 14px;
+    }
+
+    .content-panel :global(strong) {
+      color: var(--text);
+    }
+
+    .cta-panel {
+      margin-top: 26px;
+      padding: 32px;
+      background: var(--gradient-primary-diagonal);
+      color: var(--surface-lowest);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cta-panel::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      top: -60px;
+      right: -40px;
+      background: var(--bg-on-dark-soft);
+    }
+
+    .cta-panel p {
+      color: var(--text-on-dark-soft);
+      line-height: 1.8;
+      margin: 14px 0 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .primary-cta,
+    .ghost-cta {
+      padding: 14px 18px;
+      border-radius: 16px;
+      font-weight: 800;
+      transition: transform 0.25s ease, opacity 0.25s ease, background-color 0.25s ease;
+    }
+
+    .primary-cta {
+      background: var(--surface-lowest);
+      color: var(--primary);
+    }
+
+    .ghost-cta {
+      background: var(--bg-on-dark-strong);
+      color: var(--surface-lowest);
+    }
+
+    .eyebrow-inverse {
+      background: var(--bg-on-dark-accent);
+      color: var(--surface-lowest);
+    }
+
+    .primary-cta:hover,
+    .ghost-cta:hover {
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 1024px) {
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-main,
+      .summary-panel {
+        position: static;
+        top: auto;
+      }
+
+      .detail-main,
+      .summary-panel {
+        margin-top: 0;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .detail-shell {
+        padding-bottom: 64px;
+      }
+
+      .hero-panel,
+      .summary-panel,
+      .content-panel,
+      .cta-panel {
+        padding: 26px 22px;
+        border-radius: 26px;
+      }
+
+      .content-panel {
+        margin-top: 18px;
+      }
+
+      .cta-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+
+  <main class="material-shell detail-shell">
+    <section class="detail-grid">
+      <article class="detail-main reveal">
+        <header class="hero-panel">
+          <a href="/es/xray" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i>
+            Volver a servicios técnicos
+          </a>
+          <span class="eyebrow">Especialización Técnica</span>
+          <div class="hero-icon">
+            <i class={item.data.icon} aria-hidden="true"></i>
+          </div>
+          <h1>{item.data.title}</h1>
+          <p>{item.data.description}</p>
+        </header>
+
+        <div class="content-panel reveal">
+          <Content />
         </div>
-        <div class="xray-icon-large"><i class={item.data.icon}></i></div>
-        <h1 class="xray-title">{item.data.title}</h1>
-        <p class="xray-lead">{item.data.description}</p>
-      </header>
 
-      <div class="xray-content">
-        <Content />
-      </div>
-    </article>
+        <div class="cta-panel reveal">
+          <span class="eyebrow eyebrow-inverse">
+            Próximo paso
+          </span>
+          <h2 style="margin-top: 16px; font-size: clamp(1.9rem, 3vw, 2.7rem); letter-spacing: -0.03em;">
+            Si este frente técnico es prioritario, puedo aterrizarlo a un plan ejecutable.
+          </h2>
+          <p>
+            Lo convertimos en diagnóstico, quick wins y roadmap sin romper la arquitectura ni la armonía operativa de tu plataforma.
+          </p>
+          <div class="cta-actions">
+            <a class="primary-cta" href="/es/contacto">Solicitar diagnóstico</a>
+            <a class="ghost-cta" href="/es/xray">Volver al mapa de servicios</a>
+          </div>
+        </div>
+      </article>
+
+      <aside class="summary-panel reveal">
+        <h2>Qué reviso en esta línea</h2>
+        <p>
+          Esta interna resume un frente técnico concreto dentro del ecosistema Moodle y lo conecta con decisiones que sí se pueden ejecutar.
+        </p>
+        <ul class="summary-list">
+          <li>
+            <span class="summary-badge"><i class="fa-solid fa-layer-group"></i></span>
+            <div>Evaluación del estado actual, riesgos y puntos de fricción operativa.</div>
+          </li>
+          <li>
+            <span class="summary-badge"><i class="fa-solid fa-screwdriver-wrench"></i></span>
+            <div>Identificación de ajustes de arquitectura, configuración y operación.</div>
+          </li>
+          <li>
+            <span class="summary-badge"><i class="fa-solid fa-chart-line"></i></span>
+            <div>Priorización de quick wins y acciones de mediano plazo con impacto real.</div>
+          </li>
+          <li>
+            <span class="summary-badge"><i class="fa-solid fa-shield-halved"></i></span>
+            <div>Enfoque en continuidad, estabilidad y crecimiento controlado.</div>
+          </li>
+        </ul>
+      </aside>
+    </section>
   </main>
-</BaseLayout>
-
-<style>
-  .xray-detail {
-    padding: var(--space-12) 0;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .xray-header {
-    margin-bottom: var(--space-8);
-    border-bottom: 1px solid #eee;
-    padding-bottom: var(--space-8);
-  }
-
-  .back-link-wrapper {
-    margin-bottom: var(--space-4);
-    text-align: left;
-  }
-
-  .back-link {
-    color: var(--color-text);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-  }
-
-  .back-link:hover {
-    opacity: 1;
-    color: var(--color-primary);
-  }
-
-  .xray-icon-large {
-    font-size: 4rem;
-    margin-bottom: var(--space-4);
-  }
-
-  .xray-title {
-    font-size: 3rem;
-    margin-bottom: var(--space-4);
-    color: #1a1a1a;
-  }
-
-  .xray-lead {
-    font-size: 1.5rem;
-    color: #666;
-    line-height: 1.4;
-  }
-
-  /* Markdown Content Styles */
-  .xray-content {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: #333;
-  }
-
-  .xray-content :global(h2) {
-    font-size: 2rem;
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-4);
-    color: #1a1a1a;
-  }
-
-  .xray-content :global(h3) {
-    font-size: 1.5rem;
-    margin-top: var(--space-6);
-    margin-bottom: var(--space-3);
-    color: #333;
-  }
-
-  .xray-content :global(ul) {
-    padding-left: 20px;
-    margin-bottom: var(--space-4);
-  }
-
-  .xray-content :global(li) {
-    margin-bottom: var(--space-2);
-  }
-
-  .xray-content :global(strong) {
-    color: #000;
-  }
-</style>
+</PortfolioShellLayout>

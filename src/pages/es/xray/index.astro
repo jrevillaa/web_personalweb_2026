@@ -1,115 +1,563 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../../../components/layout/BaseLayout.astro";
+import PortfolioShellLayout from "../../../components/portfolio/PortfolioShellLayout.astro";
 
 const allXray = await getCollection("xray");
-const esXray = allXray.filter((post) => post.data.lang === "es");
+const esXray = allXray
+  .filter((post) => post.data.lang === "es")
+  .sort((a, b) => a.data.order - b.data.order);
 
-const title = "Moodle X-Ray | Jair Revilla";
-const description = "Diagnóstico y análisis profundo de componentes Moodle.";
+const title = "Servicios Técnicos | Jair Revilla";
+const description =
+  "Radiografía técnica de Moodle: rendimiento, integraciones, escalabilidad, seguridad y operación con foco en decisiones accionables.";
 ---
 
-<BaseLayout title={title} description={description} lang="es">
-    <main class="container">
-        <header class="xray-index-header">
-            <h1 class="page-title">Moodle X-Ray</h1>
-            <p class="page-desc">
-                Análisis detallado de cada componente crítico de tu plataforma.
-            </p>
-        </header>
+<PortfolioShellLayout title={title} description={description} active="xray">
+    <style>
+      :root {
+      }
 
-        <div class="xray-grid">
-            {
-                esXray.map((item) => (
-                    <a
-                        href={`/es/xray/${item.slug.replace("-es", "")}`}
-                        class="xray-card"
-                    >
-                        <div class="xray-icon">
-                            <i class={item.data.icon} />
-                        </div>
-                        <h3 class="xray-card-title">{item.data.title}</h3>
-                        <p class="xray-card-desc">{item.data.description}</p>
-                    </a>
-                ))
-            }
-        </div>
-    </main>
-</BaseLayout>
+      .hero {
+        padding: 104px 0 56px;
+      }
 
-<style>
-    .xray-index-header {
-        padding: var(--space-8) 0;
-        text-align: center;
-    }
-
-    .page-title {
-        font-size: 2.5rem;
-        margin-bottom: var(--space-2);
-        color: #1a1a1a;
-    }
-
-    .page-desc {
-        color: #666;
-        font-size: 1.2rem;
-    }
-
-    .xray-grid {
+      .hero-grid {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--space-6);
-        padding-bottom: var(--space-12);
-    }
+        grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
+        gap: 40px;
+        align-items: stretch;
+      }
 
-    @media (min-width: 768px) {
-        .xray-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: var(--tertiary-fixed);
+        color: var(--tertiary-text);
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
 
-    @media (min-width: 1024px) {
-        .xray-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
+      .hero-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 16px 0;
+      }
 
-    .xray-card {
-        background: #fff;
-        padding: var(--space-6);
-        border-radius: var(--radius-2);
-        box-shadow: var(--shadow-1);
-        transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease;
-        border: 1px solid #eee;
-        text-align: center;
-        text-decoration: none;
-        display: block;
-    }
+      .hero-copy h1 {
+        font-size: clamp(3rem, 6vw, 5rem);
+        line-height: 0.98;
+        letter-spacing: -0.05em;
+      }
 
-    .xray-card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-2);
-        border-color: var(--color-primary);
-    }
+      .hero-copy h1 span {
+        color: var(--primary-strong);
+      }
 
-    .xray-icon {
-        font-size: 2.5rem;
-        margin-bottom: var(--space-4);
-        display: inline-block;
-        color: var(--color-primary);
-    }
-
-    .xray-card-title {
-        font-size: 1.25rem;
-        margin-bottom: var(--space-2);
-        color: #1a1a1a;
-    }
-
-    .xray-card-desc {
-        font-size: 0.9rem;
-        color: #666;
-        line-height: 1.4;
+      .hero-copy p {
+        max-width: 720px;
+        color: var(--text-soft);
+        font-size: 1.08rem;
+        line-height: 1.75;
         margin: 0;
-    }
-</style>
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .hero-primary,
+      .hero-secondary {
+        border-radius: 16px;
+        padding: 16px 22px;
+        font-weight: 700;
+        transition: transform 0.28s ease, box-shadow 0.28s ease, background-color 0.28s ease;
+      }
+
+      .hero-primary {
+        background: var(--gradient-primary-diagonal);
+        color: var(--surface-lowest);
+        box-shadow: var(--shadow-primary);
+      }
+
+      .hero-secondary {
+        background: var(--surface-high);
+        color: var(--text);
+      }
+
+      .hero-primary:hover,
+      .hero-secondary:hover {
+        transform: translateY(-3px);
+      }
+
+      .hero-aside {
+        position: relative;
+        background: var(--gradient-panel);
+        border-radius: 34px;
+        overflow: hidden;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .hero-aside::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at top right, var(--bg-primary-soft-strong), transparent 32%),
+          radial-gradient(circle at bottom left, var(--tertiary-fixed), transparent 35%);
+        pointer-events: none;
+      }
+
+      .hero-card {
+        position: relative;
+        z-index: 1;
+        padding: 32px;
+      }
+
+      .hero-card h2 {
+        font-size: 1.55rem;
+        margin-bottom: 14px;
+      }
+
+      .hero-card p {
+        color: var(--text-soft);
+        line-height: 1.7;
+        margin: 0 0 28px;
+      }
+
+      .hero-metrics {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .metric {
+        background: var(--bg-panel-soft);
+        border: 1px solid var(--outline);
+        border-radius: 20px;
+        padding: 18px;
+      }
+
+      .metric strong {
+        display: block;
+        font-family: "Manrope", sans-serif;
+        font-size: 1.75rem;
+        color: var(--primary);
+        letter-spacing: -0.04em;
+      }
+
+      .metric span {
+        display: block;
+        margin-top: 6px;
+        color: var(--text-soft);
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .section-shell {
+        padding: 24px 0 88px;
+      }
+
+      .section-band {
+        background: var(--surface-low);
+        border-radius: 36px;
+        padding: 48px;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 24px;
+        margin-bottom: 28px;
+      }
+
+      .section-head h2 {
+        font-size: clamp(2rem, 3vw, 3.4rem);
+        letter-spacing: -0.04em;
+      }
+
+      .section-head p {
+        max-width: 720px;
+        margin: 0;
+        color: var(--text-soft);
+        line-height: 1.8;
+      }
+
+      .xray-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .xray-card {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        min-height: 100%;
+        padding: 26px;
+        border-radius: 28px;
+        background: var(--surface-lowest);
+        border: 1px solid var(--outline);
+        box-shadow: var(--shadow-soft);
+        transition: transform 0.34s ease, box-shadow 0.34s ease, border-color 0.34s ease;
+      }
+
+      .xray-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--bg-primary-border);
+        box-shadow: var(--shadow-lift);
+      }
+
+      .xray-icon {
+        width: 58px;
+        height: 58px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        background: var(--bg-primary-soft);
+        color: var(--primary-strong);
+        font-size: 1.45rem;
+      }
+
+      .xray-order {
+        display: inline-block;
+        margin-bottom: 12px;
+        color: var(--text-primary-faded);
+        font-size: 0.82rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .xray-card h3 {
+        font-size: 1.35rem;
+        line-height: 1.2;
+        margin-bottom: 10px;
+      }
+
+      .xray-card p {
+        color: var(--text-soft);
+        line-height: 1.7;
+        margin: 0;
+        flex: 1;
+      }
+
+      .xray-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--primary);
+        font-weight: 800;
+      }
+
+      .method-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
+        gap: 26px;
+        margin-top: 28px;
+      }
+
+      .method-card,
+      .method-panel {
+        border-radius: 30px;
+      }
+
+      .method-card {
+        background: var(--gradient-primary-diagonal);
+        color: var(--surface-lowest);
+        padding: 34px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .method-card::after {
+        content: "";
+        position: absolute;
+        inset: auto -40px -60px auto;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: var(--bg-on-dark-soft);
+      }
+
+      .method-card p {
+        color: var(--text-on-dark-soft);
+        line-height: 1.8;
+      }
+
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .pill-list span {
+        padding: 9px 14px;
+        border-radius: 999px;
+        background: var(--bg-on-dark-accent);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow-inverse {
+        background: var(--bg-on-dark-accent);
+        color: var(--surface-lowest);
+      }
+
+      .method-panel {
+        background: var(--surface-lowest);
+        border: 1px solid var(--outline);
+        padding: 32px;
+      }
+
+      .method-panel ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 16px;
+      }
+
+      .method-panel li {
+        display: grid;
+        grid-template-columns: 46px 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .method-panel strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 1rem;
+      }
+
+      .method-badge {
+        width: 46px;
+        height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        background: var(--tertiary-fixed);
+        color: var(--tertiary-text);
+        font-size: 1rem;
+      }
+
+      @media (max-width: 1100px) {
+        .hero-grid,
+        .method-grid,
+        .xray-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .hero-grid > :first-child,
+        .method-grid > :first-child {
+          grid-column: 1 / -1;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .hero {
+          padding-top: 72px;
+        }
+
+        .hero,
+        .section-shell {
+          padding-bottom: 64px;
+        }
+
+        .hero-grid,
+        .method-grid,
+        .xray-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-band {
+          padding: 28px 22px;
+          border-radius: 28px;
+        }
+
+        .section-head {
+          flex-direction: column;
+          align-items: start;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+      }
+
+    </style>
+    <main class="material-shell">
+      <section class="hero reveal">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Radiografía Técnica Moodle</span>
+            <h1>
+              Explorar mis <span>servicios técnicos</span> en detalle.
+            </h1>
+            <p>
+              Esta vista reúne mis frentes de trabajo más críticos en Moodle:
+              rendimiento, integraciones, seguridad, hardening, mobile,
+              escalabilidad y operación. Cada bloque te lleva a un análisis más
+              profundo para entender qué se revisa, qué se optimiza y dónde se
+              genera impacto real.
+            </p>
+            <div class="hero-actions">
+              <a class="hero-primary" href="/es/contacto">Solicitar diagnóstico</a>
+              <a class="hero-secondary" href="#servicios-xray">Ver mapa de servicios</a>
+            </div>
+          </div>
+
+          <aside class="hero-aside reveal">
+            <div class="hero-card">
+              <h2>Qué obtienes aquí</h2>
+              <p>
+                Un índice práctico para identificar áreas de mejora en tu stack
+                Moodle antes de invertir en cambios dispersos o decisiones sin
+                prioridad técnica.
+              </p>
+
+              <div class="hero-metrics">
+                <div class="metric">
+                  <strong>{esXray.length}</strong>
+                  <span>frentes técnicos</span>
+                </div>
+                <div class="metric">
+                  <strong>30/60/90</strong>
+                  <span>roadmap operativo</span>
+                </div>
+                <div class="metric">
+                  <strong>HA</strong>
+                  <span>arquitectura crítica</span>
+                </div>
+                <div class="metric">
+                  <strong>Core + Infra</strong>
+                  <span>visión integral</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-shell reveal" id="servicios-xray">
+        <div class="section-band">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Mapa de Servicios</span>
+              <h2>Capas de diagnóstico y especialización.</h2>
+            </div>
+            <p>
+              La misma lógica visual del home, pero aterrizada a contenido
+              accionable. Cada tarjeta abre una interna con foco técnico
+              específico y copy alineado con la propuesta de valor del sitio.
+            </p>
+          </div>
+
+          <div class="xray-grid">
+            {
+              esXray.map((item) => (
+                <a
+                  href={`/es/xray/${item.slug.replace("-es", "")}`}
+                  class="xray-card reveal"
+                >
+                  <div class="xray-icon">
+                    <i class={item.data.icon} aria-hidden="true" />
+                  </div>
+                  <div>
+                    <span class="xray-order">
+                      {String(item.data.order).padStart(2, "0")}
+                    </span>
+                    <h3>{item.data.title}</h3>
+                    <p>{item.data.description}</p>
+                  </div>
+                  <span class="xray-link">
+                    Explorar detalle
+                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                  </span>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell reveal">
+        <div class="method-grid">
+          <article class="method-card reveal">
+            <span class="eyebrow eyebrow-inverse">
+              Cómo trabajo
+            </span>
+            <h2 style="margin: 18px 0 14px; font-size: clamp(2rem, 3vw, 3rem); letter-spacing: -0.04em;">
+              Diagnóstico primero, implementación después.
+            </h2>
+            <p>
+              No propongo cambios decorativos ni listas genéricas. Cada revisión
+              se enfoca en evidencias, cuellos de botella medibles, riesgos reales
+              y orden de ejecución para que el roadmap técnico tenga sentido.
+            </p>
+            <div class="pill-list">
+              <span>Rendimiento</span>
+              <span>Seguridad</span>
+              <span>Integraciones</span>
+              <span>Escalabilidad</span>
+              <span>Operación</span>
+            </div>
+          </article>
+
+          <aside class="method-panel reveal">
+            <h3 style="font-size: 1.7rem; margin-bottom: 18px;">Qué puedes revisar desde aquí</h3>
+            <ul>
+              <li>
+                <span class="method-badge"><i class="fa-solid fa-gauge-high"></i></span>
+                <div>
+                  <strong>Rendimiento e infraestructura</strong>
+                  Decidir qué ajustar primero en PHP, cachés, sesiones, web y base de datos.
+                </div>
+              </li>
+              <li>
+                <span class="method-badge"><i class="fa-solid fa-link"></i></span>
+                <div>
+                  <strong>Integraciones y flujos externos</strong>
+                  Validar impacto real de APIs, SSO, ERPs y sincronizaciones pesadas.
+                </div>
+              </li>
+              <li>
+                <span class="method-badge"><i class="fa-solid fa-shield-halved"></i></span>
+                <div>
+                  <strong>Hardening y continuidad</strong>
+                  Revisar seguridad, disponibilidad y riesgos operativos antes de escalar.
+                </div>
+              </li>
+              <li>
+                <span class="method-badge"><i class="fa-solid fa-layer-group"></i></span>
+                <div>
+                  <strong>Roadmap técnico</strong>
+                  Priorizar quick wins y una ruta clara de evolución sin romper la armonía del sistema.
+                </div>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </PortfolioShellLayout>

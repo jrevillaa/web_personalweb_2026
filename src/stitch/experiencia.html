@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f2f0f0",
+                        "outline-variant": "#c2c6d4",
+                        "on-background": "#1b1c1c",
+                        "surface-dim": "#dbdad9",
+                        "surface-container-low": "#f5f3f3",
+                        "primary-container": "#0056b3",
+                        "on-surface": "#1b1c1c",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e4e2e2",
+                        "primary": "#003f87",
+                        "tertiary-fixed": "#c2e8ff",
+                        "on-primary-fixed": "#001a40",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-secondary-container": "#636262",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#bbd0ff",
+                        "inverse-primary": "#acc7ff",
+                        "surface-bright": "#fbf9f8",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#004d67",
+                        "on-surface-variant": "#424752",
+                        "secondary": "#5f5e5e",
+                        "error": "#ba1a1a",
+                        "surface": "#fbf9f8",
+                        "inverse-surface": "#303031",
+                        "surface-container": "#efeded",
+                        "surface-tint": "#115cb9",
+                        "surface-container-highest": "#e4e2e2",
+                        "tertiary-fixed-dim": "#75d1ff",
+                        "primary-fixed-dim": "#acc7ff",
+                        "tertiary-container": "#006080",
+                        "surface-container-high": "#e9e8e7",
+                        "secondary-container": "#e2dfde",
+                        "on-primary-fixed-variant": "#004491",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-error-container": "#93000a",
+                        "outline": "#727784",
+                        "primary-fixed": "#d7e2ff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#001e2b",
+                        "on-tertiary-container": "#92d9ff",
+                        "background": "#fbf9f8",
+                        "on-secondary-fixed-variant": "#474746",
+                        "tertiary": "#004760",
+                        "on-secondary-fixed": "#1c1b1b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #fbf9f8; }
+        h1, h2, h3, .font-manrope { font-family: 'Manrope', sans-serif; }
+        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); }
+    </style>
+</head>
+<body class="text-on-surface selection:bg-primary-container selection:text-white">
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<a class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 font-manrope" href="#">Jair Revilla</a>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-300 transition-colors duration-200 font-inter" href="#">Servicios</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-300 transition-colors duration-200 font-inter" href="#">Utilidades</a>
+<a class="text-blue-700 dark:text-blue-400 font-bold border-b-2 border-blue-700 dark:border-blue-400 pb-1 font-inter" href="#">Experiencia</a>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-white px-6 py-2 rounded-xl font-bold transition-all hover:opacity-90 active:scale-95">Solicitar Cotización</button>
+</div>
+</nav>
+<main class="pt-32">
+<section class="max-w-7xl mx-auto px-8 mb-24">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
+<div class="md:col-span-8">
+<span class="text-xs font-bold tracking-widest text-primary uppercase block mb-4">ARQUITECTURA E INGENIERÍA</span>
+<h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">Más de 12 años diseñando aprendizaje digital.</h1>
+<p class="text-xl text-on-surface-variant max-w-2xl font-light leading-relaxed">
+                    Cerrando la brecha entre la arquitectura robusta de Moodle y soluciones de ingeniería a gran escala. Un camino definido por la precisión, el rendimiento y la accesibilidad.
+                </p>
+</div>
+<div class="md:col-span-4 pb-2">
+<div class="flex items-center gap-4 p-6 bg-surface-container-low rounded-xl">
+<div class="w-16 h-16 rounded-full overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="professional headshot of a friendly systems architect in a studio setting with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAycmfPffTk2ex5-_Fjpqorlu5h4kfdUnyKXsaLAiE7Jm7SJUIxnLSfF4B9_IkuE4obypFhCpoi-KgU39jL9MI08sXumxY9aJlvNCH8dQGdBd2RITt4Hh_Yso9mnhHGmt9FMpKZD2zplRjivXjqUdCnCkDpwP9RHlP6L4JT3fvKhz-ALHuRrDQArrHMytpgFooeHMKaMvHVEqXZFuV6okYnn53hfeEWIuHqLReguFlKZQlh85x-D-rT7RT9OpRGzEo_FC_aMlT9TWQ"/>
+</div>
+<div>
+<p class="text-sm font-bold text-primary mb-1">Experto Cercano</p>
+<p class="text-xs text-on-surface-variant">Consultoría técnica profunda y accesible para empresas modernas.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-surface-container-low py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-16">
+<h2 class="text-3xl font-bold mb-2">Trayectoria Profesional</h2>
+<p class="text-on-surface-variant">Una década de evolución desde el desarrollo de núcleo hasta la arquitectura global de sistemas.</p>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start p-8 bg-surface-container-lowest rounded-xl group transition-all hover:translate-x-2">
+<div class="md:col-span-2 text-3xl font-extrabold text-primary/20 group-hover:text-primary transition-colors">2021—24</div>
+<div class="md:col-span-4">
+<h3 class="text-xl font-bold mb-1">Arquitecto de Soluciones</h3>
+<p class="text-sm text-primary font-semibold">Sistemas Globales de Aprendizaje</p>
+</div>
+<div class="md:col-span-6 text-on-surface-variant leading-relaxed">
+                        Liderando la transformación digital para instancias empresariales de Moodle. Diseñé clusters de AWS de alta disponibilidad que atienden a más de 500k alumnos concurrentes en EMEA y LATAM.
+                    </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start p-8 bg-surface-container-lowest rounded-xl group transition-all hover:translate-x-2">
+<div class="md:col-span-2 text-3xl font-extrabold text-primary/20 group-hover:text-primary transition-colors">2018—21</div>
+<div class="md:col-span-4">
+<h3 class="text-xl font-bold mb-1">Ingeniero Senior de Moodle</h3>
+<p class="text-sm text-primary font-semibold">Innovadores EduTech</p>
+</div>
+<div class="md:col-span-6 text-on-surface-variant leading-relaxed">
+                        Encabecé personalizaciones del núcleo de Moodle y desarrollo de plugins. Reduje los tiempos de respuesta del servidor en un 45% mediante indexación de bases de datos y optimización de caché.
+                    </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start p-8 bg-surface-container-lowest rounded-xl group transition-all hover:translate-x-2">
+<div class="md:col-span-2 text-3xl font-extrabold text-primary/20 group-hover:text-primary transition-colors">2012—18</div>
+<div class="md:col-span-4">
+<h3 class="text-xl font-bold mb-1">Desarrollador Full Stack</h3>
+<p class="text-sm text-primary font-semibold">Web Solutions Inc.</p>
+</div>
+<div class="md:col-span-6 text-on-surface-variant leading-relaxed">
+                        Arquitectura de etapa temprana para plataformas LMS. Dominio de PHP, MySQL e integraciones iniciales de REST API para el intercambio de datos educativos.
+                    </div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<div class="lg:col-span-1">
+<h2 class="text-3xl font-bold mb-6">Certificaciones y Educación</h2>
+<p class="text-on-surface-variant mb-8">Experiencia validada en infraestructura en la nube y plataformas especializadas de aprendizaje.</p>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-4 bg-tertiary-fixed rounded-xl">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="text-on-tertiary-fixed-variant font-bold text-sm tracking-tight uppercase">Desarrollador Certificado de Moodle</span>
+</div>
+<div class="flex items-center gap-4 p-4 bg-tertiary-fixed rounded-xl">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant" style="font-variation-settings: 'FILL' 1;">cloud_done</span>
+<span class="text-on-tertiary-fixed-variant font-bold text-sm tracking-tight uppercase">Arquitecto de Soluciones de AWS</span>
+</div>
+<div class="flex items-center gap-4 p-4 bg-surface-container-high rounded-xl">
+<span class="material-symbols-outlined text-primary">school</span>
+<div>
+<p class="font-bold text-sm">B.S. Ingeniería de Software</p>
+<p class="text-xs text-on-surface-variant">Universidad Tecnológica</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2">
+<div class="flex justify-between items-end mb-10">
+<h2 class="text-3xl font-bold">Proyectos Destacados</h2>
+<span class="text-primary font-bold text-sm cursor-pointer hover:underline underline-offset-4">Ver Portafolio de Arquitectura</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Project Card 1 -->
+<a class="group bg-surface-container-lowest rounded-2xl overflow-hidden flex flex-col border border-surface-variant/50 hover:border-primary/30 hover:shadow-xl transition-all duration-300" href="#">
+<div class="h-48 w-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="clean dashboard UI showing complex data analytics with blue accent colors on a bright minimalist screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeYiwpY8EhG24ftTp9wvlKNCHeUHMRZsD_ryVAFz5npLNvgCabYtSoyEKQlCQMEcunYXLNow5e-Ie_n2bro2C26MzbN6oiV1G8SEcOep94N3S2cws3aGK9Zys6oHdQ0fQyo1bUaP7-iPN62tJ3PUIbXo-jag34kwY1-v7ZAuBSZypFP9JFRLlJv8RU1xnvsVsNwn9yK9GNNAHH4gZnQsObNy6WLxeGTHwwY2tEL4c3pxomDipVcECePlTtcnKa7nK6moIXtZvtS6M"/>
+</div>
+<div class="p-8 flex-grow flex flex-col">
+<span class="text-[10px] font-bold tracking-[0.2em] text-primary bg-primary-fixed px-2 py-1 rounded mb-4 inline-block self-start uppercase">Núcleo EdTech</span>
+<h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">ScaleLMS Framework</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Diseño de estrategia de escalado horizontal para Moodle, permitiendo más de 1M de sesiones activas sin degradación.</p>
+<div class="flex gap-6 border-t border-surface-container pt-6 pb-6">
+<div>
+<p class="text-lg font-bold text-primary">1M+</p>
+<p class="text-[10px] uppercase font-bold text-on-surface-variant">Usuarios Activos</p>
+</div>
+<div>
+<p class="text-lg font-bold text-primary">40%</p>
+<p class="text-[10px] uppercase font-bold text-on-surface-variant">Reduc. Latencia</p>
+</div>
+</div>
+<div class="mt-auto flex items-center text-primary font-bold text-sm">
+<span>Ver Caso de Estudio</span>
+<span class="material-symbols-outlined ml-2 text-base transition-transform group-hover:translate-x-1">arrow_forward</span>
+</div>
+</div>
+</a>
+<!-- Project Card 2 -->
+<a class="group bg-surface-container-lowest rounded-2xl overflow-hidden flex flex-col border border-surface-variant/50 hover:border-primary/30 hover:shadow-xl transition-all duration-300" href="#">
+<div class="h-48 w-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="abstract technological data visualization with blue glowing nodes and connections on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7vDTqERpS7vEPSY46Sxy0hFd_Pu5tM7TysyGoaiyHjt02yxK6s2lv9-c364sD-zKk7k5mqXYEvpc-nTQIKcsM242rvT4z1FLAeiPaCoE8qbueQci-7gdrSwzgsor86nLge3Du72oDBU6b_LgCPrhKZDE4Et6DrW3kGmdZOAn5nzOwWXU32X5XQ8SrZKJVpnl3OXcvJWdDuFniW364fT840V0Zpz9jnA9AlMHWV9gOg9iWGVUy-qX9gNA124g5rHOalhXEFGoA03o"/>
+</div>
+<div class="p-8 flex-grow flex flex-col">
+<span class="text-[10px] font-bold tracking-[0.2em] text-primary bg-primary-fixed px-2 py-1 rounded mb-4 inline-block self-start uppercase">Integración de Sistemas</span>
+<h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Enterprise Sync Engine</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Middleware personalizado para sincronizar datos de SAP HR con cohortes de Moodle en tiempo real con 99.9% de fiabilidad.</p>
+<div class="flex gap-6 border-t border-surface-container pt-6 pb-6">
+<div>
+<p class="text-lg font-bold text-primary">12s</p>
+<p class="text-[10px] uppercase font-bold text-on-surface-variant">Veloc. Sincro</p>
+</div>
+<div>
+<p class="text-lg font-bold text-primary">Cero</p>
+<p class="text-[10px] uppercase font-bold text-on-surface-variant">Pérdida Datos</p>
+</div>
+</div>
+<div class="mt-auto flex items-center text-primary font-bold text-sm">
+<span>Ver Proyecto</span>
+<span class="material-symbols-outlined ml-2 text-base transition-transform group-hover:translate-x-1">arrow_forward</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-primary text-white py-24 mb-0 overflow-hidden relative">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5"></path>
+</pattern>
+</defs>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<div class="max-w-4xl mx-auto px-8 text-center relative z-10">
+<h2 class="text-4xl font-bold mb-8">¿Listo para diseñar su próximo entorno de aprendizaje?</h2>
+<p class="text-on-primary-container text-lg mb-10 font-light italic">"La complejidad es un reto que Jair resuelve con ingeniería elegante. Transformó nuestro LMS de ser un cuello de botella a un motor de negocio." — CTO, Global EduCorp</p>
+<div class="flex flex-col md:flex-row justify-center gap-4">
+<button class="bg-white text-primary px-10 py-4 rounded-xl font-bold text-lg hover:bg-surface-container-low transition-all">Programar una Consulta</button>
+<button class="border border-white/30 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all">Descargar Portafolio PDF</button>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-slate-50 dark:bg-slate-950 w-full border-t border-slate-200 dark:border-slate-800">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 py-12 w-full max-w-7xl mx-auto">
+<div class="mb-8 md:mb-0">
+<span class="font-manrope font-extrabold text-slate-900 dark:text-white text-lg">Jair Revilla</span>
+<p class="font-inter text-sm text-slate-500 dark:text-slate-500 mt-2">© 2024 Jair Revilla. Arquitecto de Soluciones.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-inter text-sm text-slate-500 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-300 underline underline-offset-4 transition-all duration-300" href="#">Contacto</a>
+<a class="font-inter text-sm text-slate-500 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-300 underline underline-offset-4 transition-all duration-300" href="#">LinkedIn</a>
+<a class="font-inter text-sm text-slate-500 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-300 underline underline-offset-4 transition-all duration-300" href="#">GitHub</a>
+<a class="font-inter text-sm text-slate-500 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-300 underline underline-offset-4 transition-all duration-300" href="#">Privacidad</a>
+</div>
+</div>
+</footer>
+</body></html>

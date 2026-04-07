@@ -45,14 +45,14 @@ const { title, items = [] } = Astro.props;
 <style>
   .xray-preview {
     padding: var(--space-12) 0;
-    background-color: #fff;
+    background-color: var(--surface-lowest);
   }
 
   .section-title {
     text-align: center;
     font-size: 2rem;
     margin-bottom: var(--space-8);
-    color: #1a1a1a;
+    color: var(--color-text);
   }
 
   .xray-grid {
@@ -81,14 +81,14 @@ const { title, items = [] } = Astro.props;
   }
 
   .xray-card {
-    background: #fff;
+    background: var(--surface-lowest);
     padding: var(--space-6);
     border-radius: var(--radius-2);
     box-shadow: var(--shadow-1);
     transition:
       transform 0.2s ease,
       box-shadow 0.2s ease;
-    border: 1px solid #eee;
+    border: 1px solid var(--color-border);
     text-align: center;
     text-decoration: none;
     display: block;
@@ -114,12 +114,12 @@ const { title, items = [] } = Astro.props;
   .xray-card-title {
     font-size: 1.25rem;
     margin-bottom: var(--space-2);
-    color: #1a1a1a;
+    color: var(--color-text);
   }
 
   .xray-card-desc {
     font-size: 0.9rem;
-    color: #666;
+    color: var(--color-text-light);
     line-height: 1.4;
     margin: 0;
   }

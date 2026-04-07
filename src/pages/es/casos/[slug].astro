@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../../../components/layout/BaseLayout.astro";
+import PortfolioShellLayout from "../../../components/portfolio/PortfolioShellLayout.astro";
 
 export async function getStaticPaths() {
   const allCases = await getCollection("case-studies");
@@ -16,132 +16,228 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BaseLayout
-  title={`${post.data.title} | Jair Revilla`}
+<PortfolioShellLayout
+  title={`${post.data.title} | Casos de Éxito`}
   description={post.data.description}
-  lang="es"
+  active="casos"
 >
-  <main class="container">
-    <article class="case-detail">
-      <header class="case-header">
-        <div class="back-link-wrapper">
-          <a href="/es/casos" class="back-link">← Volver a Casos</a>
-        </div>
-        <div class="meta">
-          <span class="date"
-            >{
-              post.data.date.toLocaleDateString("es-ES", {
+  <style>
+    .detail-shell {
+      padding-bottom: 88px;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.14fr) minmax(300px, 0.86fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .detail-main {
+      margin-top: 96px;
+    }
+
+    .hero-panel,
+    .summary-panel,
+    .content-panel {
+      border-radius: 32px;
+    }
+
+    .hero-panel {
+      background: var(--gradient-panel);
+      padding: 40px;
+      border: 1px solid var(--outline);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--tertiary-fixed);
+      color: var(--tertiary-text);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 24px 0 18px;
+    }
+
+    .meta-chip,
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--bg-panel);
+      border: 1px solid var(--outline);
+      color: var(--text-soft);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .hero-panel h1 {
+      font-size: clamp(2.6rem, 4vw, 4.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      margin-bottom: 16px;
+    }
+
+    .hero-panel p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    .summary-panel {
+      background: var(--surface-lowest);
+      border: 1px solid var(--outline);
+      padding: 30px;
+      box-shadow: var(--shadow-panel);
+      position: sticky;
+      top: 116px;
+    }
+
+    .summary-panel h2,
+    .content-panel :global(h2) {
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+    }
+
+    .summary-panel p {
+      color: var(--text-soft);
+      line-height: 1.75;
+      margin: 0 0 22px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .content-panel {
+      margin-top: 24px;
+      background: var(--surface-lowest);
+      border: 1px solid var(--outline);
+      padding: 38px 40px;
+      box-shadow: var(--shadow-panel);
+    }
+
+    .content-panel :global(p),
+    .content-panel :global(li) {
+      color: var(--text-soft);
+      line-height: 1.9;
+      font-size: 1.03rem;
+    }
+
+    .content-panel :global(h2) {
+      margin-top: 0;
+      margin-bottom: 18px;
+    }
+
+    .content-panel :global(h3) {
+      font-size: 1.24rem;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .content-panel :global(ul) {
+      padding-left: 22px;
+      margin: 0 0 14px;
+    }
+
+    .content-panel :global(strong) {
+      color: var(--text);
+    }
+
+    @media (max-width: 1024px) {
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-main,
+      .summary-panel {
+        margin-top: 0;
+        position: static;
+        top: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .detail-shell {
+        padding-bottom: 64px;
+      }
+
+      .hero-panel,
+      .summary-panel,
+      .content-panel {
+        padding: 26px 22px;
+        border-radius: 26px;
+      }
+
+      .content-panel {
+        margin-top: 18px;
+      }
+    }
+  </style>
+
+  <main class="material-shell detail-shell">
+    <section class="detail-grid">
+      <article class="detail-main reveal">
+        <header class="hero-panel">
+          <a href="/es/casos" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i>
+            Volver a casos
+          </a>
+          <span class="eyebrow">Caso de Éxito</span>
+          <div class="meta-row">
+            <span class="meta-chip">
+              {post.data.date.toLocaleDateString("es-PE", {
                 year: "numeric",
                 month: "long",
-              })
-            }</span
-          >
-          {
-            post.data.client && (
-              <span class="client">Cliente: {post.data.client}</span>
-            )
-          }
+              })}
+            </span>
+            {post.data.client && <span class="meta-chip">Cliente: {post.data.client}</span>}
+          </div>
+          <h1>{post.data.title}</h1>
+          <p>{post.data.description}</p>
+        </header>
+
+        <div class="content-panel reveal">
+          <Content />
         </div>
-        <h1 class="case-title">{post.data.title}</h1>
-        <div class="tags">
+      </article>
+
+      <aside class="summary-panel reveal">
+        <h2>Resumen del caso</h2>
+        <p>
+          Esta ficha concentra el problema, el contexto y la solución aplicada
+          para que la evidencia del proyecto no se pierda dentro del catálogo.
+        </p>
+
+        <div class="tag-list">
           {post.data.tags.map((tag) => <span class="tag">{tag}</span>)}
         </div>
-      </header>
-
-      <div class="case-content">
-        <Content />
-      </div>
-    </article>
+      </aside>
+    </section>
   </main>
-</BaseLayout>
-
-<style>
-  .case-detail {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: var(--space-8) 0;
-  }
-
-  .case-header {
-    margin-bottom: var(--space-8);
-    text-align: center;
-    border-bottom: 1px solid #eee;
-    padding-bottom: var(--space-8);
-  }
-
-  .back-link-wrapper {
-    margin-bottom: var(--space-4);
-    text-align: left;
-  }
-
-  .back-link {
-    color: var(--color-text);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-  }
-
-  .back-link:hover {
-    opacity: 1;
-    color: var(--color-primary);
-  }
-
-  .meta {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: var(--space-2);
-    display: flex;
-    justify-content: center;
-    gap: var(--space-4);
-  }
-
-  .case-title {
-    font-size: 2.5rem;
-    margin-bottom: var(--space-4);
-    color: #1a1a1a;
-  }
-
-  .tags {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-2);
-  }
-
-  .tag {
-    background: #f0f0f0;
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    color: #444;
-  }
-
-  /* Typography for Markdown Content */
-  .case-content {
-    line-height: 1.8;
-    font-size: 1.1rem;
-    color: #333;
-  }
-
-  .case-content :global(h2) {
-    font-size: 1.8rem;
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-4);
-    color: #1a1a1a;
-  }
-
-  .case-content :global(ul) {
-    padding-left: var(--space-6);
-    margin-bottom: var(--space-4);
-  }
-
-  .case-content :global(li) {
-    margin-bottom: var(--space-2);
-  }
-
-  .case-content :global(strong) {
-    color: #000;
-    font-weight: 700;
-  }
-</style>
+</PortfolioShellLayout>

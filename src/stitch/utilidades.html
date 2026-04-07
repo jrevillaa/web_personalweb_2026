@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jair Revilla | Centro de Utilidades Técnicas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#f2f0f0",
+                      "outline-variant": "#c2c6d4",
+                      "on-background": "#1b1c1c",
+                      "surface-dim": "#dbdad9",
+                      "surface-container-low": "#f5f3f3",
+                      "primary-container": "#0056b3",
+                      "on-surface": "#1b1c1c",
+                      "on-error": "#ffffff",
+                      "surface-variant": "#e4e2e2",
+                      "primary": "#003f87",
+                      "tertiary-fixed": "#c2e8ff",
+                      "on-primary-fixed": "#001a40",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed": "#e5e2e1",
+                      "on-secondary-container": "#636262",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#bbd0ff",
+                      "inverse-primary": "#acc7ff",
+                      "surface-bright": "#fbf9f8",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#004d67",
+                      "on-surface-variant": "#424752",
+                      "secondary": "#5f5e5e",
+                      "error": "#ba1a1a",
+                      "surface": "#fbf9f8",
+                      "inverse-surface": "#303031",
+                      "surface-container": "#efeded",
+                      "surface-tint": "#115cb9",
+                      "surface-container-highest": "#e4e2e2",
+                      "tertiary-fixed-dim": "#75d1ff",
+                      "primary-fixed-dim": "#acc7ff",
+                      "tertiary-container": "#006080",
+                      "surface-container-high": "#e9e8e7",
+                      "secondary-container": "#e2dfde",
+                      "on-primary-fixed-variant": "#004491",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "on-error-container": "#93000a",
+                      "outline": "#727784",
+                      "primary-fixed": "#d7e2ff",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed": "#001e2b",
+                      "on-tertiary-container": "#92d9ff",
+                      "background": "#fbf9f8",
+                      "on-secondary-fixed-variant": "#474746",
+                      "tertiary": "#004760",
+                      "on-secondary-fixed": "#1c1b1b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+        .glass-header { backdrop-filter: blur(20px); }
+        .card-shadow { box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary/20">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<nav class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Jair Revilla</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-300 transition-colors duration-200" href="#">Servicios</a>
+<a class="text-blue-700 dark:text-blue-400 font-bold border-b-2 border-blue-700 dark:border-blue-400 pb-1 hover:text-blue-600 dark:hover:text-blue-300 transition-colors duration-200" href="#">Utilidades</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-300 transition-colors duration-200" href="#">Experiencia</a>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-xl font-bold hover:bg-primary-container transition-all active:scale-95">Solicitar Cotización</button>
+</div>
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</nav>
+</header>
+<main class="pt-32 pb-20 px-8 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-16">
+<div class="max-w-3xl">
+<span class="text-xs font-bold tracking-widest text-primary uppercase block mb-4">SOLUCIONES DE INGENIERÍA</span>
+<h1 class="text-5xl md:text-6xl font-extrabold text-on-background tracking-tight mb-6">Centro de Utilidades Técnicas</h1>
+<p class="text-lg text-on-surface-variant leading-relaxed">
+                Un conjunto de calculadoras financieras y arquitectónicas de alta precisión diseñadas para el entorno técnico peruano. Construidas con el mismo rigor que el desarrollo del núcleo de Moodle.
+            </p>
+</div>
+</section>
+<!-- Utility Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Utility Card 1: Calculadora SUNAT -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 flex flex-col transition-all hover:shadow-lg group">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="receipt_long">receipt_long</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Calculadora SUNAT</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-8 flex-grow">
+                Desglose de impuestos por servicios profesionales (4ta Categoría) según la normativa fiscal vigente 2024.
+            </p>
+<button class="w-full py-3 px-4 bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary font-bold rounded-xl transition-all flex items-center justify-center gap-2 group-hover:shadow-md">
+<span>Abrir Herramienta</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Utility Card 2: Calculadora Sueldo Neto -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 flex flex-col transition-all hover:shadow-lg group">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="payments">payments</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Calculadora Sueldo Neto</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-8 flex-grow">
+                Cálculo detallado de retenciones de AFP/ONP, seguro de salud y beneficios sociales para empleados del sector privado.
+            </p>
+<button class="w-full py-3 px-4 bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary font-bold rounded-xl transition-all flex items-center justify-center gap-2 group-hover:shadow-md">
+<span>Abrir Herramienta</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Utility Card 3: Proyector Impuesto a la Renta -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 flex flex-col transition-all hover:shadow-lg group">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Proyector Impuesto a la Renta</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-8 flex-grow">
+                Estime su escala impositiva anual (5ta Categoría) basada en los valores actuales de la UIT 2024.
+            </p>
+<button class="w-full py-3 px-4 bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary font-bold rounded-xl transition-all flex items-center justify-center gap-2 group-hover:shadow-md">
+<span>Abrir Herramienta</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Utility Card 4: Conversor de Moneda BCR -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 flex flex-col transition-all hover:shadow-lg group">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="currency_exchange">currency_exchange</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Conversor de Moneda BCR</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-8 flex-grow">
+                Conversión de divisas sincronizada con los tipos de cambio oficiales del Banco Central de Reserva del Perú.
+            </p>
+<button class="w-full py-3 px-4 bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary font-bold rounded-xl transition-all flex items-center justify-center gap-2 group-hover:shadow-md">
+<span>Abrir Herramienta</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Utility Card 5: Cálculo de Gratificaciones -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 flex flex-col transition-all hover:shadow-lg group">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="event_note">event_note</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Cálculo de Gratificaciones</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-8 flex-grow">
+                Determine el monto de sus beneficios legales de Julio y Diciembre incluyendo bonificaciones extraordinarias.
+            </p>
+<button class="w-full py-3 px-4 bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary font-bold rounded-xl transition-all flex items-center justify-center gap-2 group-hover:shadow-md">
+<span>Abrir Herramienta</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Utility Card 6: Liquidación Laboral -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 flex flex-col transition-all hover:shadow-lg group">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="account_balance">account_balance</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Liquidación Laboral</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-8 flex-grow">
+                Proyecte el pago total por CTS, vacaciones truncas y otros beneficios tras el cese laboral.
+            </p>
+<button class="w-full py-3 px-4 bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary font-bold rounded-xl transition-all flex items-center justify-center gap-2 group-hover:shadow-md">
+<span>Abrir Herramienta</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Methodology Section -->
+<section class="mt-32 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-3xl font-bold mb-6">Basado en Estándares Arquitectónicos</h2>
+<p class="text-on-surface-variant leading-relaxed mb-8">
+                Estas utilidades no son solo calculadoras; son herramientas de precisión construidas con la misma metodología impulsada por la lógica que aplico a la arquitectura empresarial de Moodle. Cada algoritmo es revisado por pares frente a los marcos legislativos peruanos actuales.
+            </p>
+<div class="grid grid-cols-2 gap-6">
+<div class="p-4 border-l-4 border-primary bg-surface-container-low">
+<p class="text-2xl font-extrabold font-headline">12+</p>
+<p class="text-xs font-bold text-on-surface-variant uppercase">Años de Experiencia</p>
+</div>
+<div class="p-4 border-l-4 border-tertiary bg-surface-container-low">
+<p class="text-2xl font-extrabold font-headline">100%</p>
+<p class="text-xs font-bold text-on-surface-variant uppercase">Lógica de Precisión</p>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -top-4 -left-4 w-24 h-24 bg-primary-container/20 rounded-full blur-3xl"></div>
+<div class="bg-surface-container-high rounded-2xl p-2 rotate-2 transform hover:rotate-0 transition-transform duration-500">
+<img alt="Dashboard financiero minimalista con visualización de datos" class="rounded-xl w-full h-auto shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDevNLIsqVX7aVc3fV_8YJ4ddc7B8TMiDklO2Mf0zGHPV6MxLiXT0gH9A9MgtAkXxVVhQ2WypTu_If_pSszdFSEQoUWHq59xi3WVly0WaLUqGvYArIbXkFgaDeQId1_YvAU4H5q0H2wxcekeOgNWjYNkt3dTRHMJXog5lps1y57sPyOUXqrLeVpHH4sUm6frC4QHxGnknoznH7rqUlo9P0VNgFoZdqIZtBYvhnl2M9SffBkZZ8qKspNF5YsHOTxL1nhT3QsLoiaZvU"/>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 py-12 w-full max-w-7xl mx-auto">
+<div class="mb-8 md:mb-0">
+<span class="font-manrope font-extrabold text-slate-900 dark:text-white text-lg">Jair Revilla.</span>
+<p class="font-inter text-sm text-slate-500 dark:text-slate-500 mt-2">© 2024 Jair Revilla. Arquitecto de Soluciones.</p>
+</div>
+<div class="flex space-x-10">
+<a class="text-slate-500 dark:text-slate-500 font-inter text-sm hover:text-blue-600 dark:hover:text-blue-300 underline underline-offset-4 transition-all duration-300" href="#">Contacto</a>
+<a class="text-slate-500 dark:text-slate-500 font-inter text-sm hover:text-blue-600 dark:hover:text-blue-300 underline underline-offset-4 transition-all duration-300" href="#">LinkedIn</a>
+<a class="text-slate-500 dark:text-slate-500 font-inter text-sm hover:text-blue-600 dark:hover:text-blue-300 underline underline-offset-4 transition-all duration-300" href="#">GitHub</a>
+<a class="text-slate-500 dark:text-slate-500 font-inter text-sm hover:text-blue-600 dark:hover:text-blue-300 underline underline-offset-4 transition-all duration-300" href="#">Privacidad</a>
+</div>
+</div>
+</footer>
+</body></html>

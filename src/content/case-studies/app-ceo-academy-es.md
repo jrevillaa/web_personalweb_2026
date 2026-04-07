@@ -4,6 +4,7 @@ description: 'Implementación de App basada en Moodle 4.3 con personalización v
 date: 2024-07-01
 client: 'CEO Academy'
 tags: ['Moodle App', 'Branding', 'Android', 'iOS', 'Release']
+featured: true
 lang: 'es'
 ---
 

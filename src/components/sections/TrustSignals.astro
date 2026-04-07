@@ -32,9 +32,9 @@ const { years, yearsLabel, clients, clientsLabel, plugins, pluginsLabel, badges 
 <style>
   .trust-signals {
     padding: var(--space-8) 0;
-    background-color: #f9f9f9;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+    background-color: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .trust-grid {
@@ -49,12 +49,12 @@ const { years, yearsLabel, clients, clientsLabel, plugins, pluginsLabel, badges 
     display: block;
     font-size: 2.5rem;
     font-weight: 800;
-    color: #1a1a1a;
+    color: var(--color-text);
   }
 
   .trust-label {
     font-size: 1rem;
-    color: #666;
+    color: var(--color-text-light);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-size: 0.875rem;
@@ -69,11 +69,11 @@ const { years, yearsLabel, clients, clientsLabel, plugins, pluginsLabel, badges 
   }
   
   .badge {
-    background: #fff;
-    border: 1px solid #e0e0e0;
+    background: var(--surface-lowest);
+    border: 1px solid var(--outline-strong);
     padding: var(--space-1) var(--space-3);
     border-radius: var(--radius-1);
     font-size: 0.875rem;
-    color: #444;
+    color: var(--text-subtle);
   }
 </style>

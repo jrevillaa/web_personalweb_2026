@@ -1,0 +1,47 @@
+---
+const { active = "xray" } = Astro.props;
+
+const navItems = [
+  { key: "inicio", label: "Inicio", href: "/es/" },
+  { key: "servicios", label: "Servicios", href: "/es/servicios" },
+  { key: "xray", label: "X-Ray", href: "/es/xray" },
+  { key: "experiencia", label: "Experiencia", href: "/es/experiencia" },
+  { key: "casos", label: "Casos", href: "/es/casos" },
+  { key: "utilidades", label: "Utilidades", href: "/es/utilidades" },
+  { key: "contacto", label: "Contacto", href: "/es/contacto" },
+];
+---
+
+<header class="topbar">
+  <nav class="material-shell">
+    <a class="brand" href="/es/">Jair Revilla</a>
+    <div class="nav-links">
+      {
+        navItems.map((item) => (
+          <a
+            class:list={["nav-link", { active: active === item.key }]}
+            href={item.href}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a class="quote-link" href="/es/contacto">Solicitar Cotización</a>
+    </div>
+    <button class="menu-toggle" type="button" aria-label="Abrir menú" data-menu-toggle>
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </nav>
+  <div class="mobile-panel" data-mobile-panel>
+    <div class="mobile-inner">
+      {
+        navItems.map((item) => (
+          <a class:list={{ active: active === item.key }} href={item.href}>
+            {item.label}
+          </a>
+        ))
+      }
+      <a class="quote-link" href="/es/contacto">Solicitar Cotización</a>
+    </div>
+  </div>
+</header>

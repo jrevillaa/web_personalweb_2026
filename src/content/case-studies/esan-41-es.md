@@ -4,6 +4,7 @@ description: 'Implementación de Moodle 4.1 preparado para alta concurrencia y a
 date: 2023-07-01
 client: 'ESAN - Exámenes (con LIDERA DIGITAL)'
 tags: ['Moodle 4.1', 'High Availability', 'Huawei Cloud', 'Performance', 'Exámenes']
+featured: true
 lang: 'es'
 ---
 

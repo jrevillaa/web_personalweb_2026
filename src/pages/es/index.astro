@@ -1,75 +1,137 @@
 ---
-import BaseLayout from "../../components/layout/BaseLayout.astro";
-import HeroIntro from "../../components/sections/HeroIntro.astro";
-import TrustSignals from "../../components/sections/TrustSignals.astro";
-import MoodleXRayPreview from "../../components/sections/MoodleXRayPreview.astro";
-import PluginMapPreview from "../../components/sections/PluginMapPreview.astro";
-import Testimonials from "../../components/sections/Testimonials.astro";
-import ConfidentialityNote from "../../components/ui/ConfidentialityNote.astro";
-import es from "../../i18n/es.json";
 import { getCollection } from "astro:content";
+import { loadStitchHtml } from "../../lib/stitch-page";
 
-const title = es["site.title"];
-const description = es["site.description"];
+const allCases = await getCollection("case-studies");
+const featuredCases = allCases
+  .filter((post) => post.data.lang === "es")
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
 
-// Dynamic Plugin Categories
 const allPlugins = await getCollection("plugins");
-const esPlugins = allPlugins.filter((p) => p.data.lang === "es");
-const uniqueTypes = [...new Set(esPlugins.map((p) => p.data.type))];
-const pluginCategories = uniqueTypes.map(
-  (type) => es[`plugin_types.${type}`] || type,
-);
+const featuredPlugins = allPlugins
+  .filter((plugin) => plugin.data.lang === "es")
+  .slice(0, 6);
 
-// Dynamic X-Ray Items
-const allXray = await getCollection("xray");
-const xrayItems = allXray
-  .filter((item) => item.data.lang === "es")
-  .sort((a, b) => a.data.order - b.data.order)
-  .map((item) => ({
-    title: item.data.title,
-    description: item.data.description,
-    icon: item.data.icon,
-    slug: item.slug,
-    lang: item.data.lang,
-  }));
----
+const pluginTypeLabels: Record<string, string> = {
+  auth: "Autenticación",
+  block: "Bloques",
+  enrol: "Matriculación",
+  local: "Locales",
+  mod: "Módulos",
+  report: "Reportes",
+  theme: "Temas",
+};
 
-<BaseLayout title={title} description={description} lang="es">
-  <main>
-    <HeroIntro
-      title={es["hero.greeting"]}
-      subtitle={es["hero.role"]}
-      ctaText={es["hero.cta"]}
-      ctaLink="/es/contacto"
-    />
+const homeExtensions = `
+  <section class="px-6 py-24 lg:px-8 bg-white/70">
+    <div class="max-w-7xl mx-auto space-y-10">
+      <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+        <div class="max-w-3xl space-y-4">
+          <span class="inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.22em] text-blue-900">Arquitectura de confianza</span>
+          <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">Casos reales, plugins activos y una forma de trabajo clara.</h2>
+          <p class="text-lg leading-8 text-slate-600">La web anterior tenía más profundidad en evidencia, stack y operación. Ese contenido vuelve aquí, pero acomodado a la narrativa visual actual para que la transición al backend no obligue a rediseñar otra vez.</p>
+        </div>
+        <a href="/es/contacto" class="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-primary to-primary-container px-6 py-4 text-sm font-bold text-white transition-all hover:opacity-95">Solicitar diagnóstico</a>
+      </div>
 
-    <TrustSignals
-      years={es["trust.years"]}
-      yearsLabel={es["trust.years_label"]}
-      plugins={es["trust.plugins"]}
-      pluginsLabel={es["trust.plugins_label"]}
-      clients={es["trust.clients"]}
-      clientsLabel={es["trust.clients_label"]}
-      badges={es["badges"]}
-    />
-
-    <MoodleXRayPreview title={es["xray.title"]} items={xrayItems} />
-
-    <PluginMapPreview
-      title={es["plugins_map.title"]}
-      description={es["plugins_map.description"]}
-      categories={pluginCategories}
-      ctaText={es["plugins_map.cta"]}
-      ctaLink="/es/plugins"
-    />
-
-    <div class="container">
-      <ConfidentialityNote text={es["disclaimer.text"]} />
+      <div class="grid gap-6 lg:grid-cols-3">
+        ${featuredCases
+          .map(
+            (post) => `
+          <a href="/es/casos/${post.slug.replace("-es", "")}" class="group rounded-[28px] border border-slate-200/70 bg-white p-7 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:border-blue-300 hover:shadow-[var(--shadow-lift)]">
+            <div class="mb-4 flex items-center justify-between gap-4 text-xs font-bold uppercase tracking-[0.18em] text-slate-400">
+              <span>Caso de éxito</span>
+              <span>${post.data.date.toLocaleDateString("es-PE", { year: "numeric", month: "short" })}</span>
+            </div>
+            <h3 class="mb-3 text-2xl font-bold tracking-tight text-slate-900 transition-colors group-hover:text-blue-800">${post.data.title}</h3>
+            <p class="mb-5 leading-7 text-slate-600">${post.data.description}</p>
+            <div class="flex flex-wrap gap-2">
+              ${post.data.tags
+                .slice(0, 3)
+                .map((tag) => `<span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">${tag}</span>`)
+                .join("")}
+            </div>
+          </a>`,
+          )
+          .join("")}
+      </div>
     </div>
+  </section>
 
-    <Testimonials
-      title={es["testimonials.title"]}
-      items={es["testimonials.items"]}
-    />
-  </main>
-</BaseLayout>
+  <section class="px-6 py-24 lg:px-8">
+    <div class="max-w-7xl mx-auto grid gap-8 xl:grid-cols-[1.05fr_1.2fr]">
+      <div class="rounded-[32px] border border-blue-100 bg-[linear-gradient(135deg,var(--primary-fixed)_0%,var(--surface-lowest)_55%,var(--bg-glass-strong)_100%)] p-8 md:p-10 shadow-[var(--shadow-panel-strong)]">
+        <span class="inline-flex rounded-full bg-white/80 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.22em] text-blue-900">Cómo trabajo</span>
+        <h2 class="mt-5 text-4xl font-extrabold tracking-tight text-slate-900">Diagnóstico, plan ejecutable y operación estable.</h2>
+        <p class="mt-4 text-lg leading-8 text-slate-600">La antigua sección “Sobre mí” se integra aquí para reforzar criterio técnico, entregables y continuidad operativa sin abrir una ruta extra que compita con experiencia o servicios.</p>
+        <div class="mt-8 grid gap-4 md:grid-cols-2">
+          <div class="rounded-3xl bg-white p-5">
+            <h3 class="text-lg font-bold text-slate-900">Método</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">Diagnóstico, roadmap 30/60/90, implementación con control y soporte sobre eventos críticos.</p>
+          </div>
+          <div class="rounded-3xl bg-white p-5">
+            <h3 class="text-lg font-bold text-slate-900">Seguridad</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">Hardening, privilegios mínimos, trazabilidad y cambios controlados para entornos Moodle sensibles.</p>
+          </div>
+          <div class="rounded-3xl bg-white p-5">
+            <h3 class="text-lg font-bold text-slate-900">Stack</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">Moodle, PHP, MySQL, Linux, AWS, Huawei Cloud, Docker y servicios de integración backend.</p>
+          </div>
+          <div class="rounded-3xl bg-white p-5">
+            <h3 class="text-lg font-bold text-slate-900">Certificaciones</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">Desarrollador Moodle, Scrum Fundamentals y experiencia real en operaciones de alta concurrencia.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-[32px] border border-slate-200/80 bg-white p-8 md:p-10 shadow-[var(--shadow-panel-strong)]">
+        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div class="space-y-3">
+            <span class="inline-flex rounded-full bg-slate-100 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.22em] text-slate-700">Plugins y soluciones</span>
+            <h2 class="text-4xl font-extrabold tracking-tight text-slate-900">La capa de producto que faltaba visibilizar.</h2>
+          </div>
+          <a href="/es/plugins" class="text-sm font-bold text-blue-800 transition-colors hover:text-blue-600">Ver directorio completo</a>
+        </div>
+        <div class="mt-8 grid gap-4 md:grid-cols-2">
+          ${featuredPlugins
+            .map(
+              (plugin) => `
+            <a href="/es/plugins/${plugin.slug.replace("-es", "")}" class="rounded-[24px] border border-slate-200 bg-slate-50/70 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:bg-white">
+              <div class="text-xs font-extrabold uppercase tracking-[0.18em] text-slate-400">${pluginTypeLabels[plugin.data.type] ?? plugin.data.type}</div>
+              <h3 class="mt-3 text-xl font-bold tracking-tight text-slate-900">${plugin.data.name}</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600">${plugin.data.description}</p>
+            </a>`,
+            )
+            .join("")}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 pb-24 lg:px-8">
+    <div class="max-w-7xl mx-auto rounded-[36px] border border-slate-200/80 bg-slate-900 px-8 py-10 text-white shadow-[var(--shadow-dark)] md:px-12">
+      <div class="grid gap-8 lg:grid-cols-[1.2fr_0.9fr] lg:items-center">
+        <div>
+          <span class="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.22em] text-blue-100">Operación enterprise</span>
+          <h2 class="mt-5 text-4xl font-extrabold tracking-tight">Trabajo con información sensible, contextos críticos y decisiones que no admiten improvisación.</h2>
+          <p class="mt-4 max-w-3xl text-lg leading-8 text-slate-300">La nota de confidencialidad y el enfoque profesional de la web anterior siguen siendo parte central de la propuesta: entregables claros, trazabilidad, QA, runbooks y arquitectura pensada para continuidad.</p>
+        </div>
+        <div class="grid gap-4">
+          <div class="rounded-[28px] bg-white/6 p-5">
+            <div class="text-sm font-bold text-white">Entregables</div>
+            <div class="mt-2 text-sm leading-7 text-slate-300">Documentación, checklist, evidencia técnica y plan operativo.</div>
+          </div>
+          <div class="rounded-[28px] bg-white/6 p-5">
+            <div class="text-sm font-bold text-white">Continuidad</div>
+            <div class="mt-2 text-sm leading-7 text-slate-300">Diseño para upgrades, incidentes, picos de concurrencia e integraciones críticas.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+`;
+
+const html = loadStitchHtml("home.html").replace("</main>", `${homeExtensions}</main>`);
+---
+<Fragment set:html={html} />

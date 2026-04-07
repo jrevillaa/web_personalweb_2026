@@ -8,6 +8,7 @@ const caseStudies = defineCollection({
         date: z.date(),
         client: z.string().optional(),
         tags: z.array(z.string()),
+        featured: z.boolean().default(false),
         lang: z.enum(['es', 'en']),
         // heroImage: z.string().optional(), // Descomentar cuando tengamos manejo de imágenes
     }),

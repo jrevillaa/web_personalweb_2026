@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Solicitar Cotización | Jair Revilla - Arquitecto de Soluciones</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f2f0f0",
+                        "outline-variant": "#c2c6d4",
+                        "on-background": "#1b1c1c",
+                        "surface-dim": "#dbdad9",
+                        "surface-container-low": "#f5f3f3",
+                        "primary-container": "#0056b3",
+                        "on-surface": "#1b1c1c",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e4e2e2",
+                        "primary": "#003f87",
+                        "tertiary-fixed": "#c2e8ff",
+                        "on-primary-fixed": "#001a40",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-secondary-container": "#636262",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#bbd0ff",
+                        "inverse-primary": "#acc7ff",
+                        "surface-bright": "#fbf9f8",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#004d67",
+                        "on-surface-variant": "#424752",
+                        "secondary": "#5f5e5e",
+                        "error": "#ba1a1a",
+                        "surface": "#fbf9f8",
+                        "inverse-surface": "#303031",
+                        "surface-container": "#efeded",
+                        "surface-tint": "#115cb9",
+                        "surface-container-highest": "#e4e2e2",
+                        "tertiary-fixed-dim": "#75d1ff",
+                        "primary-fixed-dim": "#acc7ff",
+                        "tertiary-container": "#006080",
+                        "surface-container-high": "#e9e8e7",
+                        "secondary-container": "#e2dfde",
+                        "on-primary-fixed-variant": "#004491",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-error-container": "#93000a",
+                        "outline": "#727784",
+                        "primary-fixed": "#d7e2ff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#001e2b",
+                        "on-tertiary-container": "#92d9ff",
+                        "background": "#fbf9f8",
+                        "on-secondary-fixed-variant": "#474746",
+                        "tertiary": "#004760",
+                        "on-secondary-fixed": "#1c1b1b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #fbf9f8; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .ghost-border { border: 1px solid rgba(194, 198, 212, 0.2); }
+        .ghost-border:focus-within { border-color: #003f87; border-width: 1px; box-shadow: 0 0 0 4px rgba(0, 63, 135, 0.1); }
+    </style>
+</head>
+<body class="text-on-surface selection:bg-primary-container selection:text-white">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 font-headline">
+                Jair Revilla
+            </div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 transition-colors duration-200" href="#">Servicios</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 transition-colors duration-200" href="#">Utilidades</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 transition-colors duration-200" href="#">Experiencia</a>
+<a class="text-blue-700 dark:text-blue-400 font-bold border-b-2 border-blue-700 dark:border-blue-400 pb-1 hover:text-blue-600 transition-all duration-200" href="#">Solicitar Cotización</a>
+</div>
+<button class="md:hidden">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<!-- Left Column: Introduction & Form -->
+<div class="lg:col-span-7 space-y-12">
+<header class="space-y-4">
+<span class="text-xs font-bold tracking-[0.2em] text-primary uppercase font-label">ARQUITECTURA DE SOLUCIONES</span>
+<h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-on-surface leading-[1.1]">
+                        Arquitectando tu <br/><span class="text-primary">éxito en Moodle.</span>
+</h1>
+<p class="text-lg text-on-surface-variant max-w-xl leading-relaxed">
+                        ¿Listo para escalar tu ecosistema de aprendizaje? Proporciona algunos detalles sobre tu proyecto y te responderé con una perspectiva estratégica.
+                    </p>
+</header>
+<div class="bg-surface-container-lowest rounded-xl p-8 md:p-10 shadow-sm border border-outline-variant/10">
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-semibold text-on-surface-variant" for="name">Nombre Completo</label>
+<input class="w-full bg-surface-container-highest ghost-border rounded-lg px-4 py-3 text-on-surface focus:ring-0 transition-all outline-none" id="name" placeholder="Ingresa tu nombre" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-on-surface-variant" for="email">Correo Corporativo</label>
+<input class="w-full bg-surface-container-highest ghost-border rounded-lg px-4 py-3 text-on-surface focus:ring-0 transition-all outline-none" id="email" placeholder="nombre@organizacion.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-on-surface-variant" for="org">Organización</label>
+<input class="w-full bg-surface-container-highest ghost-border rounded-lg px-4 py-3 text-on-surface focus:ring-0 transition-all outline-none" id="org" placeholder="Nombre de la empresa o institución" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-on-surface-variant" for="service">Servicio de Interés</label>
+<select class="w-full bg-surface-container-highest ghost-border rounded-lg px-4 py-3 text-on-surface focus:ring-0 transition-all outline-none appearance-none" id="service">
+<option value="">Selecciona un servicio</option>
+<option value="moodle-dev">Desarrollo Core de Moodle</option>
+<option value="arch-audit">Auditoría y Revisión de Arquitectura</option>
+<option value="cloud-scaling">Infraestructura Cloud y Escalamiento</option>
+<option value="plugin-dev">Desarrollo de Plugins Personalizados</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-on-surface-variant" for="details">Detalles del Proyecto</label>
+<textarea class="w-full bg-surface-container-highest ghost-border rounded-lg px-4 py-3 text-on-surface focus:ring-0 transition-all outline-none resize-none" id="details" placeholder="Cuéntame sobre tus desafíos y metas actuales..." rows="5"></textarea>
+</div>
+<div class="pt-4">
+<button class="w-full md:w-auto px-10 py-4 bg-gradient-to-r from-primary to-primary-container text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 active:scale-95 transition-all text-center" type="submit">
+                                Enviar Solicitud de Consultoría
+                            </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Right Column: Sidebar / Trust Signals -->
+<aside class="lg:col-span-5 space-y-8">
+<div class="bg-surface-container-low rounded-xl p-8 border-l-4 border-primary">
+<h3 class="text-2xl font-bold mb-6 font-headline">¿Por qué colaborar con Jair?</h3>
+<div class="space-y-8">
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">architecture</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Mentalidad Arquitectónica</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Más allá del código: construyo marcos escalables diseñados para los próximos 10 años de crecimiento.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">12+ Años de Experiencia</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Experiencia arraigada en Moodle Core, manejando entornos de alta concurrencia a nivel global.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">speed</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Enfoque en Rendimiento</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Cada solución está optimizada para velocidad, seguridad y una experiencia de usuario excepcional.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm border border-outline-variant/10">
+<img class="w-full h-48 object-cover" data-alt="modern minimalist architectural office with blueprints on a desk and high-end tech equipment in soft daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1XaFhDtbXXUrUgwYcTnbdch3ffWSeVLwY_nZKucHeezKaV57O5iCZsff9gX8-2LQ6VFhyNLvvzXTkRvGgKoN7xcMnS-WRTRPmWh5OcxWsg6pqAtqJnfojR8MHr8EVc_XsesGnDav2Dg8GkyOOmo-Q0Sk6YiXc8IUg2Rct0JNM-COy3WxAkajIOWmzp1TSIkwtImn6-w-vDuu3w4KjlRGx9it0B-0G2ungTLDfNdnniSzLnrcIcUUd5et4mf-7CmsqcipbGXpdIvc"/>
+<div class="p-6">
+<div class="flex gap-2 mb-4">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold uppercase tracking-wider rounded-full">Caso de Estudio</span>
+</div>
+<p class="italic text-on-surface-variant text-sm mb-4">"La capacidad de Jair para simplificar nuestro complejo cluster de Moodle nos ahorró meses de desarrollo y redujo significativamente nuestros costos de servidor."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a tech executive looking confident against a clean neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGd-aTqnYEwCoy56KDlf9G5Hstib0fd28YC8H9uvKf7TnQkLHtAafEBxpXvAK7YCR6thEOAcRHdPaRR_xCRzNMuSo3bN-PtT5lPDq854FG9uRI-Hrv-2CMM3CZDPacQqwG8YI9URyd-f-L7jc0ijhMhgfOjqf2J3kuUZ1EsyP55xkBGf_YWYZePrY2SMsv8mwt_zalTCmW1IVpc5ZXR9-QcJvQ1JiO1dI2ERERTjM26ZFDFR3lfr5E3zdfN4hOnIZLOhJKezdi29s"/>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface">CTO, Global EduTech</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Architectural Badge Stack -->
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center px-4 py-2 rounded-full bg-surface-container-high text-on-surface text-xs font-bold font-label tracking-tight">MOODLE CORE DEVELOPMENT</span>
+<span class="inline-flex items-center px-4 py-2 rounded-full bg-surface-container-high text-on-surface text-xs font-bold font-label tracking-tight">AWS ARCHITECT</span>
+<span class="inline-flex items-center px-4 py-2 rounded-full bg-surface-container-high text-on-surface text-xs font-bold font-label tracking-tight">PHP EXPERT</span>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 py-12 w-full max-w-7xl mx-auto">
+<div class="mb-6 md:mb-0">
+<span class="font-manrope font-extrabold text-slate-900 dark:text-white text-lg">Jair Revilla.</span>
+<p class="text-slate-500 font-inter text-sm mt-1">© 2024 Jair Revilla. Arquitecto de Soluciones.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-slate-500 hover:text-blue-600 underline underline-offset-4 transition-all duration-300 font-inter text-sm" href="#">Contacto</a>
+<a class="text-slate-500 hover:text-blue-600 underline underline-offset-4 transition-all duration-300 font-inter text-sm" href="#">LinkedIn</a>
+<a class="text-slate-500 hover:text-blue-600 underline underline-offset-4 transition-all duration-300 font-inter text-sm" href="#">GitHub</a>
+<a class="text-slate-500 hover:text-blue-600 underline underline-offset-4 transition-all duration-300 font-inter text-sm" href="#">Privacidad</a>
+</div>
+</div>
+</footer>
+</body></html>

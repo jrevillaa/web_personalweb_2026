@@ -23,14 +23,14 @@ const { title, subtitle, ctaText, ctaLink } = Astro.props;
     font-weight: 800;
     margin-bottom: var(--space-4);
     line-height: 1.2;
-    background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+    background: var(--gradient-dark-hero);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .hero-subtitle {
     font-size: 1.5rem;
-    color: #666;
+    color: var(--color-text-light);
     max-width: 600px;
     margin: 0 auto var(--space-8);
   }
@@ -44,8 +44,8 @@ const { title, subtitle, ctaText, ctaLink } = Astro.props;
   }
 
   .btn-primary {
-    background-color: #1a1a1a;
-    color: #ffffff;
+    background-color: var(--color-text);
+    color: var(--surface-lowest);
   }
   
   .btn:hover {

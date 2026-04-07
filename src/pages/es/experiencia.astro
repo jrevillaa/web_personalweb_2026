@@ -1,0 +1,116 @@
+---
+import { getCollection } from "astro:content";
+import { loadStitchHtml } from "../../lib/stitch-page";
+
+const allCases = await getCollection("case-studies");
+const esCases = allCases
+  .filter((post) => post.data.lang === "es")
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const timelineCases = esCases;
+const featuredCases = esCases
+  .filter((post) => post.data.featured)
+  .slice(0, 3);
+
+function escapeHtml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function formatYearRange(date: Date) {
+  const endYear = date.getFullYear();
+  const startYear = Math.max(2012, endYear - 1);
+  return `${startYear}—${String(endYear).slice(-2)}`;
+}
+
+const timelineHtml = timelineCases
+  .map((post) => {
+    const href = `/es/casos/${post.slug.replace("-es", "")}`;
+    const client = post.data.client ? escapeHtml(post.data.client) : "Caso técnico";
+
+    return `
+<a class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start p-8 bg-surface-container-lowest rounded-xl group transition-all hover:translate-x-2 hover:shadow-xl" href="${href}">
+  <div class="md:col-span-2 text-3xl font-extrabold text-primary/20 group-hover:text-primary transition-colors">${formatYearRange(post.data.date)}</div>
+  <div class="md:col-span-4">
+    <h3 class="text-xl font-bold mb-1 group-hover:text-primary transition-colors">${escapeHtml(post.data.title)}</h3>
+    <p class="text-sm text-primary font-semibold">${client}</p>
+  </div>
+  <div class="md:col-span-6 text-on-surface-variant leading-relaxed">
+    ${escapeHtml(post.data.description)}
+  </div>
+</a>`.trim();
+  })
+  .join("\n");
+
+const featuredHtml = featuredCases
+  .map((post) => {
+    const href = `/es/casos/${post.slug.replace("-es", "")}`;
+    const badge = escapeHtml(post.data.tags[0] ?? "Caso Moodle");
+    const statOne = escapeHtml(post.data.tags[1] ?? post.data.client ?? "Proyecto");
+    const statTwo = escapeHtml(post.data.tags[2] ?? post.data.date.getFullYear().toString());
+
+    return `
+<a class="group bg-surface-container-lowest rounded-2xl overflow-hidden flex flex-col border border-surface-variant/50 hover:border-primary/30 hover:shadow-xl transition-all duration-300" href="${href}">
+  <div class="h-48 w-full bg-surface-container-highest overflow-hidden relative">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,86,179,0.16),transparent_30%),linear-gradient(135deg,var(--primary-fixed)_0%,var(--surface-high)_55%,var(--surface-lowest)_100%)]"></div>
+    <div class="relative h-full w-full p-8 flex flex-col justify-between">
+      <span class="text-[10px] font-bold tracking-[0.2em] text-primary/70 uppercase">Caso real</span>
+      <div>
+        <p class="text-sm font-semibold text-primary">${escapeHtml(post.data.client ?? "Implementación")}</p>
+        <p class="text-2xl font-extrabold tracking-tight text-on-surface">${post.data.date.getFullYear()}</p>
+      </div>
+    </div>
+  </div>
+  <div class="p-8 flex-grow flex flex-col">
+    <span class="text-[10px] font-bold tracking-[0.2em] text-primary bg-primary-fixed px-2 py-1 rounded mb-4 inline-block self-start uppercase">${badge}</span>
+    <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">${escapeHtml(post.data.title)}</h3>
+    <p class="text-sm text-on-surface-variant leading-relaxed mb-6">${escapeHtml(post.data.description)}</p>
+    <div class="flex gap-6 border-t border-surface-container pt-6 pb-6">
+      <div>
+        <p class="text-lg font-bold text-primary">${statOne}</p>
+        <p class="text-[10px] uppercase font-bold text-on-surface-variant">Especialidad</p>
+      </div>
+      <div>
+        <p class="text-lg font-bold text-primary">${statTwo}</p>
+        <p class="text-[10px] uppercase font-bold text-on-surface-variant">Enfoque</p>
+      </div>
+    </div>
+    <div class="mt-auto flex items-center text-primary font-bold text-sm">
+      <span>Ver Caso de Estudio</span>
+      <span class="material-symbols-outlined ml-2 text-base transition-transform group-hover:translate-x-1">arrow_forward</span>
+    </div>
+  </div>
+</a>`.trim();
+  })
+  .join("\n");
+
+let html = loadStitchHtml("experiencia.html");
+
+html = html.replace(
+  /<div class="space-y-4">[\s\S]*?<\/div>\s*<\/div>\s*<\/section>\s*<section class="py-24 max-w-7xl mx-auto px-8">/,
+  `<div class="grid grid-cols-1 xl:grid-cols-2 gap-4">${timelineHtml}</div>
+</div>
+</section>
+<section class="py-24 max-w-7xl mx-auto px-8">`,
+);
+
+html = html.replace(
+  '<span class="text-primary font-bold text-sm cursor-pointer hover:underline underline-offset-4">Ver Portafolio de Arquitectura</span>',
+  '<a class="text-primary font-bold text-sm cursor-pointer hover:underline underline-offset-4" href="/es/casos">Ver Portafolio de Arquitectura</a>',
+);
+
+html = html.replace(
+  /<div class="grid grid-cols-1 md:grid-cols-2 gap-8">[\s\S]*?<\/div>\s*<\/div>\s*<\/div>\s*<\/section>\s*<section class="bg-primary text-white py-24 mb-0 overflow-hidden relative">/,
+  `<div class="grid grid-cols-1 md:grid-cols-2 gap-8">${featuredHtml}</div>
+</div>
+</div>
+</section>
+<section class="bg-primary text-white py-24 mb-0 overflow-hidden relative">`,
+);
+---
+
+<Fragment set:html={html} />

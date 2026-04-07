@@ -1,58 +1,286 @@
 ---
-import BaseLayout from '../../../components/layout/BaseLayout.astro';
-import CaseStudyCard from '../../../components/ui/CaseStudyCard.astro';
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
+import PortfolioShellLayout from "../../../components/portfolio/PortfolioShellLayout.astro";
 
-const allCases = await getCollection('case-studies');
-const esCases = allCases.filter(post => post.data.lang === 'es');
+const allCases = await getCollection("case-studies");
+const esCases = allCases
+  .filter((post) => post.data.lang === "es")
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const title = "Casos de Éxito | Jair Revilla";
-const description = "Proyectos destacados de implementación Moodle, desarrollo de plugins y arquitectura de soluciones.";
+const description =
+  "Proyectos reales de arquitectura Moodle, plugins, integraciones y escalabilidad resueltos con foco técnico y continuidad operativa.";
 ---
 
-<BaseLayout title={title} description={description} lang="es">
-  <main class="container">
-    <section class="cases-header">
-      <h1 class="page-title">Casos de Éxito</h1>
-      <p class="page-desc">Proyectos reales donde he aplicado ingeniería Moodle avanzada para resolver problemas complejos.</p>
+<PortfolioShellLayout title={title} description={description} active="casos">
+  <style>
+    .cases-shell {
+      padding-bottom: 88px;
+    }
+
+    .hero {
+      padding: 68px 0 54px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-panel,
+    .case-card {
+      border-radius: 32px;
+    }
+
+    .hero-copy {
+      padding: 18px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--tertiary-fixed);
+      color: var(--tertiary-text);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .hero-copy h1 {
+      margin-top: 24px;
+      font-size: clamp(2.9rem, 5.3vw, 4.9rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-copy p {
+      max-width: 760px;
+      margin: 22px 0 0;
+      color: var(--text-soft);
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .hero-panel {
+      padding: 30px;
+      background: var(--gradient-panel);
+      border: 1px solid var(--outline);
+      box-shadow: var(--shadow-panel-strong);
+    }
+
+    .hero-panel h2 {
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+
+    .hero-panel p {
+      color: var(--text-soft);
+      line-height: 1.75;
+      margin: 0 0 22px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .metric {
+      border-radius: 22px;
+      background: var(--bg-panel-strong);
+      border: 1px solid var(--outline);
+      padding: 18px;
+    }
+
+    .metric strong {
+      display: block;
+      font-family: "Manrope", sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: -0.04em;
+      color: var(--primary);
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 6px;
+      color: var(--text-soft);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .case-card {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      min-height: 100%;
+      padding: 28px;
+      background: var(--surface-lowest);
+      border: 1px solid var(--outline);
+      box-shadow: var(--shadow-card);
+      transition: transform 0.32s ease, box-shadow 0.32s ease, border-color 0.32s ease;
+    }
+
+    .case-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--bg-primary-border);
+      box-shadow: var(--shadow-lift);
+    }
+
+    .case-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--text-primary-soft);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .case-card h2 {
+      font-size: 1.5rem;
+      line-height: 1.15;
+    }
+
+    .case-card p {
+      color: var(--text-soft);
+      line-height: 1.75;
+      margin: 0;
+      flex: 1;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--surface-low);
+      color: var(--text-soft);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .link-line {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .cases-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-grid > :first-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero,
+      .cases-shell {
+        padding-bottom: 64px;
+      }
+
+      .hero-grid,
+      .cases-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <main class="material-shell cases-shell">
+    <section class="hero reveal">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Prueba aplicada</span>
+          <h1>Casos donde la arquitectura sí tuvo que responder.</h1>
+          <p>
+            Esta sección recupera el contenido más valioso de la web anterior:
+            proyectos reales, restricciones técnicas, clientes, fechas y
+            resultados. Aquí el diseño acompaña la evidencia, no la reemplaza.
+          </p>
+        </div>
+
+        <aside class="hero-panel reveal">
+          <h2>Qué encuentras aquí</h2>
+          <p>
+            Implementaciones, upgrades, integraciones, optimizaciones y
+            arquitecturas Moodle donde el foco estuvo en continuidad operativa,
+            rendimiento y control técnico.
+          </p>
+
+          <div class="metrics">
+            <div class="metric">
+              <strong>{esCases.length}</strong>
+              <span>casos publicados</span>
+            </div>
+            <div class="metric">
+              <strong>Moodle</strong>
+              <span>foco principal</span>
+            </div>
+            <div class="metric">
+              <strong>ERP/SGA</strong>
+              <span>integraciones</span>
+            </div>
+            <div class="metric">
+              <strong>HA</strong>
+              <span>arquitectura crítica</span>
+            </div>
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <div class="cases-grid">
-      {esCases.map((post) => (
-        <CaseStudyCard
-          title={post.data.title}
-          description={post.data.description}
-          tags={post.data.tags}
-          url={`/es/casos/${post.slug.replace('-es', '')}`}
-        />
-      ))}
-    </div>
+    <section class="cases-grid reveal">
+      {
+        esCases.map((post) => (
+          <a href={`/es/casos/${post.slug.replace("-es", "")}`} class="case-card">
+            <div class="case-meta">
+              <span>
+                {post.data.client ? post.data.client : "Caso técnico"}
+              </span>
+              <span>
+                {post.data.date.toLocaleDateString("es-PE", {
+                  year: "numeric",
+                  month: "short",
+                })}
+              </span>
+            </div>
+            <h2>{post.data.title}</h2>
+            <p>{post.data.description}</p>
+            <div class="tags">
+              {post.data.tags.slice(0, 4).map((tag) => <span class="tag">{tag}</span>)}
+            </div>
+            <div class="link-line">Ver caso completo</div>
+          </a>
+        ))
+      }
+    </section>
   </main>
-</BaseLayout>
-
-<style>
-  .cases-header {
-    padding: var(--space-8) 0;
-    text-align: center;
-  }
-
-  .page-title {
-    font-size: 2.5rem;
-    margin-bottom: var(--space-4);
-    color: #1a1a1a;
-  }
-
-  .page-desc {
-    font-size: 1.25rem;
-    color: #666;
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .cases-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: var(--space-6);
-    padding-bottom: var(--space-12);
-  }
-</style>
+</PortfolioShellLayout>

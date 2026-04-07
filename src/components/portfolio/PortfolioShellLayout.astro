@@ -1,0 +1,284 @@
+---
+import SEOHead from "../layout/SEOHead.astro";
+import PortfolioTopbar from "./PortfolioTopbar.astro";
+import tokensCss from "../../styles/tokens.css?raw";
+
+const {
+  title,
+  description,
+  active = "xray",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <SEOHead title={title} description={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style is:global set:html={tokensCss} />
+    <style is:global>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background: var(--surface);
+        color: var(--text);
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.55s ease, transform 0.55s ease;
+      }
+
+      body.ready {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      body.leaving {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Manrope", sans-serif;
+        margin: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .material-shell {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      .topbar {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 50;
+        background: var(--bg-glass);
+        backdrop-filter: blur(20px);
+        box-shadow: var(--shadow-nav);
+      }
+
+      .topbar nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        min-height: 84px;
+      }
+
+      .brand {
+        font-family: "Manrope", sans-serif;
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--text);
+        letter-spacing: -0.03em;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .nav-link {
+        color: var(--text-muted);
+        font-weight: 600;
+        transition: color 0.25s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--primary-strong);
+      }
+
+      .nav-link.active {
+        color: var(--primary-strong);
+        font-weight: 700;
+        padding-bottom: 4px;
+        border-bottom: 2px solid var(--primary-strong);
+      }
+
+      .quote-link {
+        background: var(--gradient-primary);
+        color: var(--surface-lowest);
+        padding: 12px 24px;
+        border-radius: 14px;
+        font-weight: 700;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+      }
+
+      .quote-link:hover {
+        transform: translateY(-2px);
+        opacity: 0.96;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+
+      .mobile-panel {
+        display: none;
+      }
+
+      main {
+        padding-top: 132px;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px) scale(0.988);
+        transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      @media (max-width: 760px) {
+        .material-shell {
+          padding: 0 20px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .menu-toggle {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: transparent;
+          border: 0;
+          color: var(--text);
+        }
+
+        .mobile-panel {
+          display: block;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease;
+          border-top: 1px solid var(--outline);
+          background: var(--bg-glass-strong);
+        }
+
+        .mobile-panel.open {
+          max-height: 320px;
+        }
+
+        .mobile-inner {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          padding: 0 20px 20px;
+        }
+
+        .mobile-inner a {
+          padding: 12px 14px;
+          border-radius: 12px;
+          font-weight: 700;
+        }
+
+        .mobile-inner a.active {
+          background: var(--bg-primary-soft);
+          color: var(--primary-strong);
+        }
+
+        .mobile-inner .quote-link {
+          text-align: center;
+          margin-top: 4px;
+        }
+
+        main {
+          padding-top: 116px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        body,
+        .quote-link,
+        .reveal {
+          transition: none !important;
+          transform: none !important;
+          opacity: 1 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <PortfolioTopbar active={active} />
+    <slot />
+    <script>
+      const toggle = document.querySelector("[data-menu-toggle]");
+      const panel = document.querySelector("[data-mobile-panel]");
+
+      if (toggle instanceof HTMLButtonElement && panel instanceof HTMLElement) {
+        toggle.addEventListener("click", () => {
+          panel.classList.toggle("open");
+        });
+      }
+
+      const activatePage = () => {
+        document.body.classList.add("ready");
+
+        const revealTargets = Array.from(document.querySelectorAll(".reveal"));
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+        );
+
+        revealTargets.forEach((element, index) => {
+          if (element instanceof HTMLElement) {
+            element.style.transitionDelay = `${(index % 6) * 55}ms`;
+            observer.observe(element);
+          }
+        });
+
+        document.querySelectorAll("a[href^='/']").forEach((link) => {
+          link.addEventListener("click", (event) => {
+            const anchor = event.currentTarget;
+            if (!(anchor instanceof HTMLAnchorElement)) return;
+            if (anchor.target === "_blank") return;
+            document.body.classList.add("leaving");
+          });
+        });
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", activatePage, { once: true });
+      } else {
+        activatePage();
+      }
+    </script>
+  </body>
+</html>

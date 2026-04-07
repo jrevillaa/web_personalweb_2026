@@ -35,11 +35,11 @@ const { nameLabel, emailLabel, subjectLabel, messageLabel, submitLabel } =
 
 <style>
     .contact-form {
-        background: #fff;
+        background: var(--surface-lowest);
         padding: var(--space-6);
         border-radius: var(--radius-2);
         box-shadow: var(--shadow-1);
-        border: 1px solid #eee;
+        border: 1px solid var(--color-border);
         text-align: left;
     }
 
@@ -51,7 +51,7 @@ const { nameLabel, emailLabel, subjectLabel, messageLabel, submitLabel } =
         display: block;
         margin-bottom: var(--space-2);
         font-weight: 500;
-        color: #444;
+        color: var(--text-subtle);
         font-size: 0.9rem;
     }
 
@@ -59,7 +59,7 @@ const { nameLabel, emailLabel, subjectLabel, messageLabel, submitLabel } =
     textarea {
         width: 100%;
         padding: var(--space-3);
-        border: 1px solid #ddd;
+        border: 1px solid var(--outline-strong);
         border-radius: var(--radius-1);
         font-family: inherit;
         font-size: 1rem;
@@ -69,12 +69,12 @@ const { nameLabel, emailLabel, subjectLabel, messageLabel, submitLabel } =
     input:focus,
     textarea:focus {
         outline: none;
-        border-color: var(--color-primary, #0056b3);
+        border-color: var(--color-primary);
     }
 
     .submit-btn {
         width: 100%;
-        background-color: var(--color-primary, #0056b3);
+        background-color: var(--color-primary);
         color: white;
         border: none;
         padding: var(--space-3);
@@ -86,6 +86,6 @@ const { nameLabel, emailLabel, subjectLabel, messageLabel, submitLabel } =
     }
 
     .submit-btn:hover {
-        background-color: #004494;
+        background-color: var(--color-primary-dark);
     }
 </style>

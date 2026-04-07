@@ -4,6 +4,7 @@ description: 'Implementation and production launch of Moodle 4.4 with migration 
 date: 2025-04-01
 client: 'CANVIA (with LIDERA DIGITAL)'
 tags: ['Moodle 4.4', 'Upgrade', 'Migration', 'Workflows', 'QA']
+featured: true
 lang: 'en'
 ---
 

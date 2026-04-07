@@ -1,6 +1,7 @@
 /* Tokens de diseño para el sitio personal de Jair Revilla */
 :root {
   /* Colores */
+  color-scheme: light;
   --color-primary: #0056b3;
   --color-primary-dark: #004494;
   --color-text: #1a1a1a;
@@ -8,6 +9,62 @@
   --color-bg: #ffffff;
   --color-bg-alt: #f9f9f9;
   --color-border: #eeeeee;
+  --surface: #fbf9f8;
+  --surface-low: #f5f3f3;
+  --surface-lowest: #ffffff;
+  --surface-high: #e9e8e7;
+  --surface-highest: #e4e2e2;
+  --text: #1b1c1c;
+  --text-soft: #424752;
+  --text-muted: #5f5e5e;
+  --text-strong: #1a1a1a;
+  --text-body: #333333;
+  --text-heading-alt: #2c3e50;
+  --text-subtle: #444444;
+  --text-faint: #777777;
+  --text-disabled: #999999;
+  --text-footer: #888888;
+  --primary: #003f87;
+  --primary-strong: #0056b3;
+  --primary-fixed: #d7e2ff;
+  --primary-fixed-strong: #004491;
+  --tertiary-fixed: #c2e8ff;
+  --tertiary-text: #004d67;
+  --outline: rgba(194, 198, 212, 0.28);
+  --outline-soft: rgba(194, 198, 212, 0.25);
+  --outline-strong: #e0e0e0;
+  --bg-glass: rgba(255, 255, 255, 0.82);
+  --bg-glass-strong: rgba(255, 255, 255, 0.92);
+  --bg-panel-soft: rgba(255, 255, 255, 0.72);
+  --bg-panel: rgba(255, 255, 255, 0.74);
+  --bg-panel-strong: rgba(255, 255, 255, 0.8);
+  --bg-panel-stronger: rgba(255, 255, 255, 0.84);
+  --bg-primary-soft: rgba(0, 86, 179, 0.08);
+  --bg-primary-soft-strong: rgba(0, 86, 179, 0.18);
+  --bg-primary-deep-soft: rgba(0, 63, 135, 0.02);
+  --bg-primary-border: rgba(0, 86, 179, 0.28);
+  --text-primary-soft: rgba(0, 63, 135, 0.58);
+  --text-primary-faded: rgba(0, 86, 179, 0.46);
+  --text-on-dark-soft: rgba(255, 255, 255, 0.82);
+  --text-on-dark-muted: rgba(255, 255, 255, 0.85);
+  --bg-on-dark-soft: rgba(255, 255, 255, 0.08);
+  --bg-on-dark-mid: rgba(255, 255, 255, 0.1);
+  --bg-on-dark-strong: rgba(255, 255, 255, 0.14);
+  --bg-on-dark-border: rgba(255, 255, 255, 0.2);
+  --bg-on-dark-dashed: rgba(255, 255, 255, 0.3);
+  --bg-on-dark-accent: rgba(255, 255, 255, 0.16);
+  --bg-dark-soft: rgba(0, 0, 0, 0.03);
+  --border-dark-soft: rgba(0, 0, 0, 0.05);
+  --bg-light-soft: rgba(255, 255, 255, 0.05);
+  --border-light-soft: rgba(255, 255, 255, 0.1);
+  --accent-info: #3b82f6;
+  --gradient-primary: linear-gradient(90deg, var(--primary) 0%, var(--primary-strong) 100%);
+  --gradient-primary-diagonal: linear-gradient(135deg, var(--primary) 0%, var(--primary-strong) 100%);
+  --gradient-panel: linear-gradient(180deg, var(--bg-primary-soft) 0%, var(--bg-primary-deep-soft) 100%);
+  --gradient-dark-hero: linear-gradient(135deg, var(--text-strong) 0%, #4a4a4a 100%);
+  --tag-bg: #f0f0f0;
+  --tag-bg-soft: #f5f5f5;
+  --panel-bg-soft: #eef2f5;
 
   /* Espaciado */
   --space-1: 4px;
@@ -31,4 +88,14 @@
   /* Sombras */
   --shadow-1: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-nav: 0 6px 24px rgba(27, 28, 28, 0.06);
+  --shadow-soft: 0 10px 30px rgba(27, 28, 28, 0.04);
+  --shadow-card: 0 16px 40px rgba(15, 23, 42, 0.05);
+  --shadow-panel: 0 18px 40px rgba(27, 28, 28, 0.05);
+  --shadow-panel-strong: 0 18px 42px rgba(15, 23, 42, 0.05);
+  --shadow-lift: 0 28px 52px rgba(0, 63, 135, 0.1);
+  --shadow-primary: 0 18px 36px rgba(0, 63, 135, 0.18);
+  --shadow-primary-strong: 0 30px 60px rgba(0, 63, 135, 0.18);
+  --shadow-dark: 0 24px 64px rgba(15, 23, 42, 0.18);
+  --shadow-dark-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
 }

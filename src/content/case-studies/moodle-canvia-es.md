@@ -4,6 +4,7 @@ description: 'Implementación y puesta en producción de Moodle 4.4 con migraci�
 date: 2025-04-01
 client: 'CANVIA (con LIDERA DIGITAL)'
 tags: ['Moodle 4.4', 'Upgrade', 'Migración', 'Workflows', 'QA']
+featured: true
 lang: 'es'
 ---
 

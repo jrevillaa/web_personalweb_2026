@@ -1,153 +1,268 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../../../components/layout/BaseLayout.astro";
-import PluginCard from "../../../components/ui/PluginCard.astro";
-import ConfidentialityNote from "../../../components/ui/ConfidentialityNote.astro";
-import es from "../../../i18n/es.json";
+import PortfolioShellLayout from "../../../components/portfolio/PortfolioShellLayout.astro";
 
 const allPlugins = await getCollection("plugins");
-const esPlugins = allPlugins.filter((post) => post.data.lang === "es");
-const uniqueTypes = [...new Set(esPlugins.map((p) => p.data.type))];
+const esPlugins = allPlugins.filter((plugin) => plugin.data.lang === "es");
+
+const typeLabels: Record<string, string> = {
+  auth: "Autenticación",
+  block: "Bloques",
+  enrol: "Matriculación",
+  local: "Locales",
+  mod: "Módulos",
+  report: "Reportes",
+  theme: "Temas",
+};
 
 const title = "Directorio de Plugins | Jair Revilla";
 const description =
-  "Colección de plugins, bloques y módulos para Moodle desarrollados para resolver problemas complejos.";
+  "Directorio de plugins y componentes Moodle construidos para resolver problemas reales con foco en operación, integración y mantenibilidad.";
 ---
 
-<BaseLayout title={title} description={description} lang="es">
-  <main class="container">
-    <header class="plugins-header">
-      <h1 class="page-title">Directorio de Plugins</h1>
-      <p class="page-desc">
-        Soluciones robustas para extender la funcionalidad de Moodle.
-      </p>
-    </header>
+<PortfolioShellLayout title={title} description={description} active="servicios">
+  <style>
+    .plugins-shell {
+      padding-bottom: 88px;
+    }
 
-    <ConfidentialityNote text={es["disclaimer.text"]} />
+    .hero {
+      padding: 68px 0 54px;
+    }
 
-    <div class="filters-container">
-      <button class="filter-btn active" data-filter="all">Todos</button>
-      {
-        uniqueTypes.map((type) => (
-          <button class="filter-btn" data-filter={type}>
-            {es[`plugin_types.${type}`] || type}
-          </button>
-        ))
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--tertiary-fixed);
+      color: var(--tertiary-text);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .hero-copy h1 {
+      margin-top: 24px;
+      font-size: clamp(2.9rem, 5.1vw, 4.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-copy p {
+      max-width: 760px;
+      margin: 22px 0 0;
+      color: var(--text-soft);
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .hero-panel,
+    .plugin-card {
+      border-radius: 32px;
+    }
+
+    .hero-panel {
+      padding: 30px;
+      background: var(--gradient-panel);
+      border: 1px solid var(--outline);
+      box-shadow: var(--shadow-panel-strong);
+    }
+
+    .hero-panel h2 {
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+
+    .hero-panel p {
+      color: var(--text-soft);
+      line-height: 1.75;
+      margin: 0 0 22px;
+    }
+
+    .type-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .type-chip {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--bg-panel-stronger);
+      border: 1px solid var(--outline);
+      color: var(--text-soft);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .plugins-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .plugin-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-height: 100%;
+      padding: 28px;
+      background: var(--surface-lowest);
+      border: 1px solid var(--outline);
+      box-shadow: var(--shadow-card);
+      transition: transform 0.32s ease, box-shadow 0.32s ease, border-color 0.32s ease;
+    }
+
+    .plugin-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--bg-primary-border);
+      box-shadow: var(--shadow-lift);
+    }
+
+    .plugin-topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-primary-soft);
+    }
+
+    .plugin-card h2 {
+      font-size: 1.4rem;
+      line-height: 1.18;
+    }
+
+    .plugin-card p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 8px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.66rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--primary-strong);
+    }
+
+    .link-line {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .plugins-grid {
+        grid-template-columns: 1fr 1fr;
       }
-    </div>
 
-    <div class="plugins-grid">
+      .hero-grid > :first-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero,
+      .plugins-shell {
+        padding-bottom: 64px;
+      }
+
+      .hero-grid,
+      .plugins-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <main class="material-shell plugins-shell">
+    <section class="hero reveal">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Producto técnico</span>
+          <h1>Directorio de plugins con enfoque operativo, no decorativo.</h1>
+          <p>
+            Esta sección recupera la capa de producto de la web anterior dentro
+            del lenguaje visual nuevo. Aquí entran bloques, módulos,
+            autenticación, reportes, enrolments e integraciones pensadas para
+            negocio real y upgrades sostenibles.
+          </p>
+        </div>
+
+        <aside class="hero-panel reveal">
+          <h2>Qué tipo de soluciones hay aquí</h2>
+          <p>
+            Plugins desarrollados para extender Moodle sin hacks, con foco en
+            permisos, mantenibilidad, performance, trazabilidad e integración
+            con otros sistemas.
+          </p>
+          <div class="type-cloud">
+            {Object.entries(typeLabels).map(([key, label]) => (
+              <span class="type-chip">{label}</span>
+            ))}
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="plugins-grid reveal">
       {
         esPlugins.map((plugin) => (
-          <div class="plugin-wrapper" data-type={plugin.data.type}>
-            <PluginCard
-              name={plugin.data.name}
-              type={plugin.data.type}
-              version={plugin.data.version}
-              description={plugin.data.description}
-              features={plugin.data.features}
-              url={`/es/plugins/${plugin.slug.replace("-es", "")}`}
-            />
-          </div>
+          <a href={`/es/plugins/${plugin.slug.replace("-es", "")}`} class="plugin-card">
+            <div class="plugin-topline">
+              <span>{typeLabels[plugin.data.type] ?? plugin.data.type}</span>
+              <span>v{plugin.data.version}</span>
+            </div>
+            <h2>{plugin.data.name}</h2>
+            <p>{plugin.data.description}</p>
+            <ul class="feature-list">
+              {plugin.data.features.slice(0, 3).map((feature) => <li>{feature}</li>)}
+            </ul>
+            <div class="link-line">Ver detalle del plugin</div>
+          </a>
         ))
       }
-    </div>
+    </section>
   </main>
-</BaseLayout>
-
-<script>
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  const pluginItems = document.querySelectorAll(".plugin-wrapper");
-  const pluginsGrid = document.querySelector(".plugins-grid");
-
-  filterBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      // Remove active class from all
-      filterBtns.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      const filterValue = btn.getAttribute("data-filter");
-
-      // Animate Grid Fade Out
-      if (pluginsGrid) {
-        pluginsGrid.classList.add("fade-out");
-      }
-
-      setTimeout(() => {
-        pluginItems.forEach((item) => {
-          const itemType = item.getAttribute("data-type");
-          if (filterValue === "all" || filterValue === itemType) {
-            (item as HTMLElement).style.display = "block";
-          } else {
-            (item as HTMLElement).style.display = "none";
-          }
-        });
-
-        // Animate Grid Fade In
-        if (pluginsGrid) {
-          pluginsGrid.classList.remove("fade-out");
-        }
-      }, 300); // Wait for transition
-    });
-  });
-</script>
-
-<style>
-  .plugins-header {
-    padding: var(--space-8) 0;
-    text-align: center;
-  }
-
-  .page-title {
-    font-size: 2.5rem;
-    margin-bottom: var(--space-2);
-  }
-
-  .page-desc {
-    color: #666;
-    font-size: 1.2rem;
-  }
-
-  .filters-container {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-3);
-    flex-wrap: wrap;
-    margin-bottom: var(--space-8);
-  }
-
-  .filter-btn {
-    background: transparent;
-    border: 1px solid var(--color-border);
-    padding: var(--space-2) var(--space-4);
-    border-radius: 100px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
-    color: var(--color-text);
-  }
-
-  .filter-btn:hover,
-  .filter-btn.active {
-    background: var(--color-primary);
-    color: #fff;
-    border-color: var(--color-primary);
-  }
-
-  .plugins-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: var(--space-6);
-    padding-bottom: var(--space-12);
-    transition:
-      opacity 0.3s ease,
-      transform 0.3s ease;
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .plugins-grid.fade-out {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-</style>
+</PortfolioShellLayout>
